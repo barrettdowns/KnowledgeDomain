@@ -1,0 +1,1024 @@
+[
+  {
+    "codex_id": "CODEX-ADP30-0001",
+    "context_envelope": {
+      "echelon": "theater",
+      "phase": "unified_action",
+      "mission_type": "multi_domain_operations",
+      "domain": "all_domains"
+    },
+    "triggers": [
+      "joint_operations_directed",
+      "unified_action_required",
+      "civilian_organizations_present",
+      "interagency_coordination_needed"
+    ],
+    "required_observations": [
+      "unified_action_partners_identified",
+      "organizational_cultures_assessed",
+      "liaison_relationships_established",
+      "coordination_mechanisms_confirmed"
+    ],
+    "allowed_actions": [
+      {
+        "action": "establish_theater_sustainment",
+        "parameters": {
+          "scope": "joint_force_and_designated_allies"
+        },
+        "intended_effects": [
+          "provide_campaign_endurance",
+          "enable_mission_accomplishment"
+        ]
+      },
+      {
+        "action": "coordinate_with_nongovernmental_organizations",
+        "parameters": {
+          "method": "overlapping_interests_identification"
+        },
+        "intended_effects": [
+          "leverage_humanitarian_capabilities",
+          "reduce_duplication_of_effort"
+        ]
+      },
+      {
+        "action": "provide_sustainment_to_civilian_organizations",
+        "parameters": {
+          "when": "directed",
+          "scope": "non_DOD_agencies"
+        },
+        "intended_effects": [
+          "enable_interagency_operations",
+          "support_unified_action"
+        ]
+      },
+      {
+        "action": "employ_contractor_support",
+        "parameters": {
+          "types": "goods_services_infrastructure_interpreters"
+        },
+        "intended_effects": [
+          "augment_military_capabilities",
+          "enable_sustained_operations"
+        ]
+      },
+      {
+        "action": "conduct_interagency_coordination",
+        "parameters": {
+          "methods": "liaison_engagement_planning"
+        },
+        "intended_effects": [
+          "synchronize_efforts",
+          "achieve_unity_of_effort"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "achieve_unity_of_effort",
+      "enable_sustained_landpower",
+      "support_unified_action_objectives"
+    ],
+    "constraints": [
+      "single_service_operations_prohibited_in_joint_context",
+      "civilian_organizations_not_under_military_control",
+      "must_respect_organizational_cultures_and_norms"
+    ],
+    "tradeoffs": [
+      {
+        "action": "early_coordination_with_civilian_organizations",
+        "degradation": "requires_additional_coordination_effort",
+        "compensation": "enables_effective_cooperation_throughout_operation"
+      },
+      {
+        "action": "provide_sustainment_to_civilian_organizations",
+        "degradation": "diverts_military_resources",
+        "compensation": "enhances_overall_unified_action_effectiveness"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0143-01",
+        "pattern_name": "unified_action_effectiveness",
+        "links": [
+          {
+            "condition": "interagency_coordination_established",
+            "effect": "unified_action_partners_synchronized",
+            "mechanism": "Planning and synchronization processes align efforts between DOD and participating government agencies",
+            "exception": "organizational_cultures_incompatible"
+          },
+          {
+            "condition": "unified_action_partners_synchronized",
+            "effect": "unity_of_effort_achieved",
+            "mechanism": "Coordination and cooperation toward common objectives creates cohesive action",
+            "exception": "competing_priorities_override_coordination"
+          },
+          {
+            "condition": "unity_of_effort_achieved",
+            "effect": "mission_objectives_accomplished",
+            "mechanism": "Synchronized activities of all partners maximize effectiveness toward common goals",
+            "exception": null
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "JP 1 Volume 1",
+          "JP 3-0"
+        ]
+      },
+      {
+        "chain_id": "CC-0143-02",
+        "pattern_name": "theater_sustainment_enablement",
+        "links": [
+          {
+            "condition": "theater_set_and_sustained",
+            "effect": "joint_force_freedom_of_action_enabled",
+            "mechanism": "Broad range of activities establishes favorable conditions for operations execution",
+            "exception": null
+          },
+          {
+            "condition": "sustainment_provided_to_joint_force",
+            "effect": "campaign_endurance_achieved",
+            "mechanism": "Army's ability to sustain all Services provides required persistence through mission accomplishment",
+            "exception": "resource_constraints_limit_sustainment_capacity"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-0 Chapter 4"
+        ]
+      }
+    ],
+    "measures": [
+      "unity_of_effort_assessment",
+      "interagency_coordination_effectiveness",
+      "civilian_organization_cooperation_level",
+      "theater_sustainment_capacity"
+    ],
+    "provenance": [
+      "ADP 3-0 1-56",
+      "ADP 3-0 1-57",
+      "ADP 3-0 1-58",
+      "ADP 3-0 1-59",
+      "ADP 3-0 1-60"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0002",
+    "context_envelope": {
+      "echelon": "brigade_and_above",
+      "phase": "all_phases",
+      "mission_type": "combined_arms_operations",
+      "domain": "land"
+    },
+    "triggers": [
+      "mission_assignment_received",
+      "force_structure_decisions_required",
+      "unit_attrition_exceeds_threshold"
+    ],
+    "required_observations": [
+      "relative_combat_power_assessed",
+      "force_ratios_calculated",
+      "unit_capabilities_identified",
+      "mutual_support_requirements_determined"
+    ],
+    "allowed_actions": [
+      {
+        "action": "analyze_relative_combat_power",
+        "parameters": {
+          "assessment_type": "objective_and_subjective_factors",
+          "scope": "tangible_and_intangible_factors"
+        },
+        "intended_effects": [
+          "determine_friendly_vulnerabilities",
+          "identify_enemy_vulnerabilities",
+          "calculate_force_ratios"
+        ]
+      },
+      {
+        "action": "conduct_force_tailoring",
+        "parameters": {
+          "force_selection": "right_mix_for_situation",
+          "deployment_sequence": "optimized_for_mission"
+        },
+        "intended_effects": [
+          "match_force_structure_to_mission",
+          "optimize_force_projection_sequence"
+        ]
+      },
+      {
+        "action": "task_organize_units",
+        "parameters": {
+          "design_criteria": "mission_training_experience_capabilities",
+          "composition": "specific_size_and_mix"
+        },
+        "intended_effects": [
+          "enable_combined_arms_operations",
+          "maximize_unit_effectiveness"
+        ]
+      },
+      {
+        "action": "position_for_mutual_support",
+        "parameters": {
+          "range_consideration": "supporting_range_and_distance",
+          "coordination": "shared_operational_picture"
+        },
+        "intended_effects": [
+          "ensure_units_can_support_each_other",
+          "prevent_defeat_by_enemy"
+        ]
+      },
+      {
+        "action": "implement_reconstitution_operations",
+        "parameters": {
+          "type": "reorganization_or_regeneration",
+          "priority": "restore_combat_effectiveness"
+        },
+        "intended_effects": [
+          "restore_attrited_unit_effectiveness",
+          "maintain_operational_tempo"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "optimize_combat_power_employment",
+      "achieve_mission_success",
+      "maintain_force_effectiveness"
+    ],
+    "constraints": [
+      "supporting_range_limitations",
+      "communication_requirements_for_mutual_support",
+      "resource_availability_for_reconstitution"
+    ],
+    "tradeoffs": [
+      {
+        "action": "position_units_for_maximum_mutual_support",
+        "degradation": "may_limit_maneuver_flexibility",
+        "compensation": "increase_coordination_and_communication_capabilities"
+      },
+      {
+        "action": "prioritize_immediate_reorganization",
+        "degradation": "may_not_fully_restore_combat_power",
+        "compensation": "maintains_unit_in_fight_while_planning_regeneration"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0143-01",
+        "pattern_name": "combat_power_organization_effectiveness",
+        "links": [
+          {
+            "condition": "relative_combat_power_analyzed",
+            "effect": "force_ratios_calculated",
+            "mechanism": "Assessment of tangible and intangible factors enables mathematical comparison of opposing forces",
+            "exception": "intelligence_gaps_prevent_accurate_assessment"
+          },
+          {
+            "condition": "force_ratios_calculated",
+            "effect": "optimal_task_organization_determined",
+            "mechanism": "Understanding strengths and weaknesses guides selection of unit mix and capabilities",
+            "exception": "available_forces_do_not_match_requirements"
+          },
+          {
+            "condition": "units_task_organized_effectively",
+            "effect": "combined_arms_operations_enabled",
+            "mechanism": "Proper force structure provides complementary capabilities for synchronized operations",
+            "exception": "insufficient_training_time_for_integration"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "ADP 3-0 Para 2-27",
+          "ADP 3-0 Para 2-28",
+          "ADP 3-0 Para 2-31"
+        ]
+      },
+      {
+        "chain_id": "CC-0143-02",
+        "pattern_name": "mutual_support_effectiveness",
+        "links": [
+          {
+            "condition": "units_positioned_within_supporting_range",
+            "effect": "direct_fire_support_available",
+            "mechanism": "Units within maximum weapon system range can provide immediate fire support",
+            "exception": "visibility_limitations_prevent_effective_fires"
+          },
+          {
+            "condition": "units_positioned_within_supporting_distance",
+            "effect": "maneuver_support_available",
+            "mechanism": "Units can travel required distance in time to prevent defeat of supported unit",
+            "exception": "enemy_capabilities_prevent_movement"
+          },
+          {
+            "condition": "communication_established_between_units",
+            "effect": "mutual_support_coordinated",
+            "mechanism": "Shared operational picture enables synchronized support regardless of proximity",
+            "exception": "communication_systems_degraded_or_jammed"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "ADP 3-0 Para 2-32",
+          "ADP 3-0 Para 2-33",
+          "ADP 3-0 Para 2-35"
+        ]
+      }
+    ],
+    "measures": [
+      "force_ratio_advantage",
+      "task_organization_effectiveness",
+      "mutual_support_coverage_percentage",
+      "reconstitution_time_to_effectiveness"
+    ],
+    "provenance": [
+      "ADP 3-0 2-27",
+      "ADP 3-0 2-28",
+      "ADP 3-0 2-29",
+      "ADP 3-0 2-30",
+      "ADP 3-0 2-31"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0003",
+    "context_envelope": {
+      "echelon": "corps_and_above",
+      "phase": "operational_planning",
+      "mission_type": "multi_domain_operations",
+      "domain": "all_domains"
+    },
+    "triggers": [
+      "strategic_objectives_assigned",
+      "operational_environment_assessed",
+      "tactical_actions_require_coordination"
+    ],
+    "required_observations": [
+      "operational_environment_understood",
+      "strategic_objectives_defined",
+      "available_resources_assessed",
+      "risk_factors_identified"
+    ],
+    "allowed_actions": [
+      {
+        "action": "apply_army_design_methodology",
+        "parameters": {
+          "methodology": "critical_and_creative_thinking_process"
+        },
+        "intended_effects": [
+          "gain_shared_understanding_of_environment",
+          "define_problems_preventing_desired_end_state"
+        ]
+      },
+      {
+        "action": "develop_operational_approach",
+        "parameters": {
+          "scope": "broad_mission_description"
+        },
+        "intended_effects": [
+          "inform_detailed_planning",
+          "establish_logical_operational_framework"
+        ]
+      },
+      {
+        "action": "integrate_protection_measures",
+        "parameters": {
+          "focus": "maintain_operational_reach"
+        },
+        "intended_effects": [
+          "anticipate_enemy_disruption",
+          "extend_operations_in_time_and_space"
+        ]
+      },
+      {
+        "action": "establish_basing_strategy",
+        "parameters": {
+          "consideration": "proximity_to_operational_area"
+        },
+        "intended_effects": [
+          "support_operational_reach_and_endurance",
+          "enable_rapid_combat_power_generation"
+        ]
+      },
+      {
+        "action": "delegate_risk_acceptance",
+        "parameters": {
+          "method": "commanders_intent_and_guidance"
+        },
+        "intended_effects": [
+          "create_opportunities_to_seize_initiative",
+          "maintain_common_operational_picture"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "pursue_strategic_objectives",
+      "arrange_tactical_actions_effectively",
+      "establish_conditions_for_mission_accomplishment"
+    ],
+    "constraints": [
+      "must_consider_operational_realities",
+      "must_maintain_shared_understanding_across_echelons",
+      "must_ensure_feasibility_through_science_of_operations"
+    ],
+    "tradeoffs": [
+      {
+        "action": "accept_operational_risk",
+        "degradation": "potential_for_increased_losses",
+        "compensation": "creates_opportunities_to_seize_initiative"
+      },
+      {
+        "action": "prioritize_protection_measures",
+        "degradation": "may_limit_operational_tempo",
+        "compensation": "maintains_operational_reach_and_endurance"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0001-01",
+        "pattern_name": "operational_art_application",
+        "links": [
+          {
+            "condition": "army_design_methodology_applied",
+            "effect": "shared_understanding_achieved",
+            "mechanism": "Critical and creative thinking processes enable collaborative problem definition",
+            "exception": "insufficient_time_for_thorough_analysis"
+          },
+          {
+            "condition": "shared_understanding_achieved",
+            "effect": "operational_approach_developed",
+            "mechanism": "Common understanding of environment enables coherent strategy formulation",
+            "exception": "conflicting_priorities_between_echelons"
+          },
+          {
+            "condition": "operational_approach_developed",
+            "effect": "tactical_actions_arranged_effectively",
+            "mechanism": "Clear operational framework guides subordinate unit planning and execution",
+            "exception": "operational_approach_fails_to_consider_tactical_realities"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "ADP 5-0",
+          "JP 5-0"
+        ]
+      },
+      {
+        "chain_id": "CC-0001-02",
+        "pattern_name": "protection_operational_reach_integration",
+        "links": [
+          {
+            "condition": "protection_measures_integrated",
+            "effect": "operational_reach_maintained",
+            "mechanism": "Anticipated enemy actions and environmental factors are mitigated through protective measures",
+            "exception": "overwhelming_enemy_capabilities_exceed_protection_capacity"
+          },
+          {
+            "condition": "operational_reach_maintained",
+            "effect": "operations_extended_in_time_and_space",
+            "mechanism": "Protected forces retain endurance and momentum across extended operational areas",
+            "exception": "logistics_constraints_limit_sustainment"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "Chapter 4 Operational Art Application"
+        ]
+      }
+    ],
+    "measures": [
+      "strategic_objectives_achieved",
+      "operational_approach_feasibility",
+      "shared_understanding_assessment",
+      "tactical_action_coordination_effectiveness"
+    ],
+    "provenance": [
+      "ADP 3-0 4-22",
+      "ADP 3-0 4-23",
+      "ADP 3-0 4-24",
+      "ADP 3-0 4-25",
+      "ADP 3-0 4-26"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0004",
+    "context_envelope": {
+      "echelon": "theater",
+      "phase": "all_phases",
+      "mission_type": "theory_of_victory",
+      "domain": "joint"
+    },
+    "triggers": [
+      "global_responsibilities_assigned",
+      "threat_environment_identified",
+      "operational_requirements_defined"
+    ],
+    "required_observations": [
+      "threat_assessment_completed",
+      "operational_environment_analyzed",
+      "partner_nation_capabilities_assessed",
+      "combat_credibility_evaluated"
+    ],
+    "allowed_actions": [
+      {
+        "action": "conduct_experiential_training",
+        "parameters": {
+          "type": "collective_and_individual",
+          "emphasis": "teamwork_and_cohesion"
+        },
+        "intended_effects": [
+          "build_operational_skills",
+          "instill_discipline",
+          "prepare_for_land_combat"
+        ]
+      },
+      {
+        "action": "shape_operational_environments",
+        "parameters": {
+          "method": "security_cooperation",
+          "focus": "partner_nation_improvement"
+        },
+        "intended_effects": [
+          "improve_regional_security",
+          "support_mutual_interests",
+          "prevent_crisis_conditions"
+        ]
+      },
+      {
+        "action": "counter_aggression_during_crisis",
+        "parameters": {
+          "approach": "deny_adversary_objectives",
+          "cost_threshold": "acceptable_military_political"
+        },
+        "intended_effects": [
+          "protect_friendly_forces",
+          "secure_partners",
+          "indicate_US_intent"
+        ]
+      },
+      {
+        "action": "conduct_combined_arms_operations",
+        "parameters": {
+          "integration": "all_army_joint_capabilities",
+          "method": "defeat_mechanisms"
+        },
+        "intended_effects": [
+          "attack_defend_enemy_forces",
+          "close_with_destroy_enemy",
+          "achieve_tactical_success"
+        ]
+      },
+      {
+        "action": "consolidate_gains",
+        "parameters": {
+          "timing": "rapid_exploitation",
+          "focus": "enduring_outcomes"
+        },
+        "intended_effects": [
+          "transition_tactical_to_strategic_advantage",
+          "end_enemy_resistance",
+          "prevent_protracted_irregular_warfare"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "maintain_combat_credibility",
+      "achieve_strategic_objectives",
+      "provide_enduring_security",
+      "support_joint_force_operations"
+    ],
+    "constraints": [
+      "operate_within_law_of_armed_conflict",
+      "adhere_to_rules_of_engagement",
+      "maintain_values_based_approach"
+    ],
+    "tradeoffs": [
+      {
+        "action": "forward_position_forces",
+        "degradation": "increases_exposure_to_threat",
+        "compensation": "demonstrates_credibility_and_commitment"
+      },
+      {
+        "action": "rapid_deployment",
+        "degradation": "may_sacrifice_preparation_time",
+        "compensation": "provides_strategic_responsiveness"
+      },
+      {
+        "action": "focus_on_combat_operations",
+        "degradation": "may_neglect_consolidation_requirements",
+        "compensation": "ensure_tactical_success_first"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0001-01",
+        "pattern_name": "credibility_through_capability",
+        "links": [
+          {
+            "condition": "combat_ready_forces_maintained",
+            "effect": "credibility_established",
+            "mechanism": "Friends and adversaries believe Army capability based on demonstrated readiness",
+            "exception": "political_constraints_override_military_capability"
+          },
+          {
+            "condition": "credibility_established",
+            "effect": "conflict_prevention_achieved",
+            "mechanism": "Credible capability deters adversary action and reassures partners",
+            "exception": "adversary_miscalculates_or_accepts_high_costs"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "Para 1-88"
+        ]
+      },
+      {
+        "chain_id": "CC-0001-02",
+        "pattern_name": "tactical_to_strategic_success",
+        "links": [
+          {
+            "condition": "tactical_success_achieved",
+            "effect": "battlefield_advantage_gained",
+            "mechanism": "Tactical victories create immediate military advantages",
+            "exception": null
+          },
+          {
+            "condition": "battlefield_advantage_gained",
+            "effect": "gains_consolidated",
+            "mechanism": "Rapid exploitation transitions tactical advantages into operational outcomes",
+            "exception": "insufficient_forces_for_consolidation"
+          },
+          {
+            "condition": "gains_consolidated",
+            "effect": "strategic_objectives_achieved",
+            "mechanism": "Enduring control prevents enemy transition to irregular warfare",
+            "exception": "political_objectives_remain_unmet"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "Para 1-90"
+        ]
+      }
+    ],
+    "measures": [
+      "combat_readiness_levels",
+      "partner_nation_capability_improvement",
+      "crisis_prevention_effectiveness",
+      "consolidation_success_rate"
+    ],
+    "provenance": [
+      "ADP 3-0 1-81",
+      "ADP 3-0 1-82",
+      "ADP 3-0 1-83",
+      "ADP 3-0 1-84",
+      "ADP 3-0 1-85"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0005",
+    "context_envelope": {
+      "echelon": "division",
+      "phase": "stability_operations",
+      "mission_type": "area_stabilization",
+      "domain": "multi_domain"
+    },
+    "triggers": [
+      "requirement_for_stability_tasks",
+      "local_population_in_need",
+      "civil_security_threatened"
+    ],
+    "required_observations": [
+      "host_nation_capability_assessment",
+      "population_needs_identified",
+      "security_conditions_evaluated"
+    ],
+    "allowed_actions": [
+      {
+        "action": "destroy_enemy_capabilities",
+        "parameters": {
+          "type": "lethal_combat_power",
+          "target": "enemy_capability"
+        },
+        "intended_effects": [
+          "render_combat_ineffective",
+          "eliminate_threat_to_stability"
+        ]
+      },
+      {
+        "action": "establish_civil_security",
+        "parameters": {
+          "scope": "minimum_essential_stability_tasks",
+          "responsibility": "division_and_higher"
+        },
+        "intended_effects": [
+          "protect_population_from_violence",
+          "restore_public_order",
+          "provide_emergency_services"
+        ]
+      },
+      {
+        "action": "coordinate_with_host_nation",
+        "parameters": {
+          "method": "work_with_and_through_authorities"
+        },
+        "intended_effects": [
+          "enhance_legitimacy",
+          "build_capacity"
+        ]
+      },
+      {
+        "action": "employ_civil_affairs_forces",
+        "parameters": {
+          "purpose": "enhance_situational_awareness"
+        },
+        "intended_effects": [
+          "improve_civilian_coordination",
+          "facilitate_stability_operations"
+        ]
+      },
+      {
+        "action": "apply_stability_mechanisms",
+        "parameters": {
+          "types": [
+            "compel",
+            "control",
+            "influence",
+            "support"
+          ],
+          "combination": "complementary_and_reinforcing"
+        },
+        "intended_effects": [
+          "shape_operational_environment",
+          "establish_lasting_stable_peace"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "maintain_safe_secure_environment",
+      "provide_essential_governmental_services",
+      "support_emergency_infrastructure_reconstruction",
+      "deliver_humanitarian_relief"
+    ],
+    "constraints": [
+      "dislocation_must_not_create_enemy_positional_advantage",
+      "minimum_essential_stability_tasks_are_mandatory",
+      "operations_must_be_conducted_within_legal_framework"
+    ],
+    "tradeoffs": [
+      {
+        "action": "assume_full_stability_responsibility",
+        "degradation": "increases_force_commitment_requirements",
+        "compensation": "work_with_civilian_organizations"
+      },
+      {
+        "action": "prioritize_combat_operations_over_stability",
+        "degradation": "may_compromise_long_term_objectives",
+        "compensation": "maintain_minimum_essential_tasks"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0143-01",
+        "pattern_name": "defeat_mechanism_integration",
+        "links": [
+          {
+            "condition": "enemy_forces_destroyed",
+            "effect": "threat_to_stability_eliminated",
+            "mechanism": "Lethal combat power renders enemy combat ineffective until reconstituted",
+            "exception": "enemy_reconstitutes_from_external_sources"
+          },
+          {
+            "condition": "enemy_isolated_from_support",
+            "effect": "reduced_effectiveness_increased_vulnerability",
+            "mechanism": "Separation from sources of support degrades mission performance over time",
+            "exception": "enemy_establishes_alternative_support_networks"
+          },
+          {
+            "condition": "enemy_command_disintegrated",
+            "effect": "synchronization_cohesion_degraded",
+            "mechanism": "Disrupted command and control reduces enemy operational effectiveness",
+            "exception": "enemy_adapts_with_decentralized_operations"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-90 defeat mechanisms",
+          "Chapter 4 stability operations doctrine"
+        ]
+      },
+      {
+        "chain_id": "CC-0143-02",
+        "pattern_name": "stability_mechanism_effects",
+        "links": [
+          {
+            "condition": "stability_mechanisms_applied_in_combination",
+            "effect": "complementary_reinforcing_effects_achieved",
+            "mechanism": "Multiple mechanisms create synergistic effects more powerful than individual application",
+            "exception": "mechanisms_may_conflict_if_poorly_coordinated"
+          },
+          {
+            "condition": "civil_security_established",
+            "effect": "population_protected_order_restored",
+            "mechanism": "Security presence deters violence and enables normal civilian activities",
+            "exception": "insufficient_force_density_may_leave_gaps"
+          },
+          {
+            "condition": "host_nation_capacity_developed",
+            "effect": "sustainable_stability_achieved",
+            "mechanism": "Local ownership and capability ensures long-term stability without external support",
+            "exception": "host_nation_may_lack_political_will"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "Stability operations doctrine",
+          "Civil affairs operations guidance"
+        ]
+      }
+    ],
+    "measures": [
+      "population_security_incidents",
+      "host_nation_capability_assessment",
+      "essential_services_availability",
+      "civilian_cooperation_level"
+    ],
+    "provenance": [
+      "ADP 3-0 4-39",
+      "ADP 3-0 4-40",
+      "ADP 3-0 4-41",
+      "ADP 3-0 4-42",
+      "ADP 3-0 4-43"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0006",
+    "context_envelope": {
+      "echelon": "theater",
+      "phase": "shaping_operations",
+      "mission_type": "operational_environment_shaping",
+      "domain": "multi_domain"
+    },
+    "triggers": [
+      "combatant_commander_guidance_received",
+      "regional_goals_identified",
+      "partner_capacity_building_requirements_identified"
+    ],
+    "required_observations": [
+      "theater_strategic_estimate_updated",
+      "unified_action_partners_identified",
+      "area_of_responsibility_assessed"
+    ],
+    "allowed_actions": [
+      {
+        "action": "support_security_cooperation",
+        "parameters": {
+          "scope": "theater_wide",
+          "coordination_required": "unified_action_partners"
+        },
+        "intended_effects": [
+          "build_partner_capacity",
+          "promote_regional_stability"
+        ]
+      },
+      {
+        "action": "maintain_forward_presence",
+        "parameters": {
+          "purpose": "promote_us_interests",
+          "coordination_level": "combatant_command"
+        },
+        "intended_effects": [
+          "demonstrate_commitment",
+          "deter_adversary_activities"
+        ]
+      },
+      {
+        "action": "develop_allied_friendly_capabilities",
+        "parameters": {
+          "focus": [
+            "self_defense",
+            "multinational_operations"
+          ],
+          "method": "capacity_building"
+        },
+        "intended_effects": [
+          "enhance_partner_self_defense",
+          "enable_multinational_operations"
+        ]
+      },
+      {
+        "action": "set_maintain_theater",
+        "parameters": {
+          "scope": "joint_force_support",
+          "timeline": "continuous"
+        },
+        "intended_effects": [
+          "establish_favorable_conditions",
+          "enable_future_operations"
+        ]
+      },
+      {
+        "action": "provide_peacetime_contingency_access",
+        "parameters": {
+          "recipients": [
+            "allies",
+            "partners"
+          ],
+          "access_type": [
+            "peacetime",
+            "contingency"
+          ]
+        },
+        "intended_effects": [
+          "strengthen_partnerships",
+          "enable_rapid_response"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "achieve_regional_goals_short_of_conflict",
+      "establish_conditions_for_favorable_outcome",
+      "dissuade_adversary_activities"
+    ],
+    "constraints": [
+      "synchronize_with_unified_action_partners",
+      "operate_within_combatant_commander_guidance",
+      "align_with_national_strategic_objectives"
+    ],
+    "tradeoffs": [
+      {
+        "action": "increase_forward_presence",
+        "degradation": "reduces_strategic_flexibility",
+        "compensation": "enhances_deterrent_effect"
+      },
+      {
+        "action": "extensive_partner_capacity_building",
+        "degradation": "diverts_resources_from_readiness",
+        "compensation": "builds_long_term_regional_stability"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0001-01",
+        "pattern_name": "operational_environment_shaping_effectiveness",
+        "links": [
+          {
+            "condition": "theater_strategic_level_synchronization_achieved",
+            "effect": "unified_action_partners_aligned",
+            "mechanism": "Coordination at theater strategic level ensures all instruments of national power work toward common objectives",
+            "exception": "partner_national_interests_diverge_from_us_objectives"
+          },
+          {
+            "condition": "unified_action_partners_aligned",
+            "effect": "regional_goals_achievable_short_of_conflict",
+            "mechanism": "Synchronized application of diplomatic, informational, military, and economic power creates comprehensive pressure",
+            "exception": "adversary_escalates_to_military_confrontation"
+          },
+          {
+            "condition": "partner_capacity_built",
+            "effect": "regional_stability_promoted",
+            "mechanism": "Enhanced partner self-defense capabilities reduce regional security vacuums that adversaries exploit",
+            "exception": "partners_use_capabilities_contrary_to_us_interests"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "ADP 3-0 Para 1-20",
+          "ADP 3-0 Para 1-21"
+        ]
+      },
+      {
+        "chain_id": "CC-0001-02",
+        "pattern_name": "levels_of_warfare_integration",
+        "links": [
+          {
+            "condition": "operational_level_links_tactical_to_strategic",
+            "effect": "tactical_employment_supports_strategic_objectives",
+            "mechanism": "Operational design translates strategic guidance into achievable tactical actions",
+            "exception": null
+          },
+          {
+            "condition": "theater_strategic_estimate_updated",
+            "effect": "theater_strategy_developed",
+            "mechanism": "Current assessment of operational environment informs strategic planning",
+            "exception": "strategic_guidance_changes_faster_than_estimates_updated"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "ADP 3-0 Para 1-16",
+          "ADP 3-0 Para 1-17"
+        ]
+      }
+    ],
+    "measures": [
+      "partner_capacity_development_metrics",
+      "regional_stability_indicators",
+      "adversary_activity_levels",
+      "unified_action_coordination_effectiveness"
+    ],
+    "provenance": [
+      "ADP 3-0 1-14",
+      "ADP 3-0 1-15",
+      "ADP 3-0 1-16",
+      "ADP 3-0 1-17",
+      "ADP 3-0 1-18"
+    ]
+  }
+]
