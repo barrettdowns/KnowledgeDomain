@@ -42,18 +42,25 @@ def precision_at_k(retrieved_ids: list[str], relevant: dict[str, int], k: int) -
     return sum(1 for r in top_k if relevant.get(r, 0) > 0) / len(top_k)
 
 
-def resolve_paragraph_ids(paragraph_ids: list[str]) -> dict[str, int]:
-    """Resolve paragraph IDs to record IDs with relevance scores."""
+def resolve_paragraph_ids(paragraph_ids: list[str], source_document: str = None) -> dict[str, int]:
+    """Resolve paragraph IDs to record IDs with relevance scores.
+    When source_document is specified, only match paragraphs from that document."""
     if not paragraph_ids:
         return {}
     conn = get_connection()
     try:
         with conn.cursor() as cur:
             placeholders = ", ".join(["%s"] * len(paragraph_ids))
-            cur.execute(
-                f"SELECT record_id, paragraph_id FROM kd_doctrine WHERE paragraph_id IN ({placeholders})",
-                paragraph_ids
-            )
+            if source_document:
+                cur.execute(
+                    f"SELECT record_id, paragraph_id FROM kd_doctrine WHERE paragraph_id IN ({placeholders}) AND source_document = %s",
+                    paragraph_ids + [source_document]
+                )
+            else:
+                cur.execute(
+                    f"SELECT record_id, paragraph_id FROM kd_doctrine WHERE paragraph_id IN ({placeholders})",
+                    paragraph_ids
+                )
             rows = cur.fetchall()
             relevance = {}
             for i, pid in enumerate(paragraph_ids):
@@ -73,7 +80,7 @@ def run_benchmark(qa_path: str = "benchmarks/doctrine_qa.json") -> dict:
     results = {"full_pipeline": [], "adc_only": [], "raw_embedding": []}
 
     for q in questions:
-        relevant = resolve_paragraph_ids(q["expected_paragraph_ids"])
+        relevant = resolve_paragraph_ids(q["expected_paragraph_ids"], q.get("source_document"))
         if not relevant:
             logger.warning(f"No matching records for question: {q['query'][:60]}")
             continue

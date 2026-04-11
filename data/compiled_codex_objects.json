@@ -2,1023 +2,2202 @@
   {
     "codex_id": "CODEX-ADP30-0001",
     "context_envelope": {
-      "echelon": "theater",
-      "phase": "unified_action",
-      "mission_type": "multi_domain_operations",
-      "domain": "all_domains"
+      "echelon": "tactical",
+      "phase": "general_operations",
+      "mission_type": "multidomain_operations",
+      "domain": "all"
     },
     "triggers": [
-      "joint_operations_directed",
-      "unified_action_required",
-      "civilian_organizations_present",
-      "interagency_coordination_needed"
+      "intelligence_requirements_identified",
+      "threat_capabilities_detected",
+      "operational_environment_analysis_required"
     ],
     "required_observations": [
-      "unified_action_partners_identified",
-      "organizational_cultures_assessed",
-      "liaison_relationships_established",
-      "coordination_mechanisms_confirmed"
+      "commander_information_requirements_established",
+      "intelligence_architecture_assessed",
+      "threat_situation_evaluated"
     ],
     "allowed_actions": [
       {
-        "action": "establish_theater_sustainment",
+        "action": "conduct_intelligence_preparation_operational_environment",
         "parameters": {
-          "scope": "joint_force_and_designated_allies"
+          "scope": "all_domains_and_dimensions",
+          "focus": "threat_capabilities_and_intentions"
         },
         "intended_effects": [
-          "provide_campaign_endurance",
-          "enable_mission_accomplishment"
+          "facilitate_situational_understanding",
+          "support_decision_making",
+          "enable_targeting"
         ]
       },
       {
-        "action": "coordinate_with_nongovernmental_organizations",
+        "action": "establish_intelligence_architecture",
         "parameters": {
-          "method": "overlapping_interests_identification"
+          "components": "collection_processing_analysis_dissemination",
+          "integration": "primary_alternate_contingency_emergency"
         },
         "intended_effects": [
-          "leverage_humanitarian_capabilities",
-          "reduce_duplication_of_effort"
+          "enable_intelligence_process",
+          "support_information_collection",
+          "facilitate_intelligence_sharing"
         ]
       },
       {
-        "action": "provide_sustainment_to_civilian_organizations",
+        "action": "coordinate_intelligence_enterprise_support",
         "parameters": {
-          "when": "directed",
-          "scope": "non_DOD_agencies"
+          "level": "national_to_tactical",
+          "type": "collaborative_analysis"
         },
         "intended_effects": [
-          "enable_interagency_operations",
-          "support_unified_action"
+          "leverage_specialized_capabilities",
+          "access_unique_databases",
+          "enhance_analytical_products"
         ]
       },
       {
-        "action": "employ_contractor_support",
+        "action": "conduct_systems_analysis",
         "parameters": {
-          "types": "goods_services_infrastructure_interpreters"
+          "focus": "cyberspace_electromagnetic_dependencies",
+          "approach": "define_describe_assess_refine"
         },
         "intended_effects": [
-          "augment_military_capabilities",
-          "enable_sustained_operations"
-        ]
-      },
-      {
-        "action": "conduct_interagency_coordination",
-        "parameters": {
-          "methods": "liaison_engagement_planning"
-        },
-        "intended_effects": [
-          "synchronize_efforts",
-          "achieve_unity_of_effort"
+          "identify_critical_nodes",
+          "reveal_vulnerabilities",
+          "enable_targeting_protection"
         ]
       }
     ],
     "intended_effects": [
-      "achieve_unity_of_effort",
-      "enable_sustained_landpower",
-      "support_unified_action_objectives"
+      "provide_timely_relevant_accurate_predictive_intelligence",
+      "facilitate_commander_situational_understanding",
+      "support_operational_decision_making"
     ],
     "constraints": [
-      "single_service_operations_prohibited_in_joint_context",
-      "civilian_organizations_not_under_military_control",
-      "must_respect_organizational_cultures_and_norms"
+      "intelligence_must_adhere_analytic_standards",
+      "collection_must_not_compromise_seams",
+      "dissemination_must_be_controlled_deliberate"
     ],
     "tradeoffs": [
       {
-        "action": "early_coordination_with_civilian_organizations",
-        "degradation": "requires_additional_coordination_effort",
-        "compensation": "enables_effective_cooperation_throughout_operation"
+        "action": "prioritize_detailed_analysis",
+        "degradation": "may_delay_timely_intelligence_delivery",
+        "compensation": "ensure_accuracy_meets_commander_requirements"
       },
       {
-        "action": "provide_sustainment_to_civilian_organizations",
-        "degradation": "diverts_military_resources",
-        "compensation": "enhances_overall_unified_action_effectiveness"
+        "action": "emphasize_single_source_collection",
+        "degradation": "reduces_reliability_increases_deception_susceptibility",
+        "compensation": "integrate_multiple_disciplines_for_all_source_analysis"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0143-01",
-        "pattern_name": "unified_action_effectiveness",
+        "chain_id": "CC-0001-01",
+        "pattern_name": "intelligence_architecture_effectiveness",
         "links": [
           {
-            "condition": "interagency_coordination_established",
-            "effect": "unified_action_partners_synchronized",
-            "mechanism": "Planning and synchronization processes align efforts between DOD and participating government agencies",
-            "exception": "organizational_cultures_incompatible"
+            "condition": "intelligence_architecture_established",
+            "effect": "intelligence_process_enabled",
+            "mechanism": "Architecture connects collection assets, processing capabilities, and dissemination networks to support intelligence flow",
+            "exception": "inadequate_network_capability_or_access"
           },
           {
-            "condition": "unified_action_partners_synchronized",
-            "effect": "unity_of_effort_achieved",
-            "mechanism": "Coordination and cooperation toward common objectives creates cohesive action",
-            "exception": "competing_priorities_override_coordination"
-          },
-          {
-            "condition": "unity_of_effort_achieved",
-            "effect": "mission_objectives_accomplished",
-            "mechanism": "Synchronized activities of all partners maximize effectiveness toward common goals",
-            "exception": null
+            "condition": "intelligence_process_enabled",
+            "effect": "situational_understanding_facilitated",
+            "mechanism": "Continuous intelligence cycle provides commanders with timely and accurate operational environment assessment",
+            "exception": "threat_deception_or_denial_efforts"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "JP 1 Volume 1",
-          "JP 3-0"
+          "FM 2-0 Para 1-115 through 1-118"
         ]
       },
       {
-        "chain_id": "CC-0143-02",
-        "pattern_name": "theater_sustainment_enablement",
+        "chain_id": "CC-0001-02",
+        "pattern_name": "intelligence_enterprise_integration",
         "links": [
           {
-            "condition": "theater_set_and_sustained",
-            "effect": "joint_force_freedom_of_action_enabled",
-            "mechanism": "Broad range of activities establishes favorable conditions for operations execution",
+            "condition": "intelligence_enterprise_leveraged",
+            "effect": "specialized_capabilities_accessed",
+            "mechanism": "Collaboration with higher echelons provides access to collection assets and analytical expertise not available at tactical level",
             "exception": null
           },
           {
-            "condition": "sustainment_provided_to_joint_force",
-            "effect": "campaign_endurance_achieved",
-            "mechanism": "Army's ability to sustain all Services provides required persistence through mission accomplishment",
-            "exception": "resource_constraints_limit_sustainment_capacity"
+            "condition": "specialized_capabilities_accessed",
+            "effect": "comprehensive_threat_assessment_produced",
+            "mechanism": "Integration of multiple sources and disciplines creates more complete operational environment picture",
+            "exception": "information_overload_or_analysis_paralysis"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "FM 3-0 Chapter 4"
+          "FM 2-0 Para 1-13 through 1-17"
         ]
       }
     ],
     "measures": [
-      "unity_of_effort_assessment",
-      "interagency_coordination_effectiveness",
-      "civilian_organization_cooperation_level",
-      "theater_sustainment_capacity"
+      "intelligence_requirements_satisfaction_rate",
+      "timeliness_of_intelligence_delivery",
+      "accuracy_of_threat_assessments",
+      "commander_decision_support_effectiveness"
     ],
     "provenance": [
-      "ADP 3-0 1-56",
-      "ADP 3-0 1-57",
-      "ADP 3-0 1-58",
-      "ADP 3-0 1-59",
-      "ADP 3-0 1-60"
+      "ADP 3-0 1-1",
+      "ADP 3-0 1-1",
+      "ADP 3-0 1-10",
+      "ADP 3-0 1-10",
+      "ADP 3-0 1-10"
     ]
   },
   {
     "codex_id": "CODEX-ADP30-0002",
     "context_envelope": {
-      "echelon": "brigade_and_above",
-      "phase": "all_phases",
-      "mission_type": "combined_arms_operations",
-      "domain": "land"
+      "echelon": "corps",
+      "phase": "large_scale_combat_operations",
+      "mission_type": "multidomain_convergence",
+      "domain": "multidomain"
     },
     "triggers": [
-      "mission_assignment_received",
-      "force_structure_decisions_required",
-      "unit_attrition_exceeds_threshold"
+      "large_scale_combat_operations_initiated",
+      "enemy_antiaccess_area_denial_active",
+      "joint_forcible_entry_required"
     ],
     "required_observations": [
-      "relative_combat_power_assessed",
-      "force_ratios_calculated",
-      "unit_capabilities_identified",
-      "mutual_support_requirements_determined"
+      "enemy_long_range_fires_capabilities_identified",
+      "integrated_air_defense_systems_located",
+      "cyberspace_targets_developed",
+      "electromagnetic_spectrum_characterized"
     ],
     "allowed_actions": [
       {
-        "action": "analyze_relative_combat_power",
+        "action": "converge_multidomain_effects",
         "parameters": {
-          "assessment_type": "objective_and_subjective_factors",
-          "scope": "tangible_and_intangible_factors"
+          "domains": [
+            "air",
+            "land",
+            "maritime",
+            "space",
+            "cyberspace"
+          ],
+          "integration_level": "corps_primary_integrating_echelon"
         },
         "intended_effects": [
-          "determine_friendly_vulnerabilities",
-          "identify_enemy_vulnerabilities",
-          "calculate_force_ratios"
+          "destroy_enemy_systems_and_formations",
+          "break_enemy_capability_and_will",
+          "create_relative_advantages"
         ]
       },
       {
-        "action": "conduct_force_tailoring",
+        "action": "conduct_deep_operations",
         "parameters": {
-          "force_selection": "right_mix_for_situation",
-          "deployment_sequence": "optimized_for_mission"
+          "planning_horizon": "48_hours_to_5_days",
+          "target_types": [
+            "enemy_long_range_fires",
+            "command_control",
+            "sustainment"
+          ]
         },
         "intended_effects": [
-          "match_force_structure_to_mission",
-          "optimize_force_projection_sequence"
+          "counter_enemy_long_range_fires",
+          "shape_conditions_for_subordinate_operations",
+          "disrupt_enemy_command_control"
         ]
       },
       {
-        "action": "task_organize_units",
+        "action": "integrate_cyberspace_and_ew_capabilities",
         "parameters": {
-          "design_criteria": "mission_training_experience_capabilities",
-          "composition": "specific_size_and_mix"
+          "coordination_level": "joint_multinational",
+          "target_engagement": "lethal_and_nonlethal"
         },
         "intended_effects": [
-          "enable_combined_arms_operations",
-          "maximize_unit_effectiveness"
+          "deny_degrade_disrupt_enemy_capabilities",
+          "enable_joint_forcible_entry",
+          "support_maneuver_operations"
         ]
       },
       {
-        "action": "position_for_mutual_support",
+        "action": "establish_intelligence_architecture",
         "parameters": {
-          "range_consideration": "supporting_range_and_distance",
-          "coordination": "shared_operational_picture"
+          "collaboration_required": [
+            "higher_headquarters",
+            "subordinate_units",
+            "joint_partners"
+          ]
         },
         "intended_effects": [
-          "ensure_units_can_support_each_other",
-          "prevent_defeat_by_enemy"
-        ]
-      },
-      {
-        "action": "implement_reconstitution_operations",
-        "parameters": {
-          "type": "reorganization_or_regeneration",
-          "priority": "restore_combat_effectiveness"
-        },
-        "intended_effects": [
-          "restore_attrited_unit_effectiveness",
-          "maintain_operational_tempo"
+          "enable_information_collection",
+          "support_targeting_process",
+          "maintain_common_intelligence_picture"
         ]
       }
     ],
     "intended_effects": [
-      "optimize_combat_power_employment",
-      "achieve_mission_success",
-      "maintain_force_effectiveness"
+      "defeat_enemy_antiaccess_area_denial",
+      "enable_joint_force_operations",
+      "maintain_operational_initiative",
+      "create_conditions_for_subordinate_success"
     ],
     "constraints": [
-      "supporting_range_limitations",
-      "communication_requirements_for_mutual_support",
-      "resource_availability_for_reconstitution"
+      "coordination_required_with_joint_force",
+      "national_level_authorities_for_offensive_cyberspace",
+      "rules_of_engagement_compliance",
+      "civilian_infrastructure_protection"
     ],
     "tradeoffs": [
       {
-        "action": "position_units_for_maximum_mutual_support",
-        "degradation": "may_limit_maneuver_flexibility",
-        "compensation": "increase_coordination_and_communication_capabilities"
+        "action": "commit_national_cyberspace_capabilities_early",
+        "degradation": "reduced_strategic_reserve_capabilities",
+        "compensation": "enable_joint_forcible_entry_operations"
       },
       {
-        "action": "prioritize_immediate_reorganization",
-        "degradation": "may_not_fully_restore_combat_power",
-        "compensation": "maintains_unit_in_fight_while_planning_regeneration"
+        "action": "forward_position_ew_forces",
+        "degradation": "increased_vulnerability_to_enemy_fires",
+        "compensation": "improved_electromagnetic_support_coverage"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0143-01",
-        "pattern_name": "combat_power_organization_effectiveness",
+        "chain_id": "CC-0174-01",
+        "pattern_name": "multidomain_convergence_effectiveness",
         "links": [
           {
-            "condition": "relative_combat_power_analyzed",
-            "effect": "force_ratios_calculated",
-            "mechanism": "Assessment of tangible and intangible factors enables mathematical comparison of opposing forces",
-            "exception": "intelligence_gaps_prevent_accurate_assessment"
+            "condition": "corps_integrates_joint_capabilities",
+            "effect": "converged_effects_achieved",
+            "mechanism": "Corps positioned and resourced to employ capabilities from multiple domains against decisive points",
+            "exception": "joint_capabilities_unavailable_or_delayed"
           },
           {
-            "condition": "force_ratios_calculated",
-            "effect": "optimal_task_organization_determined",
-            "mechanism": "Understanding strengths and weaknesses guides selection of unit mix and capabilities",
-            "exception": "available_forces_do_not_match_requirements"
-          },
-          {
-            "condition": "units_task_organized_effectively",
-            "effect": "combined_arms_operations_enabled",
-            "mechanism": "Proper force structure provides complementary capabilities for synchronized operations",
-            "exception": "insufficient_training_time_for_integration"
+            "condition": "converged_effects_achieved",
+            "effect": "enemy_systems_destroyed",
+            "mechanism": "Concerted employment of multidomain capabilities creates overwhelming effects against enemy systems",
+            "exception": "enemy_adapts_faster_than_friendly_targeting_cycle"
           }
         ],
-        "cross_references": [],
+        "cross_references": [
+          "CODEX-2024-0101",
+          "CODEX-2024-0155"
+        ],
         "provenance": [
-          "ADP 3-0 Para 2-27",
-          "ADP 3-0 Para 2-28",
-          "ADP 3-0 Para 2-31"
+          "FM 3-12 Para 5-101",
+          "FM 3-0 Multidomain Operations"
         ]
       },
       {
-        "chain_id": "CC-0143-02",
-        "pattern_name": "mutual_support_effectiveness",
+        "chain_id": "CC-0174-02",
+        "pattern_name": "cyberspace_ew_integration",
         "links": [
           {
-            "condition": "units_positioned_within_supporting_range",
-            "effect": "direct_fire_support_available",
-            "mechanism": "Units within maximum weapon system range can provide immediate fire support",
-            "exception": "visibility_limitations_prevent_effective_fires"
+            "condition": "cyberspace_targets_developed_during_competition",
+            "effect": "tailored_capabilities_available",
+            "mechanism": "Lead time during competition allows development of specific cyberspace attack capabilities",
+            "exception": null
           },
           {
-            "condition": "units_positioned_within_supporting_distance",
-            "effect": "maneuver_support_available",
-            "mechanism": "Units can travel required distance in time to prevent defeat of supported unit",
-            "exception": "enemy_capabilities_prevent_movement"
-          },
-          {
-            "condition": "communication_established_between_units",
-            "effect": "mutual_support_coordinated",
-            "mechanism": "Shared operational picture enables synchronized support regardless of proximity",
-            "exception": "communication_systems_degraded_or_jammed"
+            "condition": "tailored_capabilities_available",
+            "effect": "defeat_enemy_antiaccess_capabilities",
+            "mechanism": "National-level cyberspace attacks neutralize enemy long-range systems and integrated air defenses",
+            "exception": "enemy_cyberspace_defenses_more_effective_than_anticipated"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "ADP 3-0 Para 2-32",
-          "ADP 3-0 Para 2-33",
-          "ADP 3-0 Para 2-35"
+          "FM 3-12 Para 5-115",
+          "FM 3-12 Para 5-117"
         ]
       }
     ],
     "measures": [
-      "force_ratio_advantage",
-      "task_organization_effectiveness",
-      "mutual_support_coverage_percentage",
-      "reconstitution_time_to_effectiveness"
+      "enemy_systems_neutralized_count",
+      "joint_forcible_entry_success_rate",
+      "multidomain_convergence_synchronization_time",
+      "friendly_force_protection_effectiveness"
     ],
     "provenance": [
-      "ADP 3-0 2-27",
-      "ADP 3-0 2-28",
-      "ADP 3-0 2-29",
-      "ADP 3-0 2-30",
-      "ADP 3-0 2-31"
+      "ADP 3-0 2-18",
+      "ADP 3-0 5-1",
+      "ADP 3-0 5-1",
+      "ADP 3-0 5-10",
+      "ADP 3-0 5-10"
     ]
   },
   {
     "codex_id": "CODEX-ADP30-0003",
     "context_envelope": {
-      "echelon": "corps_and_above",
-      "phase": "operational_planning",
-      "mission_type": "multi_domain_operations",
-      "domain": "all_domains"
+      "echelon": "corps",
+      "phase": "large_scale_combat_operations",
+      "mission_type": "multidomain_operations",
+      "domain": "cyberspace_electromagnetic"
     },
     "triggers": [
-      "strategic_objectives_assigned",
-      "operational_environment_assessed",
-      "tactical_actions_require_coordination"
+      "enemy_electromagnetic_attack_detected",
+      "cyberspace_malicious_activity_identified",
+      "electromagnetic_spectrum_superiority_required",
+      "joint_targeting_cycle_initiated"
     ],
     "required_observations": [
-      "operational_environment_understood",
-      "strategic_objectives_defined",
-      "available_resources_assessed",
-      "risk_factors_identified"
+      "enemy_electromagnetic_order_of_battle_confirmed",
+      "friendly_spectrum_use_mapped",
+      "cyberspace_terrain_analyzed",
+      "joint_restricted_frequency_list_updated"
     ],
     "allowed_actions": [
       {
-        "action": "apply_army_design_methodology",
+        "action": "establish_cema_working_group",
         "parameters": {
-          "methodology": "critical_and_creative_thinking_process"
+          "frequency": "daily",
+          "participants": [
+            "G-2",
+            "G-3",
+            "G-6",
+            "fire_support_officer",
+            "spectrum_manager"
+          ]
         },
         "intended_effects": [
-          "gain_shared_understanding_of_environment",
-          "define_problems_preventing_desired_end_state"
+          "synchronize_cyberspace_operations",
+          "integrate_electromagnetic_warfare",
+          "deconflict_spectrum_use"
         ]
       },
       {
-        "action": "develop_operational_approach",
+        "action": "coordinate_joint_electromagnetic_spectrum_operations",
         "parameters": {
-          "scope": "broad_mission_description"
+          "coordination_authority": "joint_force_commander",
+          "integration_cell": "joint_electromagnetic_spectrum_operations_cell"
         },
         "intended_effects": [
-          "inform_detailed_planning",
-          "establish_logical_operational_framework"
+          "achieve_electromagnetic_spectrum_superiority",
+          "enable_multidomain_convergence",
+          "synchronize_joint_effects"
         ]
       },
       {
-        "action": "integrate_protection_measures",
+        "action": "conduct_electromagnetic_attack",
         "parameters": {
-          "focus": "maintain_operational_reach"
+          "control_authority": "delegated_electromagnetic_attack_control_authority",
+          "target_types": [
+            "enemy_command_control",
+            "radar_systems",
+            "jamming_assets"
+          ]
         },
         "intended_effects": [
-          "anticipate_enemy_disruption",
-          "extend_operations_in_time_and_space"
+          "disrupt_enemy_communications",
+          "degrade_enemy_situational_awareness",
+          "enable_friendly_maneuver"
         ]
       },
       {
-        "action": "establish_basing_strategy",
+        "action": "request_cyberspace_effects",
         "parameters": {
-          "consideration": "proximity_to_operational_area"
+          "submission_method": "cyberspace_effects_request_form",
+          "approval_level": "joint_target_list"
         },
         "intended_effects": [
-          "support_operational_reach_and_endurance",
-          "enable_rapid_combat_power_generation"
+          "create_cyberspace_attack_effects",
+          "support_targeting_objectives",
+          "enable_combined_arms_operations"
         ]
       },
       {
-        "action": "delegate_risk_acceptance",
+        "action": "implement_emission_control_plan",
         "parameters": {
-          "method": "commanders_intent_and_guidance"
+          "conditions": [
+            "permissive",
+            "restrictive",
+            "emission_silence"
+          ],
+          "triggers": [
+            "enemy_ew_activity",
+            "terrain_features",
+            "tactical_situation"
+          ]
         },
         "intended_effects": [
-          "create_opportunities_to_seize_initiative",
-          "maintain_common_operational_picture"
+          "reduce_electromagnetic_signature",
+          "enhance_force_protection",
+          "enable_surprise"
         ]
       }
     ],
     "intended_effects": [
-      "pursue_strategic_objectives",
-      "arrange_tactical_actions_effectively",
-      "establish_conditions_for_mission_accomplishment"
+      "achieve_electromagnetic_spectrum_superiority",
+      "enable_multidomain_convergence",
+      "synchronize_cyberspace_electromagnetic_activities",
+      "support_combined_arms_operations"
     ],
     "constraints": [
-      "must_consider_operational_realities",
-      "must_maintain_shared_understanding_across_echelons",
-      "must_ensure_feasibility_through_science_of_operations"
+      "joint_targeting_cycle_integration_required",
+      "law_of_armed_conflict_compliance_mandatory",
+      "frequency_deconfliction_with_friendly_forces",
+      "civilian_infrastructure_protection_required"
     ],
     "tradeoffs": [
       {
-        "action": "accept_operational_risk",
-        "degradation": "potential_for_increased_losses",
-        "compensation": "creates_opportunities_to_seize_initiative"
+        "action": "increase_electromagnetic_emissions",
+        "degradation": "exposes_unit_to_enemy_targeting",
+        "compensation": "implement_more_restrictive_emcon_conditions"
       },
       {
-        "action": "prioritize_protection_measures",
-        "degradation": "may_limit_operational_tempo",
-        "compensation": "maintains_operational_reach_and_endurance"
+        "action": "commit_ew_assets_to_close_area",
+        "degradation": "reduces_deep_area_coverage",
+        "compensation": "coordinate_joint_ew_platform_support"
+      },
+      {
+        "action": "prioritize_cyberspace_effects",
+        "degradation": "extended_development_timeline",
+        "compensation": "focus_on_deliberate_targets_with_lead_time"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0001-01",
-        "pattern_name": "operational_art_application",
+        "chain_id": "CC-0201-01",
+        "pattern_name": "electromagnetic_spectrum_superiority",
         "links": [
           {
-            "condition": "army_design_methodology_applied",
-            "effect": "shared_understanding_achieved",
-            "mechanism": "Critical and creative thinking processes enable collaborative problem definition",
-            "exception": "insufficient_time_for_thorough_analysis"
+            "condition": "joint_electromagnetic_spectrum_operations_coordinated",
+            "effect": "unified_spectrum_management_achieved",
+            "mechanism": "Centralized planning and decentralized execution eliminates interference while maintaining tactical flexibility",
+            "exception": "enemy_adaptive_jamming_techniques_employed"
           },
           {
-            "condition": "shared_understanding_achieved",
-            "effect": "operational_approach_developed",
-            "mechanism": "Common understanding of environment enables coherent strategy formulation",
-            "exception": "conflicting_priorities_between_echelons"
-          },
-          {
-            "condition": "operational_approach_developed",
-            "effect": "tactical_actions_arranged_effectively",
-            "mechanism": "Clear operational framework guides subordinate unit planning and execution",
-            "exception": "operational_approach_fails_to_consider_tactical_realities"
+            "condition": "unified_spectrum_management_achieved",
+            "effect": "electromagnetic_spectrum_superiority_established",
+            "mechanism": "Coordinated use of spectrum resources enables friendly operations while denying enemy use",
+            "exception": "enemy_employs_frequency_hopping_or_spread_spectrum_techniques"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "ADP 5-0",
-          "JP 5-0"
+          "FM 3-12 Para 4-103",
+          "JP 3-85 Electromagnetic Spectrum Operations"
         ]
       },
       {
-        "chain_id": "CC-0001-02",
-        "pattern_name": "protection_operational_reach_integration",
+        "chain_id": "CC-0201-02",
+        "pattern_name": "multidomain_convergence_integration",
         "links": [
           {
-            "condition": "protection_measures_integrated",
-            "effect": "operational_reach_maintained",
-            "mechanism": "Anticipated enemy actions and environmental factors are mitigated through protective measures",
-            "exception": "overwhelming_enemy_capabilities_exceed_protection_capacity"
+            "condition": "cema_working_group_established",
+            "effect": "cyberspace_ew_operations_synchronized",
+            "mechanism": "Daily coordination integrates effects across staff sections and subordinate units",
+            "exception": "high_tempo_operations_disrupt_battle_rhythm"
           },
           {
-            "condition": "operational_reach_maintained",
-            "effect": "operations_extended_in_time_and_space",
-            "mechanism": "Protected forces retain endurance and momentum across extended operational areas",
-            "exception": "logistics_constraints_limit_sustainment"
+            "condition": "cyberspace_ew_operations_synchronized",
+            "effect": "multidomain_convergence_enabled",
+            "mechanism": "Synchronized effects create windows of opportunity for cross-domain operations",
+            "exception": "enemy_defensive_cyber_operations_effective"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "Chapter 4 Operational Art Application"
+          "FM 3-12 Para 4-8",
+          "FM 3-0 Multidomain Operations"
         ]
       }
     ],
     "measures": [
-      "strategic_objectives_achieved",
-      "operational_approach_feasibility",
-      "shared_understanding_assessment",
-      "tactical_action_coordination_effectiveness"
+      "electromagnetic_spectrum_control_percentage",
+      "enemy_communications_disruption_rate",
+      "friendly_force_electromagnetic_signature_reduction",
+      "cyberspace_effects_request_approval_time",
+      "frequency_deconfliction_incidents"
     ],
     "provenance": [
-      "ADP 3-0 4-22",
-      "ADP 3-0 4-23",
-      "ADP 3-0 4-24",
-      "ADP 3-0 4-25",
-      "ADP 3-0 4-26"
+      "ADP 3-0 1-125",
+      "ADP 3-0 3-60",
+      "ADP 3-0 4-1",
+      "ADP 3-0 4-1",
+      "ADP 3-0 4-10"
     ]
   },
   {
     "codex_id": "CODEX-ADP30-0004",
     "context_envelope": {
-      "echelon": "theater",
-      "phase": "all_phases",
-      "mission_type": "theory_of_victory",
-      "domain": "joint"
+      "echelon": "tactical",
+      "phase": "large_scale_combat_operations",
+      "mission_type": "intelligence_support",
+      "domain": "multi_domain"
     },
     "triggers": [
-      "global_responsibilities_assigned",
-      "threat_environment_identified",
-      "operational_requirements_defined"
+      "transition_to_large_scale_combat_operations",
+      "tactical_unit_deployment_complete",
+      "enemy_contact_anticipated_or_established"
     ],
     "required_observations": [
-      "threat_assessment_completed",
-      "operational_environment_analyzed",
-      "partner_nation_capabilities_assessed",
-      "combat_credibility_evaluated"
+      "enemy_composition_capabilities_confirmed",
+      "intelligence_architecture_established",
+      "collection_assets_operational",
+      "threat_situation_assessed"
     ],
     "allowed_actions": [
       {
-        "action": "conduct_experiential_training",
+        "action": "conduct_thorough_ipoe",
         "parameters": {
-          "type": "collective_and_individual",
-          "emphasis": "teamwork_and_cohesion"
+          "focus": "mission_variables_all_domains_dimensions",
+          "priority": "threat_capabilities_vulnerabilities"
         },
         "intended_effects": [
-          "build_operational_skills",
-          "instill_discipline",
-          "prepare_for_land_combat"
+          "understand_operational_environment",
+          "identify_enemy_strengths_weaknesses",
+          "enable_effective_planning"
         ]
       },
       {
-        "action": "shape_operational_environments",
+        "action": "synchronize_intelligence_across_echelons",
         "parameters": {
-          "method": "security_cooperation",
-          "focus": "partner_nation_improvement"
+          "method": "vertical_horizontal_collaboration",
+          "coordination": "higher_lower_adjacent_units"
         },
         "intended_effects": [
-          "improve_regional_security",
-          "support_mutual_interests",
-          "prevent_crisis_conditions"
+          "maintain_common_intelligence_picture",
+          "enable_unity_of_effort",
+          "support_tactical_decision_making"
         ]
       },
       {
-        "action": "counter_aggression_during_crisis",
+        "action": "establish_layered_information_collection",
         "parameters": {
-          "approach": "deny_adversary_objectives",
-          "cost_threshold": "acceptable_military_political"
+          "approach": "phased_continuous_depth",
+          "coordination": "cross_echelon_collaboration"
         },
         "intended_effects": [
-          "protect_friendly_forces",
-          "secure_partners",
-          "indicate_US_intent"
+          "detect_enemy_formations",
+          "identify_high_priority_targets",
+          "provide_early_warning"
         ]
       },
       {
-        "action": "conduct_combined_arms_operations",
+        "action": "develop_focused_tailored_intelligence",
         "parameters": {
-          "integration": "all_army_joint_capabilities",
-          "method": "defeat_mechanisms"
+          "format": "commander_preferred",
+          "timing": "within_battle_rhythm",
+          "content": "mission_specific"
         },
         "intended_effects": [
-          "attack_defend_enemy_forces",
-          "close_with_destroy_enemy",
-          "achieve_tactical_success"
+          "support_commander_decisions",
+          "enable_tactical_advantage",
+          "reduce_decision_timelines"
         ]
       },
       {
-        "action": "consolidate_gains",
+        "action": "integrate_target_development",
         "parameters": {
-          "timing": "rapid_exploitation",
-          "focus": "enduring_outcomes"
+          "collaboration": "targeting_team_operations_staff_cema_cell",
+          "methodology": "d3a_targeting_process"
         },
         "intended_effects": [
-          "transition_tactical_to_strategic_advantage",
-          "end_enemy_resistance",
-          "prevent_protracted_irregular_warfare"
+          "enable_effective_targeting",
+          "support_fires_integration",
+          "achieve_desired_effects"
+        ]
+      },
+      {
+        "action": "maintain_common_intelligence_picture",
+        "parameters": {
+          "update_frequency": "battle_rhythm_event",
+          "distribution": "lowest_level_possible"
+        },
+        "intended_effects": [
+          "provide_situational_understanding",
+          "inform_common_operational_picture",
+          "enable_synchronized_operations"
         ]
       }
     ],
     "intended_effects": [
-      "maintain_combat_credibility",
-      "achieve_strategic_objectives",
-      "provide_enduring_security",
-      "support_joint_force_operations"
+      "achieve_intelligence_superiority",
+      "enable_tactical_decision_advantage",
+      "support_mission_accomplishment",
+      "protect_friendly_forces"
     ],
     "constraints": [
-      "operate_within_law_of_armed_conflict",
-      "adhere_to_rules_of_engagement",
-      "maintain_values_based_approach"
+      "intelligence_pir_must_be_prioritized_answered",
+      "collection_gaps_cannot_be_ignored_must_be_mitigated",
+      "intelligence_requirements_must_drive_collection_efforts",
+      "cip_must_be_disseminated_to_lowest_level_possible",
+      "intelligence_synchronization_required_across_deep_close_rear_operations",
+      "target_development_must_include_minimum_staff_sections"
     ],
     "tradeoffs": [
       {
-        "action": "forward_position_forces",
-        "degradation": "increases_exposure_to_threat",
-        "compensation": "demonstrates_credibility_and_commitment"
+        "action": "abbreviate_analytical_tasks",
+        "degradation": "reduces_analytical_depth_certainty",
+        "compensation": "maintain_operational_tempo_provide_timely_intelligence"
       },
       {
-        "action": "rapid_deployment",
-        "degradation": "may_sacrifice_preparation_time",
-        "compensation": "provides_strategic_responsiveness"
+        "action": "start_information_collection_early",
+        "degradation": "increases_planning_time_constraints",
+        "compensation": "provides_critical_intelligence_for_operations"
       },
       {
-        "action": "focus_on_combat_operations",
-        "degradation": "may_neglect_consolidation_requirements",
-        "compensation": "ensure_tactical_success_first"
+        "action": "accept_higher_risk_for_collection",
+        "degradation": "increases_asset_vulnerability",
+        "compensation": "overcome_collection_gaps_achieve_intelligence_requirements"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0001-01",
-        "pattern_name": "credibility_through_capability",
+        "chain_id": "CC-0298-01",
+        "pattern_name": "intelligence_synchronization_effectiveness",
         "links": [
           {
-            "condition": "combat_ready_forces_maintained",
-            "effect": "credibility_established",
-            "mechanism": "Friends and adversaries believe Army capability based on demonstrated readiness",
-            "exception": "political_constraints_override_military_capability"
+            "condition": "thorough_ipoe_conducted",
+            "effect": "effective_staff_planning_enabled",
+            "mechanism": "IPOE provides detailed understanding of operational environment and mission variables across all domains",
+            "exception": "rapid_tempo_operations_preclude_thorough_analysis"
           },
           {
-            "condition": "credibility_established",
-            "effect": "conflict_prevention_achieved",
-            "mechanism": "Credible capability deters adversary action and reassures partners",
-            "exception": "adversary_miscalculates_or_accepts_high_costs"
+            "condition": "effective_staff_planning_enabled",
+            "effect": "intelligence_synchronized_with_operations",
+            "mechanism": "Integrated planning ensures intelligence supports operational requirements and decision timelines",
+            "exception": "frequent_mission_changes_disrupt_synchronization"
+          },
+          {
+            "condition": "intelligence_synchronized_with_operations",
+            "effect": "tactical_advantage_achieved",
+            "mechanism": "Synchronized intelligence provides commanders with timely, relevant information for decision-making",
+            "exception": "enemy_deception_operations_compromise_intelligence_accuracy"
           }
         ],
-        "cross_references": [],
+        "cross_references": [
+          "CODEX-2024-0087"
+        ],
         "provenance": [
-          "Para 1-88"
+          "FM 2-0 Para 8-106",
+          "FM 2-0 Para 8-107"
         ]
       },
       {
-        "chain_id": "CC-0001-02",
-        "pattern_name": "tactical_to_strategic_success",
+        "chain_id": "CC-0298-02",
+        "pattern_name": "layered_information_collection",
         "links": [
           {
-            "condition": "tactical_success_achieved",
-            "effect": "battlefield_advantage_gained",
-            "mechanism": "Tactical victories create immediate military advantages",
-            "exception": null
+            "condition": "layered_information_collection_established",
+            "effect": "enemy_formations_detected",
+            "mechanism": "Multiple echelons conducting coordinated collection provides comprehensive coverage and redundancy",
+            "exception": "enemy_countereconnaissance_prevents_effective_collection"
           },
           {
-            "condition": "battlefield_advantage_gained",
-            "effect": "gains_consolidated",
-            "mechanism": "Rapid exploitation transitions tactical advantages into operational outcomes",
-            "exception": "insufficient_forces_for_consolidation"
+            "condition": "enemy_formations_detected",
+            "effect": "high_priority_targets_identified",
+            "mechanism": "Detected enemy formations provide targeting opportunities and threat assessment data",
+            "exception": "enemy_deception_masks_true_capabilities_intentions"
           },
           {
-            "condition": "gains_consolidated",
-            "effect": "strategic_objectives_achieved",
-            "mechanism": "Enduring control prevents enemy transition to irregular warfare",
-            "exception": "political_objectives_remain_unmet"
+            "condition": "high_priority_targets_identified",
+            "effect": "targeting_effectiveness_increased",
+            "mechanism": "Accurate target identification enables precision engagement and resource allocation",
+            "exception": "target_mobility_precludes_engagement_before_displacement"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "Para 1-90"
+          "FM 2-0 Para 8-112",
+          "FM 2-0 Para 8-113"
+        ]
+      },
+      {
+        "chain_id": "CC-0298-03",
+        "pattern_name": "common_intelligence_picture_maintenance",
+        "links": [
+          {
+            "condition": "common_intelligence_picture_maintained",
+            "effect": "situational_understanding_achieved",
+            "mechanism": "Shared intelligence picture provides all units with common understanding of operational environment",
+            "exception": "communications_degradation_prevents_cip_updates"
+          },
+          {
+            "condition": "situational_understanding_achieved",
+            "effect": "unity_of_effort_enabled",
+            "mechanism": "Common understanding allows coordinated actions across multiple units and echelons",
+            "exception": "conflicting_intelligence_sources_create_confusion"
+          },
+          {
+            "condition": "unity_of_effort_enabled",
+            "effect": "mission_accomplishment_supported",
+            "mechanism": "Coordinated efforts maximize combat power employment and reduce fratricide risk",
+            "exception": "rapid_situation_changes_outpace_coordination_efforts"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 2-0 Para 8-145",
+          "FM 2-0 Para 8-140"
         ]
       }
     ],
     "measures": [
-      "combat_readiness_levels",
-      "partner_nation_capability_improvement",
-      "crisis_prevention_effectiveness",
-      "consolidation_success_rate"
+      "intelligence_requirements_answered_percentage",
+      "collection_gap_mitigation_effectiveness",
+      "target_identification_accuracy",
+      "intelligence_timeliness_metrics",
+      "cip_dissemination_completeness",
+      "intelligence_architecture_availability_percentage"
     ],
     "provenance": [
-      "ADP 3-0 1-81",
-      "ADP 3-0 1-82",
-      "ADP 3-0 1-83",
-      "ADP 3-0 1-84",
-      "ADP 3-0 1-85"
+      "ADP 3-0 34-1",
+      "ADP 3-0 8-1",
+      "ADP 3-0 8-10",
+      "ADP 3-0 8-10",
+      "ADP 3-0 8-100"
     ]
   },
   {
     "codex_id": "CODEX-ADP30-0005",
     "context_envelope": {
-      "echelon": "division",
-      "phase": "stability_operations",
-      "mission_type": "area_stabilization",
-      "domain": "multi_domain"
+      "echelon": "all",
+      "phase": "all_operations",
+      "mission_type": "electromagnetic_warfare_integration",
+      "domain": "electromagnetic"
     },
     "triggers": [
-      "requirement_for_stability_tasks",
-      "local_population_in_need",
-      "civil_security_threatened"
+      "electromagnetic_threat_detected",
+      "communication_systems_operational",
+      "spectrum_dependent_operations_required"
     ],
     "required_observations": [
-      "host_nation_capability_assessment",
-      "population_needs_identified",
-      "security_conditions_evaluated"
+      "electromagnetic_order_of_battle_established",
+      "friendly_spectrum_requirements_identified",
+      "threat_electromagnetic_capabilities_assessed"
     ],
     "allowed_actions": [
       {
-        "action": "destroy_enemy_capabilities",
+        "action": "conduct_electromagnetic_attack",
         "parameters": {
-          "type": "lethal_combat_power",
-          "target": "enemy_capability"
-        },
-        "intended_effects": [
-          "render_combat_ineffective",
-          "eliminate_threat_to_stability"
-        ]
-      },
-      {
-        "action": "establish_civil_security",
-        "parameters": {
-          "scope": "minimum_essential_stability_tasks",
-          "responsibility": "division_and_higher"
-        },
-        "intended_effects": [
-          "protect_population_from_violence",
-          "restore_public_order",
-          "provide_emergency_services"
-        ]
-      },
-      {
-        "action": "coordinate_with_host_nation",
-        "parameters": {
-          "method": "work_with_and_through_authorities"
-        },
-        "intended_effects": [
-          "enhance_legitimacy",
-          "build_capacity"
-        ]
-      },
-      {
-        "action": "employ_civil_affairs_forces",
-        "parameters": {
-          "purpose": "enhance_situational_awareness"
-        },
-        "intended_effects": [
-          "improve_civilian_coordination",
-          "facilitate_stability_operations"
-        ]
-      },
-      {
-        "action": "apply_stability_mechanisms",
-        "parameters": {
-          "types": [
-            "compel",
-            "control",
-            "influence",
-            "support"
+          "methods": [
+            "electromagnetic_countermeasures",
+            "electromagnetic_deception",
+            "electromagnetic_intrusion",
+            "electromagnetic_jamming"
           ],
-          "combination": "complementary_and_reinforcing"
+          "techniques": [
+            "spot_jamming",
+            "barrage_jamming",
+            "sweep_jamming",
+            "follower_jamming",
+            "standoff_jamming",
+            "escort_jamming"
+          ]
         },
         "intended_effects": [
-          "shape_operational_environment",
-          "establish_lasting_stable_peace"
+          "degrade_enemy_communications",
+          "neutralize_threat_spectrum_capabilities",
+          "protect_friendly_forces"
+        ]
+      },
+      {
+        "action": "implement_electromagnetic_protection",
+        "parameters": {
+          "measures": [
+            "emission_control",
+            "electromagnetic_hardening",
+            "electromagnetic_masking"
+          ]
+        },
+        "intended_effects": [
+          "protect_friendly_spectrum_operations",
+          "reduce_electromagnetic_signature",
+          "prevent_threat_detection"
+        ]
+      },
+      {
+        "action": "execute_electromagnetic_support",
+        "parameters": {
+          "activities": [
+            "electromagnetic_reconnaissance",
+            "direction_finding",
+            "threat_warning"
+          ]
+        },
+        "intended_effects": [
+          "enable_threat_recognition",
+          "support_targeting",
+          "enhance_situational_understanding"
+        ]
+      },
+      {
+        "action": "coordinate_staff_integration",
+        "parameters": {
+          "participants": [
+            "G-2/S-2",
+            "G-3/S-3",
+            "G-6/S-6",
+            "CEWO",
+            "targeting_team"
+          ]
+        },
+        "intended_effects": [
+          "synchronize_electromagnetic_operations",
+          "integrate_intelligence_processes",
+          "enable_effective_planning"
         ]
       }
     ],
     "intended_effects": [
-      "maintain_safe_secure_environment",
-      "provide_essential_governmental_services",
-      "support_emergency_infrastructure_reconstruction",
-      "deliver_humanitarian_relief"
+      "maintain_electromagnetic_spectrum_superiority",
+      "enable_effective_command_and_control",
+      "protect_friendly_spectrum_operations",
+      "degrade_enemy_electromagnetic_capabilities"
     ],
     "constraints": [
-      "dislocation_must_not_create_enemy_positional_advantage",
-      "minimum_essential_stability_tasks_are_mandatory",
-      "operations_must_be_conducted_within_legal_framework"
+      "comply_with_legal_authorities_for_sigint_operations",
+      "coordinate_frequency_deconfliction",
+      "maintain_operational_security",
+      "prevent_frequency_fratricide"
     ],
     "tradeoffs": [
       {
-        "action": "assume_full_stability_responsibility",
-        "degradation": "increases_force_commitment_requirements",
-        "compensation": "work_with_civilian_organizations"
+        "action": "increase_jamming_power",
+        "degradation": "higher_probability_of_detection_and_targeting",
+        "compensation": "achieve_greater_jamming_effectiveness"
       },
       {
-        "action": "prioritize_combat_operations_over_stability",
-        "degradation": "may_compromise_long_term_objectives",
-        "compensation": "maintain_minimum_essential_tasks"
+        "action": "implement_restrictive_emcon",
+        "degradation": "reduced_friendly_communications_capability",
+        "compensation": "decreased_electromagnetic_signature_exposure"
+      },
+      {
+        "action": "use_standoff_jamming",
+        "degradation": "potential_frequency_fratricide_with_friendly_systems",
+        "compensation": "maximum_protection_for_ew_platforms"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0143-01",
-        "pattern_name": "defeat_mechanism_integration",
+        "chain_id": "CC-0198-01",
+        "pattern_name": "electromagnetic_attack_effectiveness",
         "links": [
           {
-            "condition": "enemy_forces_destroyed",
-            "effect": "threat_to_stability_eliminated",
-            "mechanism": "Lethal combat power renders enemy combat ineffective until reconstituted",
-            "exception": "enemy_reconstitutes_from_external_sources"
+            "condition": "accurate_electromagnetic_order_of_battle",
+            "effect": "effective_jamming_techniques_selected",
+            "mechanism": "Precise intelligence on threat frequencies and receiver locations enables optimal jamming technique selection",
+            "exception": "threat_uses_agile_frequency_hopping"
           },
           {
-            "condition": "enemy_isolated_from_support",
-            "effect": "reduced_effectiveness_increased_vulnerability",
-            "mechanism": "Separation from sources of support degrades mission performance over time",
-            "exception": "enemy_establishes_alternative_support_networks"
-          },
-          {
-            "condition": "enemy_command_disintegrated",
-            "effect": "synchronization_cohesion_degraded",
-            "mechanism": "Disrupted command and control reduces enemy operational effectiveness",
-            "exception": "enemy_adapts_with_decentralized_operations"
+            "condition": "effective_jamming_techniques_selected",
+            "effect": "threat_communications_degraded",
+            "mechanism": "Properly matched jamming techniques overcome threat receiver capabilities within targeted frequency ranges",
+            "exception": "threat_employs_effective_anti_jam_countermeasures"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "FM 3-90 defeat mechanisms",
-          "Chapter 4 stability operations doctrine"
+          "FM 3-12 Para 3-15 through 3-35"
         ]
       },
       {
-        "chain_id": "CC-0143-02",
-        "pattern_name": "stability_mechanism_effects",
+        "chain_id": "CC-0198-02",
+        "pattern_name": "staff_integration_synchronization",
         "links": [
           {
-            "condition": "stability_mechanisms_applied_in_combination",
-            "effect": "complementary_reinforcing_effects_achieved",
-            "mechanism": "Multiple mechanisms create synergistic effects more powerful than individual application",
-            "exception": "mechanisms_may_conflict_if_poorly_coordinated"
+            "condition": "full_staff_participation_in_intelligence_processes",
+            "effect": "enhanced_electromagnetic_warfare_planning",
+            "mechanism": "Cross-functional staff expertise improves understanding of threat capabilities and friendly requirements",
+            "exception": null
           },
           {
-            "condition": "civil_security_established",
-            "effect": "population_protected_order_restored",
-            "mechanism": "Security presence deters violence and enables normal civilian activities",
-            "exception": "insufficient_force_density_may_leave_gaps"
-          },
-          {
-            "condition": "host_nation_capacity_developed",
-            "effect": "sustainable_stability_achieved",
-            "mechanism": "Local ownership and capability ensures long-term stability without external support",
-            "exception": "host_nation_may_lack_political_will"
+            "condition": "enhanced_electromagnetic_warfare_planning",
+            "effect": "synchronized_electromagnetic_operations",
+            "mechanism": "Coordinated planning ensures electromagnetic activities support overall mission objectives",
+            "exception": "inadequate_coordination_between_working_groups"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "Stability operations doctrine",
-          "Civil affairs operations guidance"
+          "FM 2-0 Para 3-15 through 3-17",
+          "FM 3-12 Para 3-62 through 3-77"
         ]
       }
     ],
     "measures": [
-      "population_security_incidents",
-      "host_nation_capability_assessment",
-      "essential_services_availability",
-      "civilian_cooperation_level"
+      "percentage_of_threat_communications_jammed",
+      "friendly_electromagnetic_signature_reduction",
+      "number_of_threat_emitters_located",
+      "electromagnetic_attack_success_rate",
+      "frequency_coordination_effectiveness"
     ],
     "provenance": [
-      "ADP 3-0 4-39",
-      "ADP 3-0 4-40",
-      "ADP 3-0 4-41",
-      "ADP 3-0 4-42",
-      "ADP 3-0 4-43"
+      "ADP 3-0 3-1",
+      "ADP 3-0 3-1",
+      "ADP 3-0 3-10",
+      "ADP 3-0 3-10",
+      "ADP 3-0 3-10"
     ]
   },
   {
     "codex_id": "CODEX-ADP30-0006",
     "context_envelope": {
-      "echelon": "theater",
-      "phase": "shaping_operations",
-      "mission_type": "operational_environment_shaping",
-      "domain": "multi_domain"
+      "echelon": "brigade_and_above",
+      "phase": "multidomain_operations",
+      "mission_type": "cyberspace_operations",
+      "domain": "cyberspace"
     },
     "triggers": [
-      "combatant_commander_guidance_received",
-      "regional_goals_identified",
-      "partner_capacity_building_requirements_identified"
+      "malicious_cyberspace_activity_detected",
+      "threat_targeting_unit_networks",
+      "defensive_cyberspace_operations_required"
     ],
     "required_observations": [
-      "theater_strategic_estimate_updated",
-      "unified_action_partners_identified",
-      "area_of_responsibility_assessed"
+      "threat_intelligence_indicating_targeting",
+      "network_vulnerability_assessment_complete",
+      "mission_thread_defense_requirements_identified"
     ],
     "allowed_actions": [
       {
-        "action": "support_security_cooperation",
+        "action": "conduct_defensive_cyberspace_operations_internal",
         "parameters": {
-          "scope": "theater_wide",
-          "coordination_required": "unified_action_partners"
+          "scope": "DODIN_A_portion",
+          "type": "harden_network_configuration"
         },
         "intended_effects": [
-          "build_partner_capacity",
-          "promote_regional_stability"
+          "preserve_confidentiality_integrity_availability",
+          "counter_malicious_activity"
         ]
       },
       {
-        "action": "maintain_forward_presence",
+        "action": "coordinate_with_joint_cyberspace_center",
         "parameters": {
-          "purpose": "promote_us_interests",
-          "coordination_level": "combatant_command"
+          "echelon": "corps_and_above",
+          "purpose": "track_cyberspace_effects_requests"
         },
         "intended_effects": [
-          "demonstrate_commitment",
-          "deter_adversary_activities"
+          "enable_shared_understanding_designated_cyberspace",
+          "synchronize_defensive_operations"
         ]
       },
       {
-        "action": "develop_allied_friendly_capabilities",
+        "action": "conduct_hunt_operations",
         "parameters": {
-          "focus": [
-            "self_defense",
-            "multinational_operations"
-          ],
-          "method": "capacity_building"
+          "assumption": "threats_may_already_be_present",
+          "objectives": "reconnaissance_counterreconnaissance"
         },
         "intended_effects": [
-          "enhance_partner_self_defense",
-          "enable_multinational_operations"
+          "detect_threat_presence",
+          "establish_contact_with_threat"
         ]
       },
       {
-        "action": "set_maintain_theater",
+        "action": "conduct_cyberspace_surveillance_reconnaissance",
         "parameters": {
-          "scope": "joint_force_support",
-          "timeline": "continuous"
+          "authority": "execute_order_from_USCYBERCOM",
+          "purpose": "gather_information_for_operations"
         },
         "intended_effects": [
-          "establish_favorable_conditions",
-          "enable_future_operations"
+          "support_planning_execution_future_operations",
+          "map_threat_cyberspace_terrain"
         ]
       },
       {
-        "action": "provide_peacetime_contingency_access",
+        "action": "execute_cyberspace_attack",
         "parameters": {
-          "recipients": [
-            "allies",
-            "partners"
-          ],
-          "access_type": [
-            "peacetime",
-            "contingency"
-          ]
+          "type": "denial_or_manipulation_effects",
+          "classification": "fires"
         },
         "intended_effects": [
-          "strengthen_partnerships",
-          "enable_rapid_response"
+          "degrade_disrupt_destroy_threat_capabilities",
+          "deny_threat_use_of_cyberspace"
         ]
       }
     ],
     "intended_effects": [
-      "achieve_regional_goals_short_of_conflict",
-      "establish_conditions_for_favorable_outcome",
-      "dissuade_adversary_activities"
+      "preserve_friendly_cyberspace_capabilities",
+      "defeat_malicious_cyberspace_activity",
+      "maintain_freedom_of_action_in_cyberspace"
     ],
     "constraints": [
-      "synchronize_with_unified_action_partners",
-      "operate_within_combatant_commander_guidance",
-      "align_with_national_strategic_objectives"
+      "actions_must_not_negatively_impact_networks_outside_responsibility",
+      "cyberspace_exploitation_requires_coordination_deconfliction",
+      "offensive_operations_require_USCYBERCOM_delegation"
     ],
     "tradeoffs": [
       {
-        "action": "increase_forward_presence",
-        "degradation": "reduces_strategic_flexibility",
-        "compensation": "enhances_deterrent_effect"
+        "action": "conduct_defensive_operations_response_actions",
+        "degradation": "actions_external_to_defended_network_without_permission",
+        "compensation": "prevent_threat_from_conducting_malicious_activity"
       },
       {
-        "action": "extensive_partner_capacity_building",
-        "degradation": "diverts_resources_from_readiness",
-        "compensation": "builds_long_term_regional_stability"
+        "action": "implement_restrictive_network_defense",
+        "degradation": "may_temporarily_deny_access_to_friendly_systems",
+        "compensation": "consolidate_information_and_restrict_threat_routes"
       }
     ],
     "causal_chains": [
       {
-        "chain_id": "CC-0001-01",
-        "pattern_name": "operational_environment_shaping_effectiveness",
+        "chain_id": "CC-0143-01",
+        "pattern_name": "cyberspace_defense_effectiveness",
         "links": [
           {
-            "condition": "theater_strategic_level_synchronization_achieved",
-            "effect": "unified_action_partners_aligned",
-            "mechanism": "Coordination at theater strategic level ensures all instruments of national power work toward common objectives",
-            "exception": "partner_national_interests_diverge_from_us_objectives"
+            "condition": "threat_intelligence_indicates_targeting",
+            "effect": "defensive_measures_implemented",
+            "mechanism": "Intelligence about threat activities enables proactive defensive actions to counter indicated activity",
+            "exception": "threat_uses_unknown_tactics_techniques_procedures"
           },
           {
-            "condition": "unified_action_partners_aligned",
-            "effect": "regional_goals_achievable_short_of_conflict",
-            "mechanism": "Synchronized application of diplomatic, informational, military, and economic power creates comprehensive pressure",
-            "exception": "adversary_escalates_to_military_confrontation"
+            "condition": "defensive_measures_implemented",
+            "effect": "network_hardened_against_attack",
+            "mechanism": "Configuration guides and best practices reduce vulnerabilities and improve security posture",
+            "exception": "zero_day_exploits_bypass_known_defenses"
           },
           {
-            "condition": "partner_capacity_built",
-            "effect": "regional_stability_promoted",
-            "mechanism": "Enhanced partner self-defense capabilities reduce regional security vacuums that adversaries exploit",
-            "exception": "partners_use_capabilities_contrary_to_us_interests"
+            "condition": "network_hardened_against_attack",
+            "effect": "malicious_activity_defeated",
+            "mechanism": "Hardened networks resist penetration attempts and limit threat freedom of action",
+            "exception": "threat_has_persistent_advanced_capabilities"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "ADP 3-0 Para 1-20",
-          "ADP 3-0 Para 1-21"
+          "JP 3-12 Cyberspace Operations",
+          "Chapter 2 Defensive Cyberspace Operations"
         ]
       },
       {
-        "chain_id": "CC-0001-02",
-        "pattern_name": "levels_of_warfare_integration",
+        "chain_id": "CC-0143-02",
+        "pattern_name": "mission_thread_defense",
         "links": [
           {
-            "condition": "operational_level_links_tactical_to_strategic",
-            "effect": "tactical_employment_supports_strategic_objectives",
-            "mechanism": "Operational design translates strategic guidance into achievable tactical actions",
+            "condition": "mission_threads_identified",
+            "effect": "critical_systems_protected",
+            "mechanism": "Mission thread defense focuses protection on systems essential to accomplishing mission objectives",
             "exception": null
           },
           {
-            "condition": "theater_strategic_estimate_updated",
-            "effect": "theater_strategy_developed",
-            "mechanism": "Current assessment of operational environment informs strategic planning",
-            "exception": "strategic_guidance_changes_faster_than_estimates_updated"
+            "condition": "critical_systems_protected",
+            "effect": "mission_capability_preserved",
+            "mechanism": "Protecting mission-essential systems maintains ability to execute required tasks",
+            "exception": "threat_targets_unprotected_supporting_systems"
           }
         ],
         "cross_references": [],
         "provenance": [
-          "ADP 3-0 Para 1-16",
-          "ADP 3-0 Para 1-17"
+          "TC 3-12.2.4.1 Analytic Support",
+          "Chapter 2 Mission Thread Defense"
         ]
       }
     ],
     "measures": [
-      "partner_capacity_development_metrics",
-      "regional_stability_indicators",
-      "adversary_activity_levels",
-      "unified_action_coordination_effectiveness"
+      "network_security_incidents_detected",
+      "threat_activities_countered",
+      "mission_systems_availability_percent"
     ],
     "provenance": [
-      "ADP 3-0 1-14",
-      "ADP 3-0 1-15",
-      "ADP 3-0 1-16",
-      "ADP 3-0 1-17",
-      "ADP 3-0 1-18"
+      "ADP 3-0 2-1",
+      "ADP 3-0 2-1",
+      "ADP 3-0 2-10",
+      "ADP 3-0 2-10",
+      "ADP 3-0 2-10"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0007",
+    "context_envelope": {
+      "echelon": "brigade",
+      "phase": "armed_conflict",
+      "mission_type": "combined_arms_operations",
+      "domain": "land"
+    },
+    "triggers": [
+      "BCT_deployed_for_operations",
+      "intelligence_requirements_identified",
+      "threat_templated_in_AO"
+    ],
+    "required_observations": [
+      "enemy_composition_confirmed",
+      "PIRs_approved_by_commander",
+      "information_collection_plan_developed"
+    ],
+    "allowed_actions": [
+      {
+        "action": "task_organize_MI_company",
+        "parameters": {
+          "type": "mission_requirements_based"
+        },
+        "intended_effects": [
+          "provide_tailored_intelligence_support",
+          "enable_subordinate_commanders"
+        ]
+      },
+      {
+        "action": "coordinate_PED_with_division",
+        "parameters": {
+          "method": "through_S2_channels"
+        },
+        "intended_effects": [
+          "obtain_additional_processing_capability",
+          "support_tactical_UAS_operations"
+        ]
+      },
+      {
+        "action": "weight_intelligence_to_main_effort",
+        "parameters": {
+          "type": "flexible_tailoring"
+        },
+        "intended_effects": [
+          "maximize_collection_effectiveness",
+          "support_primary_mission"
+        ]
+      },
+      {
+        "action": "integrate_supporting_ISR_assets",
+        "parameters": {
+          "coordination": "through_corps_allocation"
+        },
+        "intended_effects": [
+          "enhance_collection_capability",
+          "extend_surveillance_coverage"
+        ]
+      },
+      {
+        "action": "conduct_basic_IPOE",
+        "parameters": {
+          "focus": "tactical_operations"
+        },
+        "intended_effects": [
+          "support_tactical_planning",
+          "identify_enemy_vulnerabilities"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "enable_informed_tactical_decisions",
+      "provide_intelligence_overmatch",
+      "support_combined_arms_operations"
+    ],
+    "constraints": [
+      "coordinate_augmentation_through_higher_headquarters",
+      "maintain_integration_with_theater_intelligence_architecture",
+      "comply_with_theater_specific_SOPs"
+    ],
+    "tradeoffs": [
+      {
+        "action": "task_organize_intelligence_downward",
+        "degradation": "reduces_BCT_level_analytical_capacity",
+        "compensation": "increase_direct_support_to_maneuver_battalions"
+      },
+      {
+        "action": "weight_collection_to_main_effort",
+        "degradation": "reduces_coverage_of_secondary_areas",
+        "compensation": "coordinate_lateral_sharing_with_adjacent_units"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0187-01",
+        "pattern_name": "intelligence_architecture_effectiveness",
+        "links": [
+          {
+            "condition": "MI_company_task_organized_to_requirements",
+            "effect": "intelligence_support_tailored_to_mission",
+            "mechanism": "Flexible organization allows matching capabilities to specific operational needs and threat characteristics",
+            "exception": "insufficient_time_for_proper_integration"
+          },
+          {
+            "condition": "intelligence_support_tailored_to_mission",
+            "effect": "enhanced_situational_understanding",
+            "mechanism": "Focused collection and analysis provides relevant intelligence for tactical decision making",
+            "exception": "enemy_employs_effective_denial_and_deception"
+          }
+        ],
+        "cross_references": [
+          "CODEX-2024-0142"
+        ],
+        "provenance": [
+          "FM 2-0 Para 7-107",
+          "ATP 2-19.4"
+        ]
+      },
+      {
+        "chain_id": "CC-0187-02",
+        "pattern_name": "collection_integration",
+        "links": [
+          {
+            "condition": "information_collection_plan_developed",
+            "effect": "collection_assets_positioned_effectively",
+            "mechanism": "Systematic planning ensures optimal placement of MI and maneuver collection assets to satisfy requirements",
+            "exception": null
+          },
+          {
+            "condition": "collection_assets_positioned_effectively",
+            "effect": "PIRs_answered_timely",
+            "mechanism": "Well-positioned assets can observe NAIs and provide early warning of enemy actions",
+            "exception": "enemy_avoids_templated_areas_of_operation"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 2-0 Para 7-108",
+          "ATP 2-19.3"
+        ]
+      }
+    ],
+    "measures": [
+      "percentage_PIRs_answered_on_time",
+      "accuracy_of_enemy_situation_updates",
+      "intelligence_support_to_targeting_effectiveness"
+    ],
+    "provenance": [
+      "ADP 3-0 7-1",
+      "ADP 3-0 7-10",
+      "ADP 3-0 7-10",
+      "ADP 3-0 7-100",
+      "ADP 3-0 7-101"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0008",
+    "context_envelope": {
+      "echelon": "brigade_and_above",
+      "phase": "planning",
+      "mission_type": "military_decision_making_process",
+      "domain": "all"
+    },
+    "triggers": [
+      "mission_receipt",
+      "planning_requirement_identified",
+      "higher_headquarters_order_received"
+    ],
+    "required_observations": [
+      "higher_headquarters_intent_understood",
+      "available_planning_time_assessed",
+      "staff_alerted_and_assembled"
+    ],
+    "allowed_actions": [
+      {
+        "action": "conduct_initial_time_assessment",
+        "parameters": {
+          "allocations": {
+            "mission_analysis": "50_percent",
+            "coa_development": "15_to_20_percent",
+            "coa_analysis_comparison": "30_to_35_percent",
+            "coa_approval_orders_production": "15_to_20_percent"
+          }
+        },
+        "intended_effects": [
+          "optimize_planning_time_allocation",
+          "enable_subordinate_planning"
+        ]
+      },
+      {
+        "action": "assign_staff_coordination_roles",
+        "parameters": {
+          "primary_coordinator": "chief_of_staff_or_executive_officer"
+        },
+        "intended_effects": [
+          "ensure_quality_control",
+          "synchronize_staff_efforts"
+        ]
+      },
+      {
+        "action": "develop_concept_of_operations",
+        "parameters": {
+          "focus": "essential_task_accomplishment",
+          "method": "backwards_planning_from_essential_task"
+        },
+        "intended_effects": [
+          "link_all_warfighting_functions",
+          "ensure_holistic_combat_power_application"
+        ]
+      },
+      {
+        "action": "create_task_organization",
+        "parameters": {
+          "subordinate_units": "minimum_two_maximum_five_maneuver_units"
+        },
+        "intended_effects": [
+          "optimize_command_and_control",
+          "enable_effective_force_employment"
+        ]
+      },
+      {
+        "action": "conduct_mission_analysis",
+        "parameters": {
+          "focus_areas": [
+            "specified_implied_essential_tasks",
+            "available_assets_and_shortfalls",
+            "constraints_identification",
+            "ccir_development"
+          ]
+        },
+        "intended_effects": [
+          "understand_problem_and_situation",
+          "enable_effective_coa_development"
+        ]
+      },
+      {
+        "action": "develop_planning_guidance",
+        "parameters": {
+          "components": [
+            "time_allocations",
+            "planning_approach",
+            "coordination_requirements",
+            "movement_authorizations"
+          ]
+        },
+        "intended_effects": [
+          "focus_staff_efforts",
+          "prevent_wasted_planning_time"
+        ]
+      },
+      {
+        "action": "generate_nesting_diagrams",
+        "parameters": {
+          "purpose": "build_shared_understanding"
+        },
+        "intended_effects": [
+          "clarify_unit_relationships",
+          "enhance_mission_comprehension"
+        ]
+      },
+      {
+        "action": "combine_lines_of_operations_and_effort",
+        "parameters": {
+          "application": "include_nonmilitary_activities"
+        },
+        "intended_effects": [
+          "integrate_all_domain_activities",
+          "enable_comprehensive_planning"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "develop_shared_understanding",
+      "create_executable_plans",
+      "optimize_planning_time_usage",
+      "enable_subordinate_planning"
+    ],
+    "constraints": [
+      "commanders_cannot_specify_coas_they_will_not_accept",
+      "mathematical_force_ratios_alone_insufficient_for_coa_development",
+      "planning_must_nest_with_higher_headquarters_timelines"
+    ],
+    "tradeoffs": [
+      {
+        "action": "allocate_more_time_to_mission_analysis",
+        "degradation": "reduces_time_for_coa_development_and_analysis",
+        "compensation": "improves_understanding_of_complex_operational_environment"
+      },
+      {
+        "action": "limit_number_of_coas_developed",
+        "degradation": "reduces_available_options",
+        "compensation": "allows_deeper_analysis_of_selected_coas"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0158-01",
+        "pattern_name": "staff_coordination_effectiveness",
+        "links": [
+          {
+            "condition": "cos_or_xo_coordinates_staff_work",
+            "effect": "quality_control_maintained",
+            "mechanism": "Single coordinator ensures planning guidance understanding and process oversight",
+            "exception": null
+          },
+          {
+            "condition": "quality_control_maintained",
+            "effect": "planning_efficiency_improved",
+            "mechanism": "Coordinated staff work prevents duplication of effort and ensures timely completion",
+            "exception": "staff_lacks_experience_with_mdmp"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 5-0 Para 5-10"
+        ]
+      },
+      {
+        "chain_id": "CC-0158-02",
+        "pattern_name": "time_allocation_effectiveness",
+        "links": [
+          {
+            "condition": "initial_time_allocation_conducted",
+            "effect": "staff_efforts_focused",
+            "mechanism": "Clear time boundaries guide planning priorities and resource allocation",
+            "exception": null
+          },
+          {
+            "condition": "staff_efforts_focused",
+            "effect": "subordinate_planning_time_maximized",
+            "mechanism": "Efficient higher headquarters planning leaves more time for subordinate units",
+            "exception": "situation_changes_invalidate_initial_timeline"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 5-0 Table 5-1",
+          "FM 5-0 Para 5-22"
+        ]
+      }
+    ],
+    "measures": [
+      "percentage_planning_time_allocated_to_subordinates",
+      "number_of_staff_coordination_meetings_required",
+      "time_to_complete_each_mdmp_step",
+      "quality_of_coa_products_generated"
+    ],
+    "provenance": [
+      "ADP 3-0 30-35",
+      "ADP 3-0 5-10",
+      "ADP 3-0 5-100",
+      "ADP 3-0 5-101",
+      "ADP 3-0 5-102"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0009",
+    "context_envelope": {
+      "echelon": "battalion",
+      "phase": "all_operations",
+      "mission_type": "intelligence_operations",
+      "domain": "multi-domain"
+    },
+    "triggers": [
+      "receipt_of_intelligence_collection_mission",
+      "information_requirements_identified",
+      "collection_assets_available"
+    ],
+    "required_observations": [
+      "mission_parameters_confirmed",
+      "collection_capabilities_assessed",
+      "communication_connectivity_established",
+      "legal_authorities_verified"
+    ],
+    "allowed_actions": [
+      {
+        "action": "conduct_surveillance_operations",
+        "parameters": {
+          "type": "passive_continuous_observation",
+          "focus": "NAI_or_TAI"
+        },
+        "intended_effects": [
+          "collect_threat_information",
+          "provide_early_warning",
+          "develop_situation"
+        ]
+      },
+      {
+        "action": "execute_collection_management",
+        "parameters": {
+          "synchronization": "current_and_future_operations",
+          "coordination": "across_intelligence_disciplines"
+        },
+        "intended_effects": [
+          "optimize_collection_asset_employment",
+          "satisfy_priority_intelligence_requirements",
+          "support_commander_decision_making"
+        ]
+      },
+      {
+        "action": "maintain_sensor_contact",
+        "parameters": {
+          "duration": "until_directed_otherwise",
+          "priority": "unit_survival_first"
+        },
+        "intended_effects": [
+          "continuous_intelligence_collection",
+          "sustained_situational_awareness"
+        ]
+      },
+      {
+        "action": "provide_mixed_redundant_coverage",
+        "parameters": {
+          "layering": "cueing_redundancy_mixing",
+          "integration": "multiple_collection_disciplines"
+        },
+        "intended_effects": [
+          "comprehensive_target_coverage",
+          "reduced_collection_gaps",
+          "enhanced_intelligence_reliability"
+        ]
+      },
+      {
+        "action": "report_information_rapidly",
+        "parameters": {
+          "content": "observed_and_not_observed",
+          "timing": "immediate_upon_collection"
+        },
+        "intended_effects": [
+          "timely_intelligence_dissemination",
+          "support_tactical_decision_making",
+          "enable_early_warning"
+        ]
+      },
+      {
+        "action": "conduct_troop_leading_procedures",
+        "parameters": {
+          "sequence": "eight_step_process",
+          "flexibility": "modify_based_on_situation"
+        },
+        "intended_effects": [
+          "effective_mission_planning",
+          "unit_preparation",
+          "mission_execution_readiness"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "satisfy_intelligence_requirements",
+      "provide_timely_accurate_intelligence",
+      "support_operational_decision_making",
+      "maintain_intelligence_collection_capability"
+    ],
+    "constraints": [
+      "must_comply_with_applicable_US_laws",
+      "adhere_to_intelligence_regulations_policies",
+      "maintain_proper_training_certifications",
+      "avoid_decisive_engagement_during_collection",
+      "follow_technical_control_guidance"
+    ],
+    "tradeoffs": [
+      {
+        "action": "forward_position_collection_assets",
+        "degradation": "increased_exposure_to_threat_detection",
+        "compensation": "improved_collection_range_and_quality"
+      },
+      {
+        "action": "maintain_continuous_surveillance",
+        "degradation": "increased_asset_exposure_time",
+        "compensation": "comprehensive_situational_awareness"
+      },
+      {
+        "action": "employ_mixed_collection_disciplines",
+        "degradation": "increased_coordination_complexity",
+        "compensation": "enhanced_collection_reliability_and_coverage"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0143-01",
+        "pattern_name": "collection_effectiveness",
+        "links": [
+          {
+            "condition": "collection_assets_properly_positioned",
+            "effect": "surveillance_coverage_achieved",
+            "mechanism": "Assets positioned to observe NAI/TAI provide continuous monitoring of threat activities",
+            "exception": "threat_employs_effective_countermeasures"
+          },
+          {
+            "condition": "surveillance_coverage_achieved",
+            "effect": "timely_intelligence_collection",
+            "mechanism": "Continuous observation enables detection and reporting of threat indicators and activities",
+            "exception": "communication_disruption_prevents_reporting"
+          },
+          {
+            "condition": "timely_intelligence_collection",
+            "effect": "intelligence_requirements_satisfied",
+            "mechanism": "Rapid collection and reporting provides commanders with information needed for decision making",
+            "exception": "collected_information_insufficient_for_requirements"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 2-0 Para 6-10",
+          "FM 2-0 Para 6-28"
+        ]
+      },
+      {
+        "chain_id": "CC-0143-02",
+        "pattern_name": "collection_management_integration",
+        "links": [
+          {
+            "condition": "collection_manager_designated",
+            "effect": "collection_activities_synchronized",
+            "mechanism": "Collection manager coordinates across staff sections to validate requirements and optimize asset employment",
+            "exception": null
+          },
+          {
+            "condition": "collection_activities_synchronized",
+            "effect": "intelligence_operations_integrated",
+            "mechanism": "Synchronized collection ensures all assets work toward common intelligence objectives",
+            "exception": "competing_priority_requirements_exceed_capacity"
+          },
+          {
+            "condition": "intelligence_operations_integrated",
+            "effect": "comprehensive_intelligence_support",
+            "mechanism": "Integrated operations provide commanders with complete picture for decision making",
+            "exception": "intelligence_gaps_remain_due_to_asset_limitations"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 2-0 Para 6-14 through 6-16"
+        ]
+      }
+    ],
+    "measures": [
+      "intelligence_requirements_satisfied_percentage",
+      "collection_asset_availability_rate",
+      "reporting_timeliness_metrics",
+      "collection_coverage_completeness"
+    ],
+    "provenance": [
+      "ADP 3-0 6-1",
+      "ADP 3-0 6-10",
+      "ADP 3-0 6-10",
+      "ADP 3-0 6-11",
+      "ADP 3-0 6-12"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0010",
+    "context_envelope": {
+      "echelon": "battalion",
+      "phase": "planning",
+      "mission_type": "coa_analysis",
+      "domain": "mission_command"
+    },
+    "triggers": [
+      "coa_development_complete",
+      "commander_guidance_issued",
+      "analysis_timeline_established"
+    ],
+    "required_observations": [
+      "multiple_coas_developed",
+      "staff_tools_and_materials_gathered",
+      "critical_events_identified",
+      "decision_points_established"
+    ],
+    "allowed_actions": [
+      {
+        "action": "gather_wargaming_tools",
+        "parameters": {
+          "materials": [
+            "updated_running_estimates",
+            "coa_sketches",
+            "enemy_templates"
+          ]
+        },
+        "intended_effects": [
+          "enable_structured_analysis",
+          "support_action_reaction_cycle"
+        ]
+      },
+      {
+        "action": "list_available_units",
+        "parameters": {
+          "scope": "two_levels_below_echelon",
+          "include": "critical_assets_and_capabilities"
+        },
+        "intended_effects": [
+          "identify_force_structure",
+          "determine_support_relationships"
+        ]
+      },
+      {
+        "action": "conduct_wargaming",
+        "parameters": {
+          "cycle": "action_reaction_counteraction",
+          "participants": [
+            "operations_staff",
+            "intelligence_staff",
+            "subject_matter_experts"
+          ]
+        },
+        "intended_effects": [
+          "test_coa_feasibility",
+          "identify_decision_points",
+          "develop_branches_and_sequels"
+        ]
+      },
+      {
+        "action": "assess_warfighting_functions",
+        "parameters": {
+          "areas": [
+            "movement",
+            "fires",
+            "protection",
+            "sustainment",
+            "mission_command"
+          ]
+        },
+        "intended_effects": [
+          "identify_requirements",
+          "determine_shortfalls",
+          "propose_control_measures"
+        ]
+      },
+      {
+        "action": "conduct_internal_briefing",
+        "parameters": {
+          "audience": "staff_sections",
+          "content": "analysis_results"
+        },
+        "intended_effects": [
+          "ensure_understanding",
+          "capture_relevant_points"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "refine_coas_based_on_analysis",
+      "identify_branches_and_sequels",
+      "develop_control_measures",
+      "assess_risk_for_each_coa"
+    ],
+    "constraints": [
+      "maintain_timeline_discipline",
+      "ensure_unbiased_analysis",
+      "consider_all_enemy_capabilities",
+      "assess_civilian_impact"
+    ],
+    "tradeoffs": [
+      {
+        "action": "detailed_analysis_all_coas",
+        "degradation": "consumes_more_planning_time",
+        "compensation": "provides_thorough_understanding_of_options"
+      },
+      {
+        "action": "focus_on_main_effort_only",
+        "degradation": "may_miss_supporting_effort_issues",
+        "compensation": "saves_time_in_constrained_environment"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0301-01",
+        "pattern_name": "structured_coa_analysis",
+        "links": [
+          {
+            "condition": "wargaming_tools_gathered",
+            "effect": "structured_analysis_enabled",
+            "mechanism": "Proper materials and updated estimates provide foundation for systematic evaluation",
+            "exception": "time_constraints_limit_detail_level"
+          },
+          {
+            "condition": "action_reaction_cycle_conducted",
+            "effect": "coa_feasibility_tested",
+            "mechanism": "Sequential analysis of friendly actions and enemy reactions reveals strengths and weaknesses",
+            "exception": null
+          },
+          {
+            "condition": "warfighting_functions_assessed",
+            "effect": "requirements_and_shortfalls_identified",
+            "mechanism": "Systematic evaluation across all functions reveals resource needs and gaps",
+            "exception": "incomplete_information_affects_accuracy"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 5-0 Para 5-133 through 5-144"
+        ]
+      },
+      {
+        "chain_id": "CC-0301-02",
+        "pattern_name": "decision_point_development",
+        "links": [
+          {
+            "condition": "critical_events_identified",
+            "effect": "decision_points_established",
+            "mechanism": "Key events that influence mission accomplishment become points where commander decisions are required",
+            "exception": null
+          },
+          {
+            "condition": "decision_points_established",
+            "effect": "ccirs_developed",
+            "mechanism": "Decision points drive information requirements that support timely commander decisions",
+            "exception": "rapidly_changing_situation_makes_points_obsolete"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 5-0 Para 5-136 through 5-137"
+        ]
+      }
+    ],
+    "measures": [
+      "number_of_coas_analyzed",
+      "decision_points_identified",
+      "branches_and_sequels_developed",
+      "staff_consensus_on_analysis"
+    ],
+    "provenance": [
+      "ADP 3-0 5-133",
+      "ADP 3-0 5-134",
+      "ADP 3-0 5-135",
+      "ADP 3-0 5-136",
+      "ADP 3-0 5-137"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0011",
+    "context_envelope": {
+      "echelon": "brigade_and_above",
+      "phase": "planning",
+      "mission_type": "public_affairs_planning",
+      "domain": "information_environment"
+    },
+    "triggers": [
+      "mission_receipt",
+      "MDMP_initiation",
+      "commander_planning_guidance_issued"
+    ],
+    "required_observations": [
+      "higher_headquarters_PA_guidance_received",
+      "commander_intent_articulated",
+      "information_environment_assessment_available"
+    ],
+    "allowed_actions": [
+      {
+        "action": "identify_CCIRs_for_information_environment",
+        "parameters": {
+          "focus": "friendly_force_information_requirements_and_priority_intelligence_requirements"
+        },
+        "intended_effects": [
+          "focus_information_collection",
+          "support_critical_decision_making"
+        ]
+      },
+      {
+        "action": "develop_PA_running_estimate",
+        "parameters": {
+          "type": "continuously_evolving_planning_product"
+        },
+        "intended_effects": [
+          "capture_mission_impacting_factors",
+          "present_section_specific_information"
+        ]
+      },
+      {
+        "action": "create_commanders_communication_strategy",
+        "parameters": {
+          "timing": "receipt_of_mission_and_mission_analysis"
+        },
+        "intended_effects": [
+          "establish_commander_intent_for_PA",
+          "guide_PA_planning_efforts"
+        ]
+      },
+      {
+        "action": "develop_concept_of_PA_support",
+        "parameters": {
+          "alignment": "proposed_COAs"
+        },
+        "intended_effects": [
+          "identify_PA_asset_employment",
+          "support_commander_communication_strategy"
+        ]
+      },
+      {
+        "action": "participate_in_MDMP_war_gaming",
+        "parameters": {
+          "focus": "information_environment_impact_analysis"
+        },
+        "intended_effects": [
+          "identify_coordination_problems",
+          "assess_COA_effects"
+        ]
+      },
+      {
+        "action": "incorporate_essential_elements_friendly_information",
+        "parameters": {
+          "integration": "communication_planning"
+        },
+        "intended_effects": [
+          "protect_mission_critical_information",
+          "maintain_OPSEC_awareness"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "synchronize_PA_planning_within_MDMP",
+      "develop_communication_integrated_plans",
+      "support_commander_visualization"
+    ],
+    "constraints": [
+      "no_separate_communication_plans_developed",
+      "PA_guidance_must_align_with_commander_intent",
+      "essential_elements_friendly_information_must_be_protected"
+    ],
+    "tradeoffs": [
+      {
+        "action": "early_PA_running_estimate_development",
+        "degradation": "limited_initial_information_available",
+        "compensation": "continuous_update_throughout_MDMP"
+      },
+      {
+        "action": "detailed_information_environment_analysis",
+        "degradation": "requires_significant_planning_time",
+        "compensation": "improves_COA_assessment_accuracy"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0251-01",
+        "pattern_name": "PA_planning_integration",
+        "links": [
+          {
+            "condition": "PA_leaders_understand_commander_intent",
+            "effect": "effective_PA_COA_development",
+            "mechanism": "Direct access to commander enables clear understanding of visualization and intent",
+            "exception": "commander_intent_changes_during_planning"
+          },
+          {
+            "condition": "effective_PA_COA_development",
+            "effect": "synchronized_PA_planning_within_MDMP",
+            "mechanism": "PA staff can develop options that align with overall operational planning",
+            "exception": "conflicting_guidance_from_higher_headquarters"
+          },
+          {
+            "condition": "synchronized_PA_planning_within_MDMP",
+            "effect": "communication_integrated_plans",
+            "mechanism": "PA considerations built into planning from beginning rather than added separately",
+            "exception": null
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-61 Para 5-17",
+          "FM 3-61 Para 5-8"
+        ]
+      },
+      {
+        "chain_id": "CC-0251-02",
+        "pattern_name": "information_environment_awareness",
+        "links": [
+          {
+            "condition": "CCIRs_identified_for_information_environment",
+            "effect": "focused_information_collection",
+            "mechanism": "PA leaders recognize OPSEC requirements and identify critical information needs",
+            "exception": "information_collection_assets_unavailable"
+          },
+          {
+            "condition": "focused_information_collection",
+            "effect": "enhanced_situational_understanding",
+            "mechanism": "Relevant information analyzed to determine operational and mission variable relationships",
+            "exception": "information_environment_rapidly_changing"
+          },
+          {
+            "condition": "enhanced_situational_understanding",
+            "effect": "improved_decision_making",
+            "mechanism": "Critical and creative thinking applied to facilitate decision making and direct action",
+            "exception": "time_constraints_limit_analysis"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-61 Para 5-10",
+          "FM 3-61 Para 5-12"
+        ]
+      }
+    ],
+    "measures": [
+      "PA_running_estimate_completeness",
+      "commander_communication_strategy_approval",
+      "MDMP_step_completion_timeliness",
+      "information_environment_assessment_accuracy"
+    ],
+    "provenance": [
+      "ADP 3-0 5-10",
+      "ADP 3-0 5-11",
+      "ADP 3-0 5-12",
+      "ADP 3-0 5-13",
+      "ADP 3-0 5-14"
+    ]
+  },
+  {
+    "codex_id": "CODEX-ADP30-0012",
+    "context_envelope": {
+      "echelon": "corps_and_above",
+      "phase": "continuous_operations",
+      "mission_type": "media_operations_center",
+      "domain": "information_environment"
+    },
+    "triggers": [
+      "media_representatives_arriving_in_aor",
+      "major_operation_commencing",
+      "misinformation_disinformation_threats"
+    ],
+    "required_observations": [
+      "commander_authorizes_moc_establishment",
+      "pa_unit_deployed",
+      "operational_requirements_assessed"
+    ],
+    "allowed_actions": [
+      {
+        "action": "establish_media_operations_center",
+        "parameters": {
+          "organization": "headquarters_section_and_media_operations_section",
+          "timeline": "early_deployment"
+        },
+        "intended_effects": [
+          "facilitate_media_access",
+          "control_information_flow",
+          "counter_misinformation"
+        ]
+      },
+      {
+        "action": "conduct_media_accreditation",
+        "parameters": {
+          "level": "corps_or_higher",
+          "verification": "legitimate_news_organization"
+        },
+        "intended_effects": [
+          "validate_media_credentials",
+          "enable_controlled_access"
+        ]
+      },
+      {
+        "action": "implement_media_registration",
+        "parameters": {
+          "tracking": "location_and_movement",
+          "documentation": "contact_information"
+        },
+        "intended_effects": [
+          "track_media_movements",
+          "plan_logistics_support"
+        ]
+      },
+      {
+        "action": "establish_media_credentialing",
+        "parameters": {
+          "guidelines": "commander_approved",
+          "ground_rules": "operation_specific"
+        },
+        "intended_effects": [
+          "grant_restricted_area_access",
+          "ensure_opsec_compliance"
+        ]
+      },
+      {
+        "action": "operate_media_pools",
+        "parameters": {
+          "duration": "maximum_24_to_36_hours",
+          "size": "as_large_as_possible"
+        },
+        "intended_effects": [
+          "provide_constrained_access_coverage",
+          "ensure_adequate_distribution"
+        ]
+      },
+      {
+        "action": "coordinate_media_embeds",
+        "parameters": {
+          "clearance": "higher_headquarters_approved",
+          "protection": "proper_gear_required"
+        },
+        "intended_effects": [
+          "enable_firsthand_reporting",
+          "counter_misinformation"
+        ]
+      },
+      {
+        "action": "respond_to_media_queries",
+        "parameters": {
+          "accuracy": "cleared_for_public_release",
+          "timeline": "as_quickly_as_possible"
+        },
+        "intended_effects": [
+          "provide_accurate_information",
+          "maintain_transparency"
+        ]
+      }
+    ],
+    "intended_effects": [
+      "facilitate_accurate_media_coverage",
+      "maintain_operational_security",
+      "counter_misinformation_and_disinformation",
+      "enable_transparent_military_operations"
+    ],
+    "constraints": [
+      "release_authority_approval_required",
+      "no_classified_information_release",
+      "no_patient_condition_disclosure",
+      "24_hour_next_of_kin_notification_period",
+      "ground_rules_compliance_mandatory"
+    ],
+    "tradeoffs": [
+      {
+        "action": "implement_media_pools",
+        "degradation": "limits_independent_coverage",
+        "compensation": "ensures_controlled_access_under_constraints"
+      },
+      {
+        "action": "grant_embedded_media_access",
+        "degradation": "increases_opsec_risk",
+        "compensation": "enables_accurate_firsthand_reporting"
+      },
+      {
+        "action": "establish_strict_ground_rules",
+        "degradation": "may_limit_media_freedom",
+        "compensation": "protects_soldier_and_media_safety"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0158-01",
+        "pattern_name": "moc_establishment_effectiveness",
+        "links": [
+          {
+            "condition": "pa_unit_deployed_early",
+            "effect": "hasty_media_center_established",
+            "mechanism": "Early deployment enables rapid establishment of focal point for arriving media",
+            "exception": "insufficient_resources_or_security_constraints"
+          },
+          {
+            "condition": "hasty_media_center_established",
+            "effect": "controlled_media_access_achieved",
+            "mechanism": "Centralized point of contact channels media interactions and information flow",
+            "exception": "media_bypasses_official_channels"
+          },
+          {
+            "condition": "controlled_media_access_achieved",
+            "effect": "misinformation_countered",
+            "mechanism": "Official information source reduces reliance on unofficial or inaccurate sources",
+            "exception": "delayed_response_to_breaking_events"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-61 Para 6-23",
+          "FM 3-61 Para 6-24"
+        ]
+      },
+      {
+        "chain_id": "CC-0158-02",
+        "pattern_name": "media_credentialing_security",
+        "links": [
+          {
+            "condition": "media_accreditation_completed",
+            "effect": "legitimate_journalists_verified",
+            "mechanism": "Verification process confirms affiliation with recognized news organizations",
+            "exception": "fraudulent_credentials_presented"
+          },
+          {
+            "condition": "ground_rules_established",
+            "effect": "opsec_maintained",
+            "mechanism": "Agreed-upon restrictions prevent release of operationally sensitive information",
+            "exception": "journalist_violates_ground_rules"
+          },
+          {
+            "condition": "media_credentialing_implemented",
+            "effect": "controlled_restricted_area_access",
+            "mechanism": "Credentialing system grants verified journalists access while maintaining security",
+            "exception": "security_situation_deteriorates"
+          }
+        ],
+        "cross_references": [],
+        "provenance": [
+          "FM 3-61 Para 6-25",
+          "FM 3-61 Para 6-31",
+          "FM 3-61 Para 6-33"
+        ]
+      }
+    ],
+    "measures": [
+      "media_representatives_processed_per_day",
+      "query_response_time",
+      "ground_rules_compliance_rate",
+      "embed_coverage_accuracy_assessment",
+      "opsec_violations_reported"
+    ],
+    "provenance": [
+      "ADP 3-0 6-20",
+      "ADP 3-0 6-21",
+      "ADP 3-0 6-22",
+      "ADP 3-0 6-23",
+      "ADP 3-0 6-24"
     ]
   }
 ]

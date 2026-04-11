@@ -1,100 +1,336 @@
 {
   "metadata": {
     "kd_name": "doctrine",
-    "source_document": "ADP 3-0",
-    "version": "1.0.0",
-    "description": "Doctrine retrieval benchmark for ADP 3-0"
+    "source_documents": [
+      "ADP 3-0",
+      "FM 2-0",
+      "FM 3-12",
+      "FM 3-61",
+      "FM 5-0"
+    ],
+    "version": "2.0.0",
+    "description": "Doctrine retrieval benchmark across 5 documents (ADP 3-0, FM 2-0, FM 3-12, FM 3-61, FM 5-0)"
   },
   "questions": [
     {
       "query": "What is an operational environment?",
-      "expected_paragraph_ids": ["1-30", "1-31"],
-      "filters": {"modality": "DEFINITION"},
-      "category": "definition"
+      "expected_paragraph_ids": [
+        "1-30",
+        "1-31"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "definition",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are the warfighting functions?",
-      "expected_paragraph_ids": ["2-1", "2-2", "2-3"],
+      "expected_paragraph_ids": [
+        "2-1",
+        "2-2",
+        "2-3"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are the requirements for unified action?",
-      "expected_paragraph_ids": ["1-36", "1-37", "1-38"],
-      "filters": {"modality": "REQUIREMENT"},
-      "category": "requirement"
+      "expected_paragraph_ids": [
+        "1-36",
+        "1-37",
+        "1-38"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT"
+      },
+      "category": "requirement",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is the command and control warfighting function?",
-      "expected_paragraph_ids": ["2-4", "2-5"],
-      "filters": {"modality": "DEFINITION"},
-      "category": "definition"
+      "expected_paragraph_ids": [
+        "2-4",
+        "2-5"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "definition",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are offensive operations?",
-      "expected_paragraph_ids": ["1-9", "1-7"],
-      "filters": {"modality": "DEFINITION"},
-      "category": "definition"
+      "expected_paragraph_ids": [
+        "1-9",
+        "1-7"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "definition",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is multidomain operations?",
-      "expected_paragraph_ids": ["3-1", "3-2"],
+      "expected_paragraph_ids": [
+        "3-1",
+        "3-2"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What may commanders do during defensive operations?",
-      "expected_paragraph_ids": ["1-10", "1-11"],
-      "filters": {"modality": "PERMISSION"},
-      "category": "permission"
+      "expected_paragraph_ids": [
+        "1-10",
+        "1-11"
+      ],
+      "filters": {
+        "modality": "PERMISSION"
+      },
+      "category": "permission",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is the role of fires in combined arms?",
-      "expected_paragraph_ids": ["2-14", "2-15"],
+      "expected_paragraph_ids": [
+        "2-14",
+        "2-15"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is operational art?",
-      "expected_paragraph_ids": ["4-1", "4-2"],
-      "filters": {"modality": "DEFINITION"},
-      "category": "definition"
+      "expected_paragraph_ids": [
+        "4-1",
+        "4-2"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "definition",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are the elements of combat power?",
-      "expected_paragraph_ids": ["2-22", "2-23", "2-24"],
+      "expected_paragraph_ids": [
+        "2-22",
+        "2-23",
+        "2-24"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are stability operations?",
-      "expected_paragraph_ids": ["1-11", "1-12"],
+      "expected_paragraph_ids": [
+        "1-11",
+        "1-12"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is the strategic environment?",
-      "expected_paragraph_ids": ["1-23", "1-24"],
+      "expected_paragraph_ids": [
+        "1-23",
+        "1-24"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is DSCA?",
-      "expected_paragraph_ids": ["1-13", "1-14"],
+      "expected_paragraph_ids": [
+        "1-13",
+        "1-14"
+      ],
       "filters": {},
-      "category": "acronym"
+      "category": "acronym",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What are the levels of warfare?",
-      "expected_paragraph_ids": ["1-15", "1-16"],
+      "expected_paragraph_ids": [
+        "1-15",
+        "1-16"
+      ],
       "filters": {},
-      "category": "concept"
+      "category": "concept",
+      "source_document": "ADP 3-0"
     },
     {
       "query": "What is the protection warfighting function?",
-      "expected_paragraph_ids": ["2-17", "2-18"],
-      "filters": {"modality": "DEFINITION"},
-      "category": "definition"
+      "expected_paragraph_ids": [
+        "2-17",
+        "2-18"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "definition",
+      "source_document": "ADP 3-0"
+    },
+    {
+      "query": "What is the intelligence warfighting function?",
+      "expected_paragraph_ids": [
+        "1-1",
+        "1-2"
+      ],
+      "filters": {
+        "warfighting_function": "Intelligence"
+      },
+      "category": "cross-doc-fm2",
+      "note": "Answer should come from FM 2-0",
+      "source_document": "FM 2-0"
+    },
+    {
+      "query": "How does intelligence drive operations?",
+      "expected_paragraph_ids": [
+        "1-20",
+        "1-4"
+      ],
+      "filters": {},
+      "category": "cross-doc-fm2",
+      "note": "FM 2-0 intelligence fundamentals",
+      "source_document": "FM 2-0"
+    },
+    {
+      "query": "What are the intelligence requirements for corps operations?",
+      "expected_paragraph_ids": [
+        "7-57",
+        "7-53"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT"
+      },
+      "category": "cross-doc-fm2",
+      "source_document": "FM 2-0"
+    },
+    {
+      "query": "What is cyberspace and how does the Army operate in it?",
+      "expected_paragraph_ids": [
+        "2-1",
+        "1-1"
+      ],
+      "filters": {},
+      "category": "cross-doc-fm312",
+      "note": "Answer should come from FM 3-12",
+      "source_document": "FM 3-12"
+    },
+    {
+      "query": "What is electromagnetic warfare?",
+      "expected_paragraph_ids": [
+        "3-1"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "cross-doc-fm312",
+      "note": "FM 3-12 Chapter 3",
+      "source_document": "FM 3-12"
+    },
+    {
+      "query": "What is the military decision-making process?",
+      "expected_paragraph_ids": [
+        "5-1",
+        "4-1"
+      ],
+      "filters": {},
+      "category": "cross-doc-fm50",
+      "note": "Answer should come from FM 5-0",
+      "source_document": "FM 5-0"
+    },
+    {
+      "query": "What are the fundamentals of planning?",
+      "expected_paragraph_ids": [
+        "1-1",
+        "1-2"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT"
+      },
+      "category": "cross-doc-fm50",
+      "note": "FM 5-0 Chapter 1",
+      "source_document": "FM 5-0"
+    },
+    {
+      "query": "How does a commander develop an operational approach?",
+      "expected_paragraph_ids": [
+        "2-1",
+        "3-1"
+      ],
+      "filters": {},
+      "category": "cross-doc-fm50",
+      "note": "FM 5-0 operational art and problem solving",
+      "source_document": "FM 5-0"
+    },
+    {
+      "query": "What is the commander's communication strategy?",
+      "expected_paragraph_ids": [
+        "1-1",
+        "1-2"
+      ],
+      "filters": {
+        "modality": "DEFINITION"
+      },
+      "category": "cross-doc-fm361",
+      "note": "FM 3-61 public affairs",
+      "source_document": "FM 3-61"
+    },
+    {
+      "query": "What are public affairs requirements for commanders?",
+      "expected_paragraph_ids": [
+        "2-1",
+        "3-1"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT"
+      },
+      "category": "cross-doc-fm361",
+      "note": "FM 3-61 Chapter 2-3",
+      "source_document": "FM 3-61"
+    },
+    {
+      "query": "What are the requirements for intelligence collection at battalion level?",
+      "expected_paragraph_ids": [
+        "7-127",
+        "7-131"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT",
+        "echelon": "Battalion"
+      },
+      "category": "multi-filter",
+      "note": "Tests modality + echelon filtering together"
+    },
+    {
+      "query": "What are the requirements for cyberspace operations integration?",
+      "expected_paragraph_ids": [
+        "1-2",
+        "2-1"
+      ],
+      "filters": {
+        "modality": "REQUIREMENT",
+        "warfighting_function": "Intelligence"
+      },
+      "category": "multi-filter",
+      "note": "Tests modality + warfighting function filtering"
+    },
+    {
+      "query": "What is the doctrine for naval mine countermeasures?",
+      "expected_paragraph_ids": [],
+      "filters": {},
+      "category": "no-answer",
+      "note": "Not in any of the 5 documents -- tests recall, should have low/no results"
     }
   ]
 }
