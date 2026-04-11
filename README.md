@@ -1,13 +1,13 @@
 # KD Platform Prototype
 
-End-to-end Knowledge Domain platform demonstrating the CTO's vision: ADC chunking, semantic lifting, hybrid retrieval, CODEX evaluation, benchmarks, and reuse packaging. Runs locally with Docker Compose and a single PDF (ADP 3-0).
+End-to-end Knowledge Domain platform demonstrating the Knowledge Domain vision: ADC chunking, semantic lifting, hybrid retrieval, CODEX evaluation, benchmarks, and reuse packaging. Runs locally with Docker Compose and a single PDF (ADP 3-0).
 
 This is not production software. It is a reference implementation that shows how every component connects -- using real data, real embeddings, real LLM extraction, and real doctrinal evaluation.
 
-## How This Maps to the CTO's Vision
+## How This Maps to the Knowledge Domain Vision
 
-| CTO Concept | Where It Lives | File(s) |
-|-------------|---------------|---------|
+| Concept | Where It Lives | File(s) |
+|---------|---------------|---------|
 | "Each KD maps to a dedicated table" (Steps 3-4) | kd_doctrine table with 5 column categories | `migrations/V001__create_kd_doctrine.sql` |
 | "Atomic Doctrine Chunking" (Steps 3-4) | ADC integration producing 219 chunks with hierarchy + modality | `src/ingest.py` |
 | "Semantic lifting models extract domain-relevant structure" (Steps 5-7) | Claude-based taxonomy extraction with confidence scores | `src/lift.py` |
