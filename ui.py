@@ -1,7 +1,7 @@
 """KD Platform Guided Tour -- 7-page Streamlit app.
 
-Each page maps to a chapter of the CTO's Knowledge Domain vision.
-Three audiences: developers see the implementation, the CTO sees his vision
+Each page maps to a chapter of the Knowledge Domains paper.
+Three audiences: developers see the implementation, leadership sees the vision
 realized, non-technical stakeholders see the value without reading code.
 """
 import json
@@ -78,7 +78,7 @@ if page == PAGES[0]:
   + confidence scores, provenance, JSONB overflow""", language="sql")
         st.caption("30+ columns across 5 categories. Every chunk is self-describing.")
 
-    st.info("The CTO's paper asked: can we do better? The answer is a Knowledge Domain.")
+    st.info("The Knowledge Domains paper asked: can we do better? The answer is a Knowledge Domain.")
 
 
 # --- PAGE 2: ADC ---
@@ -120,7 +120,7 @@ elif page == PAGES[1]:
                 st.markdown(f"**Glossary refs:** {', '.join(glossary[:5])}")
             st.text(r["chunk_content"][:500])
 
-    st.info("CTO Steps 3-4: Define Object Model and Grain. ADC produces 219 self-describing chunks with authority classification. Zero LLM calls. Deterministic.")
+    st.info("Knowledge Domains Steps 3-4: Define Object Model and Grain. ADC produces 219 self-describing chunks with authority classification. Zero LLM calls. Deterministic.")
 
 
 # --- PAGE 3: SEMANTIC LIFTING ---
@@ -154,7 +154,7 @@ elif page == PAGES[2]:
     above_08 = sum(1 for c in confs if c >= 0.8)
     st.caption(f"{above_08}/{len(confs)} extractions ({100*above_08/max(len(confs),1):.0f}%) have confidence >= 0.8")
 
-    st.info("CTO Steps 5-7: Semantic Lifting. Claude extracts warfighting function, echelon, doctrinal phase -- each with a confidence score.")
+    st.info("Knowledge Domains Steps 5-7: Semantic Lifting. Claude extracts warfighting function, echelon, doctrinal phase -- each with a confidence score.")
 
 
 # --- PAGE 4: RETRIEVAL ---
@@ -203,7 +203,7 @@ elif page == PAGES[3]:
                     st.markdown(f"**Warfighting Function:** {r['warfighting_function']}")
                 st.text(r.get("chunk_content", "")[:400])
 
-    st.info("CTO Step 8: Retrieval Agent. The KD pipeline finds the right type of doctrine at the right echelon with measured confidence.")
+    st.info("Knowledge Domains Step 8: Retrieval Agent. The KD pipeline finds the right type of doctrine at the right echelon with measured confidence.")
 
 
 # --- PAGE 5: CODEX ---
@@ -308,17 +308,16 @@ elif page == PAGES[5]:
     what type of doctrine you need, filtered retrieval is more targeted.
     """)
 
-    st.info("CTO Step 9: Validate. The pipeline earns its compute cost. Measurable improvement on real analyst questions.")
+    st.info("Knowledge Domains Step 9: Validate. The pipeline earns its compute cost. Measurable improvement on real analyst questions.")
 
 
 # --- PAGE 7: PACKAGE ---
 elif page == PAGES[6]:
-    st.title("Package -- Ship to Customer 2")
+    st.title("Package")
 
     st.markdown("""
     The entire Knowledge Domain -- schema, chunking config, lifting prompts,
     retrieval config, benchmark results -- exports as a portable package.
-    Customer 2 deploys from this artifact.
     """)
 
     st.subheader("Package Contents")
@@ -337,4 +336,4 @@ elif page == PAGES[6]:
     else:
         st.caption("Run `python cli.py export` to generate the package.")
 
-    st.info("CTO Step 10: Operationalize for Reuse. This entire KD exports as a portable artifact.")
+    st.info("Knowledge Domains Step 10: Operationalize for Reuse. This entire KD exports as a portable artifact.")

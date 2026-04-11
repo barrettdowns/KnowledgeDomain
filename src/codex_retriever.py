@@ -49,13 +49,20 @@ def _score_relevance(obj: dict, context: dict) -> float:
     score += len(overlap) * 2.0
 
     # Keyword overlap between objective and actions/effects
-    objective_words = set(context.get("objective", "").lower().split())
+    stop_words = {"the", "a", "an", "and", "or", "to", "of", "in", "for", "is",
+                  "at", "by", "on", "with", "against", "from", "that", "this",
+                  "be", "are", "was", "were", "been", "being", "have", "has",
+                  "do", "does", "did", "will", "would", "could", "should",
+                  "may", "can", "shall", "must", "not", "no", "all", "each",
+                  "operations", "forces", "enemy", "conduct", "support"}
+    objective_words = set(context.get("objective", "").lower().split()) - stop_words
     obj_keywords = set()
     for action in obj.get("allowed_actions", []):
         obj_keywords.update(action.get("action", "").lower().split())
         for effect in action.get("intended_effects", []):
             obj_keywords.update(effect.lower().split())
-    keyword_overlap = objective_words & obj_keywords - {"the", "a", "an", "and", "or", "to", "of", "in", "for"}
+    obj_keywords -= stop_words
+    keyword_overlap = objective_words & obj_keywords
     score += len(keyword_overlap) * 0.5
 
     return score
@@ -78,8 +85,8 @@ def retrieve_codex_objects(context: dict, top_k: int = 5) -> list[dict]:
     scored = [(obj, _score_relevance(obj, context)) for obj in objects]
     scored.sort(key=lambda x: x[1], reverse=True)
 
-    # Filter to minimum threshold
-    min_score = 1.0
+    # Require at least one strong context match (not just keyword overlap)
+    min_score = 2.0
     results = [(obj, score) for obj, score in scored if score >= min_score]
 
     if not results:

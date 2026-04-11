@@ -63,7 +63,7 @@ class CodexRequest(BaseModel):
     mission_type: str = ""
     echelon: str = ""
     phase: str = ""
-    domain: str = "land"
+    domain: str = ""
     observations: list[str] = []
     proposed_actions: list[str] = []
     triggers: list[str] = []
@@ -97,8 +97,15 @@ def codex_endpoint(req: CodexRequest):
     ce = primary.get("context_envelope", {})
 
     # Determine coverage type
+    def field_matches(a, b):
+        if not a or not b:
+            return False
+        a_norm = a.lower().replace("_", " ").replace("-", " ")
+        b_norm = b.lower().replace("_", " ").replace("-", " ")
+        return a_norm == b_norm or a_norm in b_norm or b_norm in a_norm
+
     exact_fields = sum(1 for f in ["mission_type", "echelon", "phase", "domain"]
-                       if context.get(f) and ce.get(f) and context[f].lower() in ce[f].lower())
+                       if context.get(f) and ce.get(f) and field_matches(context[f], ce[f]))
     total_fields = sum(1 for f in ["mission_type", "echelon", "phase", "domain"] if context.get(f))
 
     if total_fields > 0 and exact_fields == total_fields:
