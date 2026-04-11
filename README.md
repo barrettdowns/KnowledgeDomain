@@ -158,4 +158,4 @@ ADC improves retrieval quality over raw embeddings (+5.8% NDCG@10). Taxonomy fil
 - **Embeddings:** all-MiniLM-L6-v2 (384 dims) for the prototype. Production uses text-embedding-3-large (1024 dims).
 - **LLM:** Claude Sonnet for lifting and CODEX compilation. Evaluation path is deterministic (no LLM).
 - **CODEX objects:** Pre-compiled from ADP 3-0 sections. Production uses a dedicated table with SME validation.
-- **Benchmark Q/A:** 15 questions with paragraph-ID ground truth. Resolved to database records at runtime.
+- **Benchmark Q/A:** 28 questions with paragraph-ID ground truth across 5 documents. Resolved to database records at runtime.
