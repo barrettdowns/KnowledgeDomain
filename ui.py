@@ -161,7 +161,34 @@ elif page == PAGES[2]:
 elif page == PAGES[3]:
     st.title("Retrieval -- Ask a Question")
 
-    query = st.text_input("Enter a doctrine question:", "What are the warfighting functions?")
+    PRESET_QUERIES = {
+        "-- Modality filtering advantage --": None,
+        "What are the requirements for unified action?": {"suggested_filter": "REQUIREMENT"},
+        "What must forces do during combined arms operations?": {"suggested_filter": "REQUIREMENT"},
+        "What is the definition of operational art?": {"suggested_filter": "DEFINITION"},
+        "-- Cross-document retrieval --": None,
+        "What is the intelligence warfighting function?": {"suggested_filter": None},
+        "What is cyberspace and how does the Army operate in it?": {"suggested_filter": None},
+        "What is the military decision-making process?": {"suggested_filter": None},
+        "What are the fundamentals of planning?": {"suggested_filter": "REQUIREMENT"},
+        "-- Out-of-scope (no answer expected) --": None,
+        "What is the doctrine for naval mine countermeasures?": {"suggested_filter": None},
+        "-- Custom query --": None,
+    }
+
+    preset = st.selectbox("Select a question:", list(PRESET_QUERIES.keys()))
+
+    if preset == "-- Custom query --":
+        query = st.text_input("Enter your question:")
+    elif preset.startswith("--"):
+        query = ""
+        st.caption("Select a specific question from the dropdown.")
+    else:
+        query = preset
+        meta = PRESET_QUERIES[preset]
+        if meta and meta.get("suggested_filter"):
+            st.caption(f"Suggested filter: {meta['suggested_filter']}")
+
     mode = st.radio("Compare:", ["Raw embeddings only", "ADC (hybrid, no filters)", "Full KD pipeline"],
                     horizontal=True, index=2)
 
