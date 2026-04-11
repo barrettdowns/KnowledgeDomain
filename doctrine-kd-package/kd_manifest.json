@@ -1,0 +1,27 @@
+{
+  "kind": "KnowledgeDomain",
+  "version": "1.0",
+  "metadata": {
+    "name": "doctrine",
+    "display_name": "Military Doctrine",
+    "reuse_tier": "flagship",
+    "source_document": "ADP 3-0",
+    "chunk_count": 219,
+    "modality_distribution": {
+      "DESCRIPTIVE": 66,
+      "DEFINITION": 59,
+      "PERMISSION": 44,
+      "REQUIREMENT": 43,
+      "PROHIBITION": 7
+    }
+  },
+  "schema": {
+    "migration": "V001__create_kd_doctrine.sql"
+  },
+  "chunking": {
+    "strategy": "atomic_doctrine_chunking"
+  },
+  "benchmarks": {
+    "eval_dataset": "doctrine_qa.json"
+  }
+}

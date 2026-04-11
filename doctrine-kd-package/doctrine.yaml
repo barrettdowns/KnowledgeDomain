@@ -1,0 +1,29 @@
+kind: KnowledgeDomain
+version: "1.0"
+
+metadata:
+  name: doctrine
+  display_name: "Military Doctrine"
+  reuse_tier: flagship
+  source_document: "ADP 3-0"
+  intra_domain_boundary: true
+
+schema:
+  table_name: kd_doctrine
+  migration: V001__create_kd_doctrine.sql
+
+chunking:
+  strategy: atomic_doctrine_chunking
+  grain: paragraph
+  adc_config: ../ADC/config/adp3_0.yaml
+
+retrieval:
+  search_backend: pgvector
+  alpha: 0.7
+  top_k: 10
+  vector_fields: ["primary_embedding"]
+
+embedding:
+  model: all-MiniLM-L6-v2
+  dimensions: 384
+  note: "Prototype uses local sentence-transformers. Production uses text-embedding-3-large at 1024 dims."

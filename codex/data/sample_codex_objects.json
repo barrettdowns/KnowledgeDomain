@@ -1,0 +1,334 @@
+[
+  {
+    "codex_id": "CODEX-2024-0142",
+    "context_envelope": {
+      "echelon": "battalion",
+      "phase": "defensive_operations",
+      "mission_type": "area_defense",
+      "domain": "land"
+    },
+    "triggers": ["enemy_armor_approaching", "defensive_positions_established"],
+    "required_observations": ["enemy_composition_confirmed", "engagement_area_identified", "obstacle_plan_coordinated"],
+    "allowed_actions": [
+      {
+        "action": "establish_engagement_area",
+        "parameters": {"type": "armor_kill_zone"},
+        "intended_effects": ["canalize_enemy_armor", "enable_massed_fires"]
+      },
+      {
+        "action": "position_direct_fire_weapons",
+        "parameters": {"orientation": "primary_avenue_of_approach"},
+        "intended_effects": ["achieve_interlocking_fires", "maximize_standoff"]
+      },
+      {
+        "action": "coordinate_obstacle_plan",
+        "parameters": {"type": "situational_obstacles"},
+        "intended_effects": ["disrupt_enemy_movement", "canalize_into_engagement_area"]
+      }
+    ],
+    "intended_effects": ["defeat_enemy_attack", "retain_key_terrain", "preserve_combat_power"],
+    "constraints": ["ROE_must_be_confirmed", "no_fires_in_civilian_areas", "maintain_reserve"],
+    "tradeoffs": [
+      {
+        "action": "commit_reserve_early",
+        "degradation": "reduces_defensive_depth",
+        "compensation": "increase_fire_support_coverage"
+      },
+      {
+        "action": "forward_position_forces",
+        "degradation": "increases_exposure_to_indirect_fire",
+        "compensation": "improves_observation_of_engagement_area"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0142-01",
+        "pattern_name": "engagement_area_effectiveness",
+        "links": [
+          {
+            "condition": "direct_fire_weapons_positioned_on_primary_avenue",
+            "effect": "interlocking_fires_achieved",
+            "mechanism": "Overlapping sectors of fire create continuous coverage with no gaps in the kill zone",
+            "exception": "enemy_uses_secondary_avenue_to_bypass"
+          },
+          {
+            "condition": "interlocking_fires_achieved",
+            "effect": "enemy_armor_canalized",
+            "mechanism": "Concentrated fire zones force vehicles into predictable movement corridors",
+            "exception": "enemy_has_overwhelming_numerical_superiority"
+          },
+          {
+            "condition": "enemy_armor_canalized",
+            "effect": "engagement_area_effective",
+            "mechanism": "Canalized forces are exposed to massed direct and indirect fires in prepared kill zone",
+            "exception": "enemy_engineers_breach_obstacles_before_fires_effective"
+          }
+        ],
+        "cross_references": ["CODEX-2024-0087"],
+        "provenance": ["FM 3-90-1 Ch.8 Sec.IV Para 8-42", "NTC Rotation 24-06 Lessons Learned"]
+      },
+      {
+        "chain_id": "CC-0142-02",
+        "pattern_name": "obstacle_integration",
+        "links": [
+          {
+            "condition": "obstacle_plan_coordinated",
+            "effect": "enemy_movement_disrupted",
+            "mechanism": "Obstacles force the enemy to slow, stop, or change direction at predetermined points",
+            "exception": null
+          },
+          {
+            "condition": "enemy_movement_disrupted",
+            "effect": "canalize_into_engagement_area",
+            "mechanism": "Disrupted movement funnels enemy formations into prepared fields of fire",
+            "exception": "enemy_dismounts_and_bypasses_obstacles_on_foot"
+          }
+        ],
+        "cross_references": [],
+        "provenance": ["FM 3-90-1 Para 8-48", "ATP 3-90.8 Obstacle Integration"]
+      }
+    ],
+    "measures": ["enemy_vehicles_destroyed", "engagement_area_coverage_percent", "friendly_casualties"],
+    "provenance": ["FM 3-90-1 Ch.8 Sec.IV", "ATP 3-21.8 Section IV", "FM 3-90-1 Para 8-42 through 8-55"]
+  },
+  {
+    "codex_id": "CODEX-2024-0087",
+    "context_envelope": {
+      "echelon": "battalion",
+      "phase": "defensive_operations",
+      "mission_type": "area_defense",
+      "domain": "land"
+    },
+    "triggers": ["defensive_positions_established", "fire_support_coordinated"],
+    "required_observations": ["fire_support_available", "priority_of_fires_established", "target_reference_points_registered"],
+    "allowed_actions": [
+      {
+        "action": "establish_final_protective_fires",
+        "parameters": {"type": "FPF"},
+        "intended_effects": ["prevent_enemy_penetration", "protect_defensive_positions"]
+      },
+      {
+        "action": "register_target_reference_points",
+        "parameters": {"density": "one_per_avenue_of_approach"},
+        "intended_effects": ["enable_rapid_fire_support", "reduce_call_for_fire_time"]
+      },
+      {
+        "action": "establish_fire_support_triggers",
+        "parameters": {"type": "event_based"},
+        "intended_effects": ["synchronize_fires_with_maneuver", "mass_effects_at_decisive_point"]
+      }
+    ],
+    "intended_effects": ["synchronize_fires_and_maneuver", "mass_combat_power_at_decisive_point"],
+    "constraints": ["fire_support_coordination_measures_required", "minimum_safe_distance_enforced"],
+    "tradeoffs": [
+      {
+        "action": "pre_position_ammunition",
+        "degradation": "reduces_mobility_of_fire_support_assets",
+        "compensation": "increases_sustained_rate_of_fire"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0087-01",
+        "pattern_name": "fire_support_synchronization",
+        "links": [
+          {
+            "condition": "target_reference_points_registered",
+            "effect": "call_for_fire_time_reduced",
+            "mechanism": "Pre-registered TRPs eliminate the need for target location computation during contact",
+            "exception": null
+          },
+          {
+            "condition": "call_for_fire_time_reduced",
+            "effect": "fires_synchronized_with_maneuver",
+            "mechanism": "Faster fire missions enable indirect fires to arrive when enemy is in the engagement area, not after",
+            "exception": "communications_disrupted"
+          },
+          {
+            "condition": "fires_synchronized_with_maneuver",
+            "effect": "combat_power_massed_at_decisive_point",
+            "mechanism": "Combined direct and indirect fires concentrate effects simultaneously on canalized enemy",
+            "exception": "fire_support_assets_suppressed"
+          }
+        ],
+        "cross_references": ["CODEX-2024-0142"],
+        "provenance": ["FM 3-09 Ch.5 Para 5-22", "ATP 3-09.42 Section III"]
+      }
+    ],
+    "measures": ["rounds_on_target_time", "fire_mission_response_time", "target_effects_achieved"],
+    "provenance": ["FM 3-09 Ch.5", "ATP 3-09.42 Section III", "FM 3-90-1 Para 8-60 through 8-68"]
+  },
+  {
+    "codex_id": "CODEX-2024-0203",
+    "context_envelope": {
+      "echelon": "company",
+      "phase": "offensive_operations",
+      "mission_type": "movement_to_contact",
+      "domain": "land"
+    },
+    "triggers": ["advance_to_contact_ordered", "enemy_situation_unclear"],
+    "required_observations": ["route_reconnaissance_complete", "lead_element_positioned", "communications_established"],
+    "allowed_actions": [
+      {
+        "action": "establish_advance_guard",
+        "parameters": {"composition": "reinforced_platoon"},
+        "intended_effects": ["provide_early_warning", "develop_situation"]
+      },
+      {
+        "action": "establish_movement_formation",
+        "parameters": {"type": "traveling_overwatch"},
+        "intended_effects": ["balance_speed_and_security", "enable_rapid_deployment"]
+      },
+      {
+        "action": "designate_phase_lines",
+        "parameters": {"interval": "based_on_terrain"},
+        "intended_effects": ["control_rate_of_advance", "synchronize_supporting_elements"]
+      }
+    ],
+    "intended_effects": ["gain_contact_on_favorable_terms", "develop_situation_before_commitment"],
+    "constraints": ["maintain_contact_once_gained", "report_contact_immediately", "do_not_become_decisively_engaged_without_authorization"],
+    "tradeoffs": [
+      {
+        "action": "increase_speed_of_advance",
+        "degradation": "reduces_security_posture",
+        "compensation": "achieve_positional_advantage"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0203-01",
+        "pattern_name": "contact_on_favorable_terms",
+        "links": [
+          {
+            "condition": "advance_guard_established",
+            "effect": "early_warning_provided",
+            "mechanism": "Forward security element encounters enemy first, providing time and space for main body to react",
+            "exception": "enemy_bypasses_advance_guard"
+          },
+          {
+            "condition": "early_warning_provided",
+            "effect": "main_body_can_deploy_before_contact",
+            "mechanism": "Warning time allows commander to transition from movement to maneuver formation before decisive engagement",
+            "exception": "enemy_contact_is_simultaneous_across_formation"
+          },
+          {
+            "condition": "main_body_can_deploy_before_contact",
+            "effect": "contact_gained_on_favorable_terms",
+            "mechanism": "Deployed formation fights from prepared posture rather than reacting from march column",
+            "exception": "terrain_prevents_deployment"
+          }
+        ],
+        "cross_references": [],
+        "provenance": ["FM 3-90-1 Ch.4 Sec.II Para 4-18", "ATP 3-21.8 Chapter 3"]
+      },
+      {
+        "chain_id": "CC-0203-02",
+        "pattern_name": "speed_security_balance",
+        "links": [
+          {
+            "condition": "traveling_overwatch_established",
+            "effect": "balanced_speed_and_security",
+            "mechanism": "Trail element maintains visual contact with lead, providing immediate suppressive fire if lead is engaged",
+            "exception": "visibility_conditions_prevent_overwatch"
+          },
+          {
+            "condition": "balanced_speed_and_security",
+            "effect": "situation_developed_without_decisive_engagement",
+            "mechanism": "Formation can observe and report without committing the entire force to contact",
+            "exception": "enemy_force_is_larger_than_anticipated"
+          }
+        ],
+        "cross_references": [],
+        "provenance": ["FM 3-90-1 Para 4-22", "ATP 3-21.8 Para 3-15"]
+      }
+    ],
+    "measures": ["time_to_contact", "friendly_posture_at_contact", "intelligence_gained_before_contact"],
+    "provenance": ["FM 3-90-1 Ch.4 Sec.II", "ATP 3-21.8 Chapter 3", "FM 3-90-1 Para 4-18 through 4-30"]
+  },
+  {
+    "codex_id": "CODEX-2024-0315",
+    "context_envelope": {
+      "echelon": "battalion",
+      "phase": "defensive_operations",
+      "mission_type": "urban_defense",
+      "domain": "land"
+    },
+    "triggers": ["urban_terrain_occupied", "enemy_advance_into_urban_area"],
+    "required_observations": ["civilian_population_assessed", "building_classification_complete", "fields_of_fire_identified"],
+    "allowed_actions": [
+      {
+        "action": "establish_strongpoints",
+        "parameters": {"density": "key_intersections_and_buildings"},
+        "intended_effects": ["create_mutually_supporting_positions", "deny_enemy_freedom_of_movement"]
+      },
+      {
+        "action": "prepare_engagement_areas_between_buildings",
+        "parameters": {"type": "combined_arms_kill_zone"},
+        "intended_effects": ["canalize_enemy_into_prepared_fires", "exploit_urban_terrain"]
+      },
+      {
+        "action": "establish_observation_posts",
+        "parameters": {"location": "upper_floors_key_buildings"},
+        "intended_effects": ["provide_early_warning", "enable_precision_engagement"]
+      }
+    ],
+    "intended_effects": ["defeat_enemy_in_urban_terrain", "minimize_civilian_casualties", "retain_key_urban_infrastructure"],
+    "constraints": ["civilian_protection_measures_required", "ROE_urban_specific", "minimize_collateral_damage", "no_fires_on_protected_structures"],
+    "tradeoffs": [
+      {
+        "action": "increase_firepower_in_urban_area",
+        "degradation": "increases_collateral_damage_risk",
+        "compensation": "restrict_fires_to_identified_targets_with_PID"
+      },
+      {
+        "action": "disperse_forces_across_buildings",
+        "degradation": "reduces_mutual_support",
+        "compensation": "increases_coverage_and_survivability"
+      }
+    ],
+    "causal_chains": [
+      {
+        "chain_id": "CC-0315-01",
+        "pattern_name": "urban_mutual_support",
+        "links": [
+          {
+            "condition": "strongpoints_established_at_key_intersections",
+            "effect": "mutually_supporting_positions_created",
+            "mechanism": "Positions at intersections provide interlocking observation and fire down multiple streets simultaneously",
+            "exception": "buildings_are_structurally_unsound"
+          },
+          {
+            "condition": "mutually_supporting_positions_created",
+            "effect": "enemy_freedom_of_movement_denied",
+            "mechanism": "Any movement through the urban area is observed and engaged from multiple directions",
+            "exception": "enemy_uses_subterranean_routes"
+          }
+        ],
+        "cross_references": ["CODEX-2024-0142"],
+        "provenance": ["ATP 3-06 Ch.6 Para 6-31", "FM 3-90-1 Ch.8 Urban Annex"]
+      },
+      {
+        "chain_id": "CC-0315-02",
+        "pattern_name": "civilian_protection_constraint",
+        "links": [
+          {
+            "condition": "civilian_population_assessed",
+            "effect": "protected_areas_identified",
+            "mechanism": "Assessment determines which buildings contain civilians, hospitals, cultural sites requiring fire restrictions",
+            "exception": null
+          },
+          {
+            "condition": "protected_areas_identified",
+            "effect": "fires_restricted_to_PID_targets",
+            "mechanism": "Engagement rules tightened to require positive identification before fires, preventing collateral damage",
+            "exception": "force_protection_emergency_overrides_restrictions"
+          }
+        ],
+        "cross_references": [],
+        "provenance": ["ATP 3-06.11 Section II", "LOAC/IHL Civilian Protection Provisions"]
+      }
+    ],
+    "measures": ["civilian_casualties_prevented", "enemy_advance_halted", "key_infrastructure_retained"],
+    "provenance": ["ATP 3-06 Ch.6", "FM 3-90-1 Ch.8 Urban Annex", "ATP 3-06.11 Section II"]
+  }
+]
