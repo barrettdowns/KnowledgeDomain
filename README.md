@@ -147,11 +147,11 @@ kd-platform/
 
 | Configuration | NDCG@10 | MRR | Precision@5 |
 |---------------|---------|-----|-------------|
-| Raw embeddings | 0.4848 | 0.5333 | 0.2000 |
-| ADC (hybrid search) | 0.5130 | 0.5667 | 0.2267 |
-| Full pipeline (with taxonomy filters) | 0.4771 | 0.5667 | 0.2000 |
+| Raw embeddings | 0.2714 | 0.2721 | 0.1111 |
+| ADC (hybrid search) | 0.2785 | 0.2814 | 0.1111 |
+| Full pipeline (with taxonomy filters) | 0.2920 | 0.3127 | 0.1185 |
 
-ADC improves retrieval quality over raw embeddings (+5.8% NDCG@10). Taxonomy filtering trades breadth for precision when targeting specific doctrine types.
+Each layer improves on the one below it. The full pipeline beats raw embeddings by +7.6% NDCG@10 and +14.9% MRR across 27 evaluated questions spanning 5 documents. ADC structure alone accounts for a +2.6% NDCG@10 lift; semantic lifting and taxonomy filtering add the rest.
 
 ## Technical Notes
 
