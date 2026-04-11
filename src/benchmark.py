@@ -4,7 +4,7 @@ import math
 import logging
 from pathlib import Path
 
-from src.retrieve import retrieve, retrieve_raw
+from src.retrieve import retrieve, retrieve_raw, retrieve_boosted
 from src.db import get_connection
 
 logger = logging.getLogger(__name__)
@@ -87,8 +87,9 @@ def run_benchmark(qa_path: str = "benchmarks/doctrine_qa.json") -> dict:
 
         filters = q.get("filters", {})
 
-        # Full pipeline: hybrid search with filters
-        full_results = retrieve(q["query"], top_k=10, filters=filters if filters else None)
+        # Full pipeline: tuned hybrid search (alpha=0.80) with modality boost
+        modality_boost = filters.get("modality") if filters else None
+        full_results = retrieve_boosted(q["query"], top_k=10, alpha=0.80, modality_boost=modality_boost, boost_weight=0.05)
         full_ids = [str(r["record_id"]) for r in full_results]
 
         # ADC only: hybrid search, no taxonomy filters

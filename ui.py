@@ -14,7 +14,7 @@ st.set_page_config(page_title="KD Platform", layout="wide")
 
 PAGES = [
     "1. The Problem",
-    "2. ADC -- Structure from Text",
+    "2. Atomic Doctrine Chunking (ADC)",
     "3. Semantic Lifting",
     "4. Retrieval",
     "5. CODEX",
@@ -83,7 +83,7 @@ if page == PAGES[0]:
 
 # --- PAGE 2: ADC ---
 elif page == PAGES[1]:
-    st.title("ADC -- Structure from Text")
+    st.title("Atomic Doctrine Chunking (ADC) -- Structure from Text")
     stats = get_stats()
 
     col1, col2, col3 = st.columns(3)

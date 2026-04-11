@@ -58,7 +58,8 @@ def retrieve(
             doctrinal_phase, doctrinal_phase_confidence,
             (
                 %(alpha)s * (1 - (primary_embedding <=> %(query_embedding)s))
-                + (1 - %(alpha)s) * ts_rank_cd(content_fts, plainto_tsquery('english', %(query_text)s))
+                + (1 - %(alpha)s) * (ts_rank_cd(content_fts, plainto_tsquery('english', %(query_text)s))
+                   / (1 + ts_rank_cd(content_fts, plainto_tsquery('english', %(query_text)s))))
             ) AS score
         FROM kd_doctrine
         {where_sql}
@@ -75,6 +76,59 @@ def retrieve(
         conn.close()
 
     return results
+
+
+def retrieve_boosted(
+    query: str,
+    top_k: int = 10,
+    alpha: float = 0.7,
+    modality_boost: str = None,
+    boost_weight: float = 0.25,
+) -> list[dict]:
+    """Hybrid search with optional modality boost (not hard filter).
+    Chunks matching the boosted modality get a score bonus, but
+    non-matching chunks are not excluded."""
+    query_embedding = embed_query(query)
+
+    boost_sql = ""
+    params = {
+        "query_embedding": str(query_embedding),
+        "query_text": query,
+        "top_k": top_k,
+        "alpha": alpha,
+    }
+
+    if modality_boost:
+        boost_sql = f"+ CASE WHEN modality = %(modality_boost)s THEN {boost_weight} ELSE 0 END"
+        params["modality_boost"] = modality_boost
+
+    sql = f"""
+        SELECT
+            record_id, chunk_content, paragraph_id, hierarchy_path,
+            modality, modality_confidence, modality_signals,
+            glossary_refs, acronym_refs, document_type,
+            page_start, page_end, source_document,
+            warfighting_function, warfighting_function_confidence,
+            echelon, echelon_confidence,
+            doctrinal_phase, doctrinal_phase_confidence,
+            (
+                %(alpha)s * (1 - (primary_embedding <=> %(query_embedding)s))
+                + (1 - %(alpha)s) * (ts_rank_cd(content_fts, plainto_tsquery('english', %(query_text)s))
+                   / (1 + ts_rank_cd(content_fts, plainto_tsquery('english', %(query_text)s))))
+                {boost_sql}
+            ) AS score
+        FROM kd_doctrine
+        ORDER BY score DESC
+        LIMIT %(top_k)s
+    """
+
+    conn = get_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            return cur.fetchall()
+    finally:
+        conn.close()
 
 
 def retrieve_raw(query: str, top_k: int = 10) -> list[dict]:
