@@ -81,10 +81,10 @@ Place the following PDFs (publicly available from the Army Publishing Directorat
 ```bash
 # 1. Ingest: PDF -> ADC chunks -> embed -> store (repeat for each document)
 python cli.py ingest --pdf data/ADP_3-0.pdf --config ../ADC/config/adp3_0.yaml
-python cli.py ingest --pdf data/FM_2-0.pdf --config ../ADC/config/default.yaml
-python cli.py ingest --pdf data/FM_3-12.pdf --config ../ADC/config/default.yaml
-python cli.py ingest --pdf data/FM_3-61.pdf --config ../ADC/config/default.yaml
-python cli.py ingest --pdf data/FM_5-0.pdf --config ../ADC/config/default.yaml
+python cli.py ingest --pdf data/FM_2-0.pdf --config ../ADC/config/fm_default.yaml
+python cli.py ingest --pdf data/FM_3-12.pdf --config ../ADC/config/fm_default.yaml
+python cli.py ingest --pdf data/FM_3-61.pdf --config ../ADC/config/fm_default.yaml
+python cli.py ingest --pdf data/FM_5-0.pdf --config ../ADC/config/fm_default.yaml
 
 # 2. Lift: extract taxonomy fields via Claude
 python cli.py lift --batch-size 20

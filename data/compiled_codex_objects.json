@@ -232,7 +232,8 @@
       "ADP 3-0 5-100",
       "ADP 3-0 5-101",
       "ADP 3-0 5-102"
-    ]
+    ],
+    "name": "Military Decision Making Process (Brigade And Above)"
   },
   {
     "codex_id": "CODEX-ADP30-0002",
@@ -407,7 +408,8 @@
       "ADP 3-0 5-135",
       "ADP 3-0 5-136",
       "ADP 3-0 5-137"
-    ]
+    ],
+    "name": "Military Decision Making Process (Brigade)"
   },
   {
     "codex_id": "CODEX-ADP30-0003",
@@ -604,7 +606,8 @@
       "ADP 3-0 5-12",
       "ADP 3-0 5-13",
       "ADP 3-0 5-14"
-    ]
+    ],
+    "name": "Public Affairs Planning (All)"
   },
   {
     "codex_id": "CODEX-ADP30-0004",
@@ -808,7 +811,8 @@
       "ADP 3-0 8-14",
       "ADP 3-0 8-28",
       "ADP 3-0 8-29"
-    ]
+    ],
+    "name": "Deep Close Rear Operations (Division)"
   },
   {
     "codex_id": "CODEX-ADP30-0005",
@@ -1013,7 +1017,8 @@
       "ADP 3-0 1-20",
       "ADP 3-0 1-61",
       "ADP 3-0 1-62"
-    ]
+    ],
+    "name": "Intelligence Operations (All)"
   },
   {
     "codex_id": "CODEX-ADP30-0006",
@@ -1221,7 +1226,8 @@
       "ADP 3-0 6-22",
       "ADP 3-0 6-23",
       "ADP 3-0 6-24"
-    ]
+    ],
+    "name": "Media Operations Center (Corps And Above)"
   },
   {
     "codex_id": "CODEX-ADP30-0007",
@@ -1452,7 +1458,8 @@
       "ADP 3-0 7-11",
       "ADP 3-0 7-12",
       "ADP 3-0 7-13"
-    ]
+    ],
+    "name": "Troop Leading Procedures (Company)"
   },
   {
     "codex_id": "CODEX-ADP30-0008",
@@ -1656,6 +1663,7 @@
       "ADP 3-0 4-17",
       "ADP 3-0 4-18",
       "ADP 3-0 4-19"
-    ]
+    ],
+    "name": "Combined Arms Operations (Brigade)"
   }
 ]
