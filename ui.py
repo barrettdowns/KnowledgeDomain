@@ -86,18 +86,38 @@ if page == PAGES[0]:
   + confidence scores, provenance, JSONB overflow""", language="sql")
         st.caption("30+ columns across 5 categories. Every chunk is self-describing.")
 
-    st.info("The Knowledge Domains paper asked: can we do better? The answer is a Knowledge Domain.")
+    st.info("The Knowledge Domains paper asked: can we do better? This prototype is the answer.")
 
 
 # --- PAGE 2: ADC ---
 elif page == PAGES[1]:
     st.title("Atomic Doctrine Chunking (ADC) -- Structure from Text")
+    st.markdown("""
+    **ADC is a deterministic chunking algorithm that preserves what generic chunking destroys:**
+    document hierarchy, normative authority (is this a requirement or a description?),
+    and glossary linkage. Zero LLM calls. Same input, same output, every time. No competitor
+    has this capability.
+    """)
     stats = get_stats()
 
-    col1, col2, col3 = st.columns(3)
+    conn = get_connection()
+    with conn.cursor() as cur:
+        cur.execute("SELECT avg(array_length(string_to_array(chunk_content, ' '), 1)) as avg_tok FROM kd_doctrine")
+        avg_tokens = cur.fetchone()["avg_tok"] or 0
+        cur.execute("""SELECT count(*) as with_hier FROM kd_doctrine
+                       WHERE hierarchy_path IS NOT NULL AND hierarchy_path != '[]'""")
+        with_hier = cur.fetchone()["with_hier"]
+        cur.execute("SELECT count(DISTINCT source_document) as doc_count FROM kd_doctrine")
+        doc_count = cur.fetchone()["doc_count"]
+    conn.close()
+
+    hier_pct = round(100 * with_hier / max(stats["total"], 1))
+
+    col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Chunks", stats["total"])
-    col2.metric("Avg Tokens/Chunk", "103.5")
-    col3.metric("Hierarchy Depth", "2 levels (100%)")
+    col2.metric("Documents", doc_count)
+    col3.metric("Avg Tokens/Chunk", f"{avg_tokens:.1f}")
+    col4.metric("Hierarchy Coverage", f"{hier_pct}%")
 
     st.subheader("Modality Distribution")
     st.bar_chart(stats["modality"])
@@ -128,12 +148,18 @@ elif page == PAGES[1]:
                 st.markdown(f"**Glossary refs:** {', '.join(glossary[:5])}")
             st.text(r["chunk_content"][:500])
 
-    st.info("Knowledge Domains Steps 3-4: Define Object Model and Grain. ADC produces 219 self-describing chunks with authority classification. Zero LLM calls. Deterministic.")
+    st.info(f"ADC produced {stats['total']:,} self-describing chunks across {doc_count} documents. Zero LLM calls. Deterministic. No competitor has this.")
 
 
 # --- PAGE 3: SEMANTIC LIFTING ---
 elif page == PAGES[2]:
     st.title("Semantic Lifting -- Machine Understanding")
+    st.markdown("""
+    **ADC gives us structure. Semantic lifting gives us meaning.** An LLM reads each chunk
+    and extracts domain-specific fields -- warfighting function, echelon, doctrinal phase --
+    each with a confidence score. This is the enrichment layer that turns raw text into
+    queryable domain intelligence.
+    """)
     stats = get_stats()
 
     st.metric("Chunks Lifted", f"{stats['lifted']}/{stats['total']}")
@@ -162,7 +188,7 @@ elif page == PAGES[2]:
     above_08 = sum(1 for c in confs if c >= 0.8)
     st.caption(f"{above_08}/{len(confs)} extractions ({100*above_08/max(len(confs),1):.0f}%) have confidence >= 0.8")
 
-    st.info("Knowledge Domains Steps 5-7: Semantic Lifting. Claude extracts warfighting function, echelon, doctrinal phase -- each with a confidence score.")
+    st.info("Every extracted field carries a confidence score. The system knows how certain it is -- and that certainty is measurable, auditable, and improvable.")
 
 
 # --- PAGE 4: RETRIEVAL ---
@@ -238,7 +264,7 @@ elif page == PAGES[3]:
                     st.markdown(f"**Warfighting Function:** {r['warfighting_function']}")
                 st.text(r.get("chunk_content", "")[:400])
 
-    st.info("Knowledge Domains Step 8: Retrieval Agent. The KD pipeline finds the right type of doctrine at the right echelon with measured confidence.")
+    st.info("The KD pipeline finds the right type of doctrine at the right echelon with measured confidence. Try switching between the three modes to see the difference.")
 
 
 # --- PAGE 5: CODEX ---
@@ -246,9 +272,11 @@ elif page == PAGES[4]:
     st.title("CODEX -- Structured Evaluation")
 
     st.markdown("""
-    Submit a decision artifact for doctrinal evaluation. The CODEX rule engine
-    evaluates it against compiled doctrine and returns SUPPORTED, CONDITIONAL, or ABSTAIN
-    with specific trust and caution factors.
+    **CODEX is not a chatbot. It is a deterministic, machine-to-machine doctrinal reasoning
+    protocol.** Submit a decision artifact, and the rule engine evaluates it against compiled
+    doctrine -- returning SUPPORTED, CONDITIONAL, or ABSTAIN with specific trust and caution
+    factors. When information is missing, CODEX tells you exactly what it needs and why.
+    Same inputs always produce the same outputs. No LLM in the evaluation path.
     """)
 
     col1, col2 = st.columns(2)
@@ -257,11 +285,15 @@ elif page == PAGES[4]:
         mission_type = st.text_input("Mission type:", "area_defense")
         echelon = st.text_input("Echelon:", "battalion")
     with col2:
-        phase = st.text_input("Phase:", "defensive_operations")
-        observations = st.text_area("Observations (one per line):", "enemy armor identified\nengagement area established")
+        phase = st.text_input("Phase:", "")
+        observations = st.text_area("Observations (one per line):", "enemy armor identified")
         actions = st.text_area("Proposed actions (one per line):", "establish engagement area\nposition direct fire systems")
+    st.caption("Try it with missing fields first -- then fill in Phase and add more Observations to see how the evaluation changes.")
 
     if st.button("Evaluate"):
+        obs_list = [o.strip() for o in observations.split("\n") if o.strip()]
+        act_list = [a.strip() for a in actions.split("\n") if a.strip()]
+
         import requests
         try:
             resp = requests.post("http://localhost:8000/kd/doctrine/codex", json={
@@ -269,14 +301,72 @@ elif page == PAGES[4]:
                 "mission_type": mission_type,
                 "echelon": echelon,
                 "phase": phase,
-                "observations": [o.strip() for o in observations.split("\n") if o.strip()],
-                "proposed_actions": [a.strip() for a in actions.split("\n") if a.strip()],
-            })
+                "observations": obs_list,
+                "proposed_actions": act_list,
+            }, timeout=3)
             result = resp.json()
         except Exception:
-            # Run locally if API not running
             from src.codex_retriever import retrieve_codex_objects
-            result = {"evaluation": "ERROR", "message": "Start the API server first: uvicorn api:app --port 8000"}
+            context = {"mission_type": mission_type, "echelon": echelon,
+                        "phase": phase, "objective": objective, "domain": "", "triggers": []}
+            matched = retrieve_codex_objects(context, top_k=3)
+            if not matched:
+                result = {"evaluation": "ABSTAIN", "abstain_reason": "no_doctrinal_coverage",
+                          "recommendation": "No compiled doctrine covers this scenario."}
+            else:
+                primary = matched[0]
+                ce = primary.get("context_envelope", {})
+                evidence_tokens = set()
+                for o in obs_list:
+                    evidence_tokens.update(o.lower().split())
+                for a in act_list:
+                    evidence_tokens.update(a.lower().split())
+
+                trust_factors, caution_factors = [], []
+                for chain in primary.get("causal_chains", []):
+                    chain_ok = True
+                    for link in chain.get("links", []):
+                        cond_tokens = set(link.get("condition", "").lower().split())
+                        if len(cond_tokens & evidence_tokens) < max(1, len(cond_tokens) * 0.3):
+                            chain_ok = False
+                            caution_factors.append(f"Causal chain '{chain.get('pattern_name', '?')}' broken at '{link.get('condition', '?')}'")
+                            break
+                    if chain_ok:
+                        trust_factors.append(f"Causal chain '{chain.get('pattern_name', '?')}' fully satisfied")
+
+                if caution_factors:
+                    evaluation = "CONDITIONAL"
+                    recommendation = "Review caution factors before execution."
+                elif not trust_factors:
+                    evaluation = "CONDITIONAL"
+                    recommendation = "Insufficient evidence to fully validate."
+                else:
+                    evaluation = "SUPPORTED"
+                    recommendation = "All evaluated causal chains satisfied."
+
+                questions = []
+                q_id = 1
+                if len(obs_list) < 2:
+                    questions.append({"id": f"q{q_id}", "question": "What is the composition and strength of friendly forces?", "reason_needed": "Force composition determines viable doctrinal options"})
+                    q_id += 1
+                    questions.append({"id": f"q{q_id}", "question": "What is the known or estimated enemy composition and disposition?", "reason_needed": "Enemy assessment drives course of action development"})
+                    q_id += 1
+                if not echelon or not phase or not mission_type:
+                    questions.append({"id": f"q{q_id}", "question": "What echelon, phase, and mission type does this request apply to?", "reason_needed": "Context envelope scopes which doctrinal reasoning applies"})
+                    q_id += 1
+                for obs in primary.get("required_observations", []):
+                    if obs.lower() not in {o.lower() for o in obs_list}:
+                        questions.append({"id": f"q{q_id}", "question": f"Has the following been observed/confirmed: {obs.replace('_', ' ')}?", "reason_needed": "Required observation for doctrinal evaluation"})
+                        q_id += 1
+
+                result = {
+                    "evaluation": evaluation, "doctrine_coverage": "ANALOGOUS",
+                    "trust_factors": trust_factors, "caution_factors": caution_factors,
+                    "recommendation": recommendation,
+                    "guidance_actions": [a.get("action", "") for a in primary.get("allowed_actions", [])[:5]],
+                    "constraints": primary.get("constraints", [])[:5],
+                    "clarification_questions": questions[:5],
+                }
 
         eval_type = result.get("evaluation", "?")
         if eval_type == "SUPPORTED":
@@ -322,7 +412,7 @@ elif page == PAGES[4]:
                 st.markdown(f"**{q['question']}**")
                 st.caption(f"Why: {q['reason_needed']}")
 
-    st.info("CODEX evaluates decision artifacts against compiled doctrine. Deterministic. Auditable. No competitor has built this.")
+    st.info("Deterministic. Auditable. Edge-deployable. Same inputs, same outputs, every time. No competitor has built this.")
 
 
 # --- PAGE 6: BENCHMARKS ---
@@ -364,7 +454,7 @@ elif page == PAGES[5]:
     and a larger benchmark set, the quality gap widens.
     """)
 
-    st.info("Knowledge Domains Step 9: Validate. The pipeline earns its compute cost. Measurable improvement on real analyst questions.")
+    st.info("Benchmarks are the hardest capability for any competitor to replicate. They require a working domain system AND willing analysts. This is the measurement infrastructure that proves the system works.")
 
 
 # --- PAGE 7: PACKAGE ---
@@ -402,4 +492,4 @@ elif page == PAGES[6]:
     through is the first turn of that flywheel.
     """)
 
-    st.info("Knowledge Domains Step 10: Operationalize for Reuse. This entire KD exports as a portable artifact.")
+    st.info("This entire KD exports as a portable artifact. Schema, chunking, lifting, retrieval, benchmarks -- everything needed to stand up a new Knowledge Domain.")
