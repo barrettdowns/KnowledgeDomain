@@ -1,20 +1,20 @@
 # KD Platform Prototype
 
-End-to-end Knowledge Domain platform demonstrating the Knowledge Domain vision: ADC chunking, semantic lifting, hybrid retrieval, CODEX evaluation, benchmarks, and reuse packaging. Runs locally with Docker Compose and a single PDF (ADP 3-0).
+End-to-end Knowledge Domain platform demonstrating the Knowledge Domains vision: ADC chunking, semantic lifting, hybrid retrieval, CODEX evaluation, benchmarks, and reuse packaging. Runs locally with Docker Compose against 5 doctrine documents (ADP 3-0, FM 2-0, FM 3-12, FM 3-61, FM 5-0).
 
 This is not production software. It is a reference implementation that shows how every component connects -- using real data, real embeddings, real LLM extraction, and real doctrinal evaluation.
 
-## How This Maps to the Knowledge Domain Vision
+## How This Maps to the Knowledge Domains Vision
 
 | Concept | Where It Lives | File(s) |
 |---------|---------------|---------|
-| "Each KD maps to a dedicated table" (Steps 3-4) | kd_doctrine table with 5 column categories | `migrations/V001__create_kd_doctrine.sql` |
-| "Atomic Doctrine Chunking" (Steps 3-4) | ADC integration producing 219 chunks with hierarchy + modality | `src/ingest.py` |
-| "Semantic lifting models extract domain-relevant structure" (Steps 5-7) | Claude-based taxonomy extraction with confidence scores | `src/lift.py` |
-| "Retrieval agent per KD" (Step 8) | Hybrid search with metadata filtering and confidence thresholds | `src/retrieve.py`, `api.py` |
-| "CODEX conversation layer" (Steps 8-9) | Deterministic evaluation with causal chain traversal | `src/codex_retriever.py`, `src/compile_codex.py` |
-| "Validate against real questions" (Step 9) | Benchmark runner with NDCG@10, MRR, precision/recall | `src/benchmark.py` |
-| "Operationalize for reuse" (Step 10) | KD package export as portable artifact | `cli.py export` |
+| Each KD maps to a dedicated table | kd_doctrine table with 5 column categories | `migrations/V001__create_kd_doctrine.sql` |
+| Atomic Doctrine Chunking | ADC integration producing ~2,900 chunks across 5 documents with hierarchy + modality | `src/ingest.py` |
+| Semantic lifting extracts domain-relevant structure | Claude-based taxonomy extraction with confidence scores | `src/lift.py` |
+| Retrieval agent per KD | Hybrid search with metadata filtering and confidence thresholds | `src/retrieve.py`, `api.py` |
+| CODEX conversation layer | Deterministic evaluation with causal chain traversal | `src/codex_retriever.py`, `src/compile_codex.py` |
+| Validate against real questions | Benchmark runner with NDCG@10, MRR, precision/recall across 28 questions | `src/benchmark.py` |
+| Operationalize for reuse | KD package export as portable artifact | `cli.py export` |
 
 ## How This Maps to Our Platform
 
@@ -64,17 +64,27 @@ cp .env.example .env
 # Edit .env with your ANTHROPIC_API_KEY
 ```
 
-### Get the PDF
+### Get the Source Documents
 
-Place ADP 3-0 (publicly available from the Army Publishing Directorate) at `data/ADP_3-0.pdf`.
+Place the following PDFs (publicly available from the Army Publishing Directorate) in the `data/` directory:
+
+- `ADP_3-0.pdf` -- Operations
+- `FM_2-0.pdf` -- Intelligence
+- `FM_3-12.pdf` -- Cyberspace Operations and Electromagnetic Warfare
+- `FM_3-61.pdf` -- Public Affairs
+- `FM_5-0.pdf` -- Planning
 
 ## Usage
 
 ### Step-by-step pipeline
 
 ```bash
-# 1. Ingest: PDF -> ADC chunks -> embed -> store
+# 1. Ingest: PDF -> ADC chunks -> embed -> store (repeat for each document)
 python cli.py ingest --pdf data/ADP_3-0.pdf --config ../ADC/config/adp3_0.yaml
+python cli.py ingest --pdf data/FM_2-0.pdf --config ../ADC/config/default.yaml
+python cli.py ingest --pdf data/FM_3-12.pdf --config ../ADC/config/default.yaml
+python cli.py ingest --pdf data/FM_3-61.pdf --config ../ADC/config/default.yaml
+python cli.py ingest --pdf data/FM_5-0.pdf --config ../ADC/config/default.yaml
 
 # 2. Lift: extract taxonomy fields via Claude
 python cli.py lift --batch-size 20
@@ -157,5 +167,5 @@ Each layer improves on the one below it. The full pipeline beats raw embeddings 
 
 - **Embeddings:** all-MiniLM-L6-v2 (384 dims) for the prototype. Production uses text-embedding-3-large (1024 dims).
 - **LLM:** Claude Sonnet for lifting and CODEX compilation. Evaluation path is deterministic (no LLM).
-- **CODEX objects:** Pre-compiled from ADP 3-0 sections. Production uses a dedicated table with SME validation.
-- **Benchmark Q/A:** 28 questions with paragraph-ID ground truth across 5 documents. Resolved to database records at runtime.
+- **CODEX objects:** Pre-compiled from all 5 source documents. Production uses a dedicated table with SME validation.
+- **Benchmark Q/A:** 28 questions with paragraph-ID ground truth across 5 documents (ADP 3-0, FM 2-0, FM 3-12, FM 3-61, FM 5-0). Resolved to database records at runtime.
