@@ -152,6 +152,56 @@ def codex_endpoint(req: CodexRequest):
         evaluation = "SUPPORTED"
         recommendation = "All evaluated causal chains satisfied."
 
+    # Generate clarification questions for missing information
+    questions = []
+    q_id = 1
+
+    if not req.observations or len(req.observations) < 2:
+        questions.append({
+            "id": f"q{q_id}",
+            "question": "What is the composition and strength of friendly forces?",
+            "reason_needed": "Force composition determines viable doctrinal options",
+        })
+        q_id += 1
+        questions.append({
+            "id": f"q{q_id}",
+            "question": "What is the known or estimated enemy composition and disposition?",
+            "reason_needed": "Enemy assessment drives course of action development",
+        })
+        q_id += 1
+
+    if not req.echelon or not req.phase or not req.mission_type:
+        questions.append({
+            "id": f"q{q_id}",
+            "question": "What echelon, phase, and mission type does this request apply to?",
+            "reason_needed": "Context envelope scopes which doctrinal reasoning applies",
+        })
+        q_id += 1
+
+    for chain in primary.get("causal_chains", []):
+        for link in chain.get("links", []):
+            condition = link.get("condition", "")
+            condition_tokens = set(condition.lower().split())
+            overlap = condition_tokens & evidence_tokens
+            if len(overlap) < max(1, len(condition_tokens) * 0.3):
+                questions.append({
+                    "id": f"q{q_id}",
+                    "question": f"Has the following been observed/confirmed: {condition}?",
+                    "reason_needed": f"Required for causal chain '{chain.get('pattern_name', '?')}'",
+                })
+                q_id += 1
+                break
+
+    for obs in primary.get("required_observations", []):
+        obs_norm = obs.lower()
+        if obs_norm not in {o.lower() for o in req.observations}:
+            questions.append({
+                "id": f"q{q_id}",
+                "question": f"Has the following been observed/confirmed: {obs.replace('_', ' ')}?",
+                "reason_needed": "Required observation for doctrinal evaluation",
+            })
+            q_id += 1
+
     return {
         "evaluation": evaluation,
         "doctrine_coverage": coverage,
@@ -161,6 +211,7 @@ def codex_endpoint(req: CodexRequest):
         "recommendation": recommendation,
         "guidance_actions": [a.get("action", "") for a in primary.get("allowed_actions", [])[:5]],
         "constraints": primary.get("constraints", [])[:5],
+        "clarification_questions": questions[:5],
         "codex_object_used": primary.get("codex_id"),
         "context_envelope_match": {
             "requested": context,

@@ -50,6 +50,14 @@ def get_stats():
 if page == PAGES[0]:
     st.title("The Problem")
     st.markdown("""
+    **What we are building is a governed, evaluable, reusable semantic layer over
+    customer data -- not a vector database.** The raw data platform is government-owned;
+    the enrichment layer -- KD schemas, semantic lifting, confidence scores, retrieval
+    intelligence -- is commercially licensed IP. This prototype demonstrates what that
+    vision looks like as running code.
+    """)
+
+    st.markdown("""
     **What we have today:** A single `document_chunks` table with 5 generic columns.
     No hierarchy. No modality classification. No domain metadata.
     A commodity RAG pipeline that treats doctrine the same as a blog post.
@@ -306,6 +314,14 @@ elif page == PAGES[4]:
             for c in result["constraints"]:
                 st.markdown(f"- {c}")
 
+        if result.get("clarification_questions"):
+            st.divider()
+            st.subheader("What CODEX Still Needs to Know")
+            st.caption("The system identifies exactly what information is missing for a complete evaluation.")
+            for q in result["clarification_questions"]:
+                st.markdown(f"**{q['question']}**")
+                st.caption(f"Why: {q['reason_needed']}")
+
     st.info("CODEX evaluates decision artifacts against compiled doctrine. Deterministic. Auditable. No competitor has built this.")
 
 
@@ -375,5 +391,15 @@ elif page == PAGES[6]:
         st.json(manifest)
     else:
         st.caption("Run `python cli.py export` to generate the package.")
+
+    st.divider()
+    st.subheader("Why This Package Matters")
+    st.markdown("""
+    This package is what makes the moat compound. Customer 1's KD deploys to Customer 2
+    in days -- because the schema, chunking, lifting, and retrieval are pre-built and the
+    benchmarks prove they work. Customer 2's analysts add questions to the benchmark corpus.
+    The corpus grows. Customer 3 is faster than Customer 2. The prototype you just walked
+    through is the first turn of that flywheel.
+    """)
 
     st.info("Knowledge Domains Step 10: Operationalize for Reuse. This entire KD exports as a portable artifact.")
