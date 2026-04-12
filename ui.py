@@ -281,14 +281,14 @@ elif page == PAGES[4]:
 
     col1, col2 = st.columns(2)
     with col1:
-        objective = st.text_area("Objective:", "Defend key terrain against enemy armor advance")
-        mission_type = st.text_input("Mission type:", "area_defense")
-        echelon = st.text_input("Echelon:", "battalion")
+        objective = st.text_area("Objective:", "Develop courses of action for brigade offensive operation")
+        mission_type = st.text_input("Mission type:", "military_decision_making_process")
+        echelon = st.text_input("Echelon:", "brigade")
     with col2:
         phase = st.text_input("Phase:", "")
-        observations = st.text_area("Observations (one per line):", "enemy armor identified")
-        actions = st.text_area("Proposed actions (one per line):", "establish engagement area\nposition direct fire systems")
-    st.caption("Try it with missing fields first -- then fill in Phase and add more Observations to see how the evaluation changes.")
+        observations = st.text_area("Observations (one per line):", "commander guidance issued")
+        actions = st.text_area("Proposed actions (one per line):", "conduct war game")
+    st.caption("This starts sparse — you'll get CONDITIONAL with caution factors. Add observations like 'COA statement and sketch prepared' and 'critical events identified' to watch the evaluation shift toward SUPPORTED.")
 
     if st.button("Evaluate"):
         obs_list = [o.strip() for o in observations.split("\n") if o.strip()]
