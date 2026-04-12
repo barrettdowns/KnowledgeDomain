@@ -1,7 +1,7 @@
 """Real CodexRetriever backed by compiled CODEX objects from the KD pipeline.
 
 Implements the CodexRetriever Protocol from the CODEX conversation layer,
-replacing MockCodexRetriever with objects compiled from real ADP 3-0 doctrine.
+replacing MockCodexRetriever with objects compiled from 5 doctrine documents.
 """
 import json
 import logging

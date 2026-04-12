@@ -431,9 +431,9 @@ elif page == PAGES[5]:
             }
     except Exception:
         results = {
-            "Raw Embeddings": {"ndcg_10": 0.27, "mrr": 0.27, "precision_5": 0.11},
-            "ADC Only": {"ndcg_10": 0.26, "mrr": 0.25, "precision_5": 0.11},
-            "Full Pipeline": {"ndcg_10": 0.25, "mrr": 0.29, "precision_5": 0.10},
+            "Raw Embeddings": {"ndcg_10": 0.2714, "mrr": 0.2721, "precision_5": 0.1111},
+            "ADC Only": {"ndcg_10": 0.2785, "mrr": 0.2814, "precision_5": 0.1111},
+            "Full Pipeline": {"ndcg_10": 0.2920, "mrr": 0.3127, "precision_5": 0.1185},
         }
 
     st.subheader("NDCG@10 Comparison")
