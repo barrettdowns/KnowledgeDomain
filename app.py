@@ -285,7 +285,7 @@ elif page == PAGES[4]:
         phase = st.text_input("Phase:", "")
         observations = st.text_area("Observations (one per line):", "commander guidance issued")
         actions = st.text_area("Proposed actions (one per line):", "conduct war game")
-    st.caption("This starts sparse — you'll get CONDITIONAL with caution factors. Add observations like 'COA statement and sketch prepared' and 'critical events identified' to watch the evaluation shift toward SUPPORTED.")
+    st.caption("This starts sparse — you'll get CONDITIONAL with caution factors. Add observations like 'COS coordinates staff work', 'planning time allocated by percentage', 'concept of operations developed', and 'task organization created' to watch the evaluation shift toward SUPPORTED.")
 
     if st.button("Evaluate"):
         obs_list = [o.strip() for o in observations.split("\n") if o.strip()]
@@ -334,15 +334,30 @@ elif page == PAGES[4]:
             for a in act_list:
                 evidence_tokens.update(a.lower().split())
 
+            stop_words = {
+                "a", "an", "the", "is", "are", "was", "were", "be", "been",
+                "being", "have", "has", "had", "do", "does", "did", "will",
+                "would", "could", "should", "may", "might", "shall", "can",
+                "to", "of", "in", "for", "on", "with", "at", "by", "from",
+                "as", "into", "through", "during", "before", "after", "and",
+                "but", "or", "nor", "not", "no", "if", "then", "than", "that",
+                "this", "it", "its", "they", "them", "their", "we", "our",
+                "you", "your", "he", "she", "his", "her",
+            }
+
             trust_factors, caution_factors = [], []
             for chain in primary.get("causal_chains", []):
                 chain_ok = True
+                propagated = set()
                 for link in chain.get("links", []):
-                    cond_tokens = set(link.get("condition", "").lower().split())
-                    if len(cond_tokens & evidence_tokens) < max(1, len(cond_tokens) * 0.3):
+                    cond_tokens = set(link.get("condition", "").lower().replace("_", " ").split()) - stop_words
+                    pool = evidence_tokens | propagated
+                    if len(cond_tokens & pool) < max(1, len(cond_tokens) * 0.3):
                         chain_ok = False
                         caution_factors.append(f"Causal chain '{chain.get('pattern_name', '?')}' broken at '{link.get('condition', '?')}'")
                         break
+                    effect_tokens = set(link.get("effect", "").lower().replace("_", " ").split()) - stop_words
+                    propagated.update(effect_tokens)
                 if chain_ok:
                     trust_factors.append(f"Causal chain '{chain.get('pattern_name', '?')}' fully satisfied")
 
