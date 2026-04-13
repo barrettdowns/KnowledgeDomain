@@ -58,6 +58,12 @@ Skip any layer and the layers above it degrade measurably.
 
 The full pipeline beats raw embeddings by +7.6% NDCG@10 and +14.9% MRR. ADC structure alone accounts for +2.6% NDCG@10; semantic lifting and taxonomy filtering add the rest.
 
+- **NDCG@10** — *How good is the ranking?* Measures whether the most relevant results appear near the top of the list. Higher means the system consistently puts the right answers first.
+- **MRR** — *How fast does the user find the first correct answer?* A score of 1.0 means the right answer is always result #1. The full pipeline's MRR advantage (0.31 vs. 0.27) means the right answer surfaces earlier when taxonomy filters are applied.
+- **Precision@5** — *Of the top 5 results, how many are actually relevant?* Measures signal-to-noise in what the user reads.
+
+These are standard information retrieval metrics used across the industry (Google, Bing, NIST TREC). Any competitor claiming retrieval quality without publishing these numbers is making an untestable claim.
+
 ## Technical Notes
 
 - **Embeddings:** all-MiniLM-L6-v2 (384 dims) for the prototype. Production target is text-embedding-3-large (1024 dims).
