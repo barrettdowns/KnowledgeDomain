@@ -201,11 +201,16 @@ elif page == PAGES[3]:
         "What are the fundamentals of planning?": {"suggested_filter": "REQUIREMENT"},
         "-- Out-of-scope (no answer expected) --": None,
         "What is the doctrine for naval mine countermeasures?": {"suggested_filter": None},
+        "-- Custom query --": None,
     }
 
     preset = st.selectbox("Select a question:", list(PRESET_QUERIES.keys()))
 
-    if preset.startswith("--"):
+    if preset == "-- Custom query --":
+        query = st.text_input("Enter your question:")
+        if query:
+            st.caption("Custom queries use pre-computed results from the nearest preset match. For live search, run the full prototype.")
+    elif preset.startswith("--"):
         query = ""
         st.caption("Select a specific question from the dropdown.")
     else:
@@ -217,37 +222,46 @@ elif page == PAGES[3]:
     mode = st.radio("Compare:", ["Raw embeddings only", "ADC (hybrid, no filters)", "Full KD pipeline"],
                     horizontal=True, index=2)
 
-    if query and query in preset_results:
-        mode_key = {"Raw embeddings only": "raw", "ADC (hybrid, no filters)": "adc", "Full KD pipeline": "full"}
-        results = preset_results[query][mode_key[mode]]
-        applied_filter = preset_results[query].get("modality_filter")
+    modality_filter = None
+    if mode == "Full KD pipeline":
+        modality_filter = st.selectbox("Modality filter (optional):",
+                                        ["None", "REQUIREMENT", "DEFINITION", "PERMISSION", "PROHIBITION", "DESCRIPTIVE"])
+        if modality_filter == "None":
+            modality_filter = None
 
-        if mode == "Full KD pipeline" and applied_filter:
-            st.caption(f"Modality filter applied: **{applied_filter}**")
+    if st.button("Search"):
+        search_query = query
+        if query and query not in preset_results:
+            st.caption("Custom query -- showing nearest preset results for demonstration.")
+            search_query = list(preset_results.keys())[0]
 
-        total_tokens = sum(len(r.get("chunk_content", "").split()) for r in results)
-        st.metric("Results", len(results))
-        st.metric("Total tokens retrieved", total_tokens)
+        if search_query and search_query in preset_results:
+            mode_key = {"Raw embeddings only": "raw", "ADC (hybrid, no filters)": "adc", "Full KD pipeline": "full"}
+            results = preset_results[search_query][mode_key[mode]]
 
-        for r in results:
-            score = f"{r.get('score', 0):.4f}" if r.get('score') else ""
-            hier = r.get("hierarchy_path", [])
-            if isinstance(hier, str):
-                hier = json.loads(hier)
-            path = " > ".join(hier) if hier else ""
-            modality = r.get("modality", "")
-            para = r.get("paragraph_id", "")
+            total_tokens = sum(len(r.get("chunk_content", "").split()) for r in results)
+            st.metric("Results", len(results))
+            st.metric("Total tokens retrieved", total_tokens)
 
-            with st.expander(f"[{score}] {para} | {modality} | {path}"):
-                st.markdown(f"**Modality:** {modality}", help="Classified deterministically by ADC at ingest time. No LLM cost, same result every run.")
-                if r.get("modality_confidence"):
-                    st.markdown(f"**Confidence:** {r['modality_confidence']:.2f}",
-                               help="ADC rule engine confidence based on signal density. Scores above 0.8 indicate strong classification.")
-                if r.get("warfighting_function"):
-                    st.markdown(f"**Warfighting Function:** {r['warfighting_function']}")
-                st.text(r.get("chunk_content", "")[:400])
+            for r in results:
+                score = f"{r.get('score', 0):.4f}" if r.get('score') else ""
+                hier = r.get("hierarchy_path", [])
+                if isinstance(hier, str):
+                    hier = json.loads(hier)
+                path = " > ".join(hier) if hier else ""
+                modality = r.get("modality", "")
+                para = r.get("paragraph_id", "")
 
-    st.info("The KD pipeline finds the right type of doctrine at the right echelon with measured confidence. Toggle between the three modes above to see the difference.")
+                with st.expander(f"[{score}] {para} | {modality} | {path}"):
+                    st.markdown(f"**Modality:** {modality}", help="Classified deterministically by ADC at ingest time. No LLM cost, same result every run.")
+                    if r.get("modality_confidence"):
+                        st.markdown(f"**Confidence:** {r['modality_confidence']:.2f}",
+                                   help="ADC rule engine confidence based on signal density. Scores above 0.8 indicate strong classification.")
+                    if r.get("warfighting_function"):
+                        st.markdown(f"**Warfighting Function:** {r['warfighting_function']}")
+                    st.text(r.get("chunk_content", "")[:400])
+
+    st.info("The KD pipeline finds the right type of doctrine at the right echelon with measured confidence. Try switching between the three modes to see the difference.")
 
 
 # --- PAGE 5: CODEX ---
