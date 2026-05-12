@@ -1,0 +1,206 @@
+# RFC-0001 §1.6.6 KnowledgeDomainBundle fragment for the moat Knowledge Base.
+# Reframes the existing kd_doctrine table as the text_chunks IndexProjection
+# of idx-doctrine-moat (no DDL change to kd_doctrine — only metadata mapping).
+#
+# A Phase 6 stretch goal may add a sibling figure_images projection. Its
+# parent_key_field is also section_id so include_siblings=true correlates a
+# text chunk with its associated figure via the shared key.
+
+knowledgeBases:
+  - id: kb-doctrine-moat
+    name: Doctrine corpus (moat SkillSet)
+    description: >-
+      Same five doctrine PDFs as the naive KB, but processed by the moat
+      SkillSet (ADC chunking with hierarchy + modality + glossary linkage,
+      plus Claude-based lifting for warfighting_function / echelon /
+      doctrinal_phase with confidence scores). This is the side that fills
+      the typed IndexFields the moat layer relies on.
+    indexer_id: idxr-doctrine-enriched
+    index_id: idx-doctrine-moat
+    enabled: true
+
+indexers:
+  - id: idxr-doctrine-enriched
+    name: Doctrine enriched indexer (ADC + lifting)
+    target_index_id: idx-doctrine-moat
+    skill_set_id: ss-doctrine-moat
+    enabled: true
+    parameters:
+      batch_size: 64
+
+skillSets:
+  - id: ss-doctrine-moat
+    name: Moat doctrine SkillSet (ADC + lift)
+    handling:
+      chunking:
+        strategy: adc
+        # ADC is deterministic: hierarchy detection, normative modality
+        # classification (DEFINITION / REQUIREMENT / PERMISSION / PROHIBITION /
+        # DESCRIPTIVE), glossary linkage. Zero LLM calls at chunk time.
+        modality_classification: rule_engine
+        glossary_linkage: true
+      classification:
+        # Doctrinal taxonomy filled by the lift skill below
+        taxonomy_fields:
+          - warfighting_function
+          - echelon
+          - doctrinal_phase
+          - document_type
+    skills:
+      - name: split_pdf
+        kind: split_pdf
+        parameters:
+          mode: adc
+          emit_section_id: true
+          preserve_hierarchy_path: true
+          classify_modality: true
+          extract_glossary_refs: true
+        outputs:
+          text_chunks: /document/paragraphs/*
+      - name: embed_text
+        kind: embed_text
+        parameters:
+          model: all-MiniLM-L6-v2
+          dimensions: 384
+        inputs:
+          text: /document/paragraphs/*/text
+        outputs:
+          vector: /document/paragraphs/*/text_vector
+      - name: lift_doctrine_taxonomy
+        kind: lift_llm
+        parameters:
+          model: claude-sonnet-4-20250514
+          taxonomy:
+            warfighting_function:
+              values: [Movement and Maneuver, Intelligence, Fires, Sustainment, Mission Command, Protection]
+            echelon:
+              values: [Squad, Platoon, Company, Battalion, Brigade, Division, Corps, Theater]
+            doctrinal_phase:
+              values: [Phase 0 - Shape, Phase I - Deter, Phase II - Seize Initiative, Phase III - Dominate, Phase IV - Stabilize, Phase V - Enable Civil Authority]
+        inputs:
+          chunk: /document/paragraphs/*/text
+          hierarchy_path: /document/paragraphs/*/hierarchy_path
+          modality: /document/paragraphs/*/modality
+        outputs:
+          warfighting_function: /document/paragraphs/*/warfighting_function
+          warfighting_function_confidence: /document/paragraphs/*/warfighting_function_confidence
+          echelon: /document/paragraphs/*/echelon
+          echelon_confidence: /document/paragraphs/*/echelon_confidence
+          doctrinal_phase: /document/paragraphs/*/doctrinal_phase
+          doctrinal_phase_confidence: /document/paragraphs/*/doctrinal_phase_confidence
+    index_projections:
+      selectors:
+        - target_projection: text_chunks
+          source_context: /document/paragraphs/*
+          parent_key_source: /document/paragraphs/*/section_id
+          mappings:
+            - source: /document/paragraphs/*/text
+              target_field: chunk_content
+            - source: /document/paragraphs/*/text_vector
+              target_field: primary_embedding
+            - source: /document/paragraphs/*/paragraph_id
+              target_field: paragraph_id
+            - source: /document/paragraphs/*/hierarchy_path
+              target_field: hierarchy_path
+            - source: /document/paragraphs/*/modality
+              target_field: modality
+            - source: /document/paragraphs/*/modality_confidence
+              target_field: modality_confidence
+            - source: /document/paragraphs/*/glossary_refs
+              target_field: glossary_refs
+            - source: /document/paragraphs/*/warfighting_function
+              target_field: warfighting_function
+            - source: /document/paragraphs/*/warfighting_function_confidence
+              target_field: warfighting_function_confidence
+            - source: /document/paragraphs/*/echelon
+              target_field: echelon
+            - source: /document/paragraphs/*/echelon_confidence
+              target_field: echelon_confidence
+            - source: /document/paragraphs/*/doctrinal_phase
+              target_field: doctrinal_phase
+            - source: /document/paragraphs/*/doctrinal_phase_confidence
+              target_field: doctrinal_phase_confidence
+    enabled: true
+
+indices:
+  - id: idx-doctrine-moat
+    name: Doctrine moat Index (multi-modal-ready)
+    projections:
+      - name: text_chunks
+        kind: text
+        table_name: kd_doctrine
+        parent_key_field: section_id
+        fields:
+          # Identity + provenance
+          - name: paragraph_id
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: section_id
+            data_type: string
+            retrievable: true
+            filterable: true        # RFC-0001 §1.6.4 invariant
+          - name: source_document
+            data_type: string
+            retrievable: true
+            filterable: true
+          # ADC structure
+          - name: hierarchy_path
+            data_type: json
+            retrievable: true
+            filterable: false
+          - name: modality
+            data_type: string
+            retrievable: true
+            filterable: true        # used as a filter at query time
+          - name: modality_confidence
+            data_type: float
+            retrievable: true
+            filterable: true
+          - name: glossary_refs
+            data_type: json
+            retrievable: true
+          # Lifted taxonomy (LLM-extracted, each with confidence)
+          - name: warfighting_function
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: warfighting_function_confidence
+            data_type: float
+            retrievable: true
+            filterable: true
+          - name: echelon
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: echelon_confidence
+            data_type: float
+            retrievable: true
+            filterable: true
+          - name: doctrinal_phase
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: doctrinal_phase_confidence
+            data_type: float
+            retrievable: true
+            filterable: true
+          # Content + vector
+          - name: chunk_content
+            data_type: string
+            searchable: true
+            retrievable: true
+          - name: primary_embedding
+            data_type: vector
+            searchable: true
+            retrievable: false
+            vector_dimensions: 384
+        metadata_schema:
+          source_uri: string
+          source_document: string
+        hybrid_retrieval:
+          enabled: true
+          vector_weight: 0.7
+          keyword_weight: 0.3
+      # Phase 6 stretch: add a figure_images projection here for include_siblings=true
+      # correlation against parent_key_field=section_id.

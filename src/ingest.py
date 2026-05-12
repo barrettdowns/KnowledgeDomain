@@ -61,3 +61,34 @@ def ingest(pdf_path: str, config_path: str = None, classification: str = "UNCLAS
     total = get_chunk_count()
     logger.info(f"Inserted {count} rows. Total in kd_doctrine: {total}")
     return count
+
+
+def ingest_directory(blob_uri: str, config_path: str = None, progress_cb=None):
+    """Run the moat SkillSet (ADC + embed_text) over a directory of PDFs.
+
+    Mirror of ingest_naive.ingest_naive_corpus() but using the existing ADC
+    pipeline. Used by src.prefect_dispatch.run_ingest() in LOCAL mode for
+    kb-doctrine-moat.
+    """
+    if blob_uri.startswith("file://"):
+        root = Path(blob_uri[len("file://") :])
+    else:
+        root = Path(blob_uri)
+
+    if not root.exists():
+        raise FileNotFoundError(f"Moat corpus root not found: {root}")
+
+    pdfs = sorted(root.glob("*.pdf"))
+    if progress_cb:
+        progress_cb(f"Found {len(pdfs)} PDFs under {root}")
+
+    stats = {"per_pdf": {}, "total_chunks": 0, "pdf_count": len(pdfs)}
+    for pdf in pdfs:
+        if progress_cb:
+            progress_cb(f"Running ADC + embed on {pdf.name}")
+        n = ingest(str(pdf), config_path=config_path)
+        stats["per_pdf"][pdf.name] = n
+        stats["total_chunks"] += n
+    if progress_cb:
+        progress_cb(f"Moat SkillSet done: {stats['total_chunks']} chunks across {stats['pdf_count']} PDFs")
+    return stats

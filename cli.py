@@ -18,6 +18,26 @@ def cmd_ingest(args):
     logger.info(f"Ingestion complete: {count} chunks stored")
 
 
+def cmd_ingest_naive(args):
+    """Run the naive SkillSet (ss-doctrine-naive) over a directory of PDFs.
+
+    Populates doctrine_naive_text_chunks (text_chunks projection of
+    idx-doctrine-naive per catalog/doctrine-naive.yaml).
+    """
+    from src.ingest_naive import ingest_naive_corpus, get_naive_chunk_count
+
+    def _emit(msg):
+        logger.info(msg)
+
+    stats = ingest_naive_corpus(args.data_dir, progress_cb=_emit)
+    total = get_naive_chunk_count()
+    logger.info(
+        f"Naive ingestion complete: {stats['total_chunks']} chunks "
+        f"across {stats['pdf_count']} PDFs. Total rows in "
+        f"doctrine_naive_text_chunks: {total}"
+    )
+
+
 def cmd_lift(args):
     from src.lift import lift_batch
     total = 0
@@ -123,10 +143,18 @@ def main():
     parser = argparse.ArgumentParser(description="KD Platform Prototype")
     sub = parser.add_subparsers(dest="command")
 
-    p_ingest = sub.add_parser("ingest", help="Ingest a doctrine PDF into kd_doctrine")
+    p_ingest = sub.add_parser("ingest", help="Ingest a doctrine PDF into kd_doctrine (moat SkillSet)")
     p_ingest.add_argument("--pdf", required=True, help="Path to PDF file")
     p_ingest.add_argument("--config", default=None, help="ADC config YAML")
     p_ingest.add_argument("--classification", default="UNCLASSIFIED")
+
+    p_ingest_naive = sub.add_parser(
+        "ingest-naive",
+        help="Run naive SkillSet (ss-doctrine-naive) over a directory of PDFs into doctrine_naive_text_chunks",
+    )
+    p_ingest_naive.add_argument(
+        "--data-dir", default="data", help="Directory containing the doctrine PDFs"
+    )
 
     p_lift = sub.add_parser("lift", help="Run semantic lifting on unlifted chunks")
     p_lift.add_argument("--batch-size", type=int, default=20)
@@ -153,6 +181,7 @@ def main():
 
     commands = {
         "ingest": cmd_ingest,
+        "ingest-naive": cmd_ingest_naive,
         "lift": cmd_lift,
         "retrieve": cmd_retrieve,
         "benchmark": cmd_benchmark,

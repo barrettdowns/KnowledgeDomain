@@ -1,0 +1,128 @@
+# RFC-0001 §1.6.6 KnowledgeDomainBundle fragment for the naive Knowledge Base.
+# This is one half of the A/B; doctrine-moat.yaml is the other.
+# Both KBs live under kd-doctrine (see doctrine-kd-package/doctrine-kd.yaml
+# which is built in Phase 9 and inlines both).
+#
+# Shape notes:
+# - One Indexer per KnowledgeBase (RFC-0001 §1.6.2 cardinality).
+# - Indexer references SkillSet via skill_set_id (reuse surface).
+# - Index contains one IndexProjection (text_chunks); parent_key_field=section_id
+#   is filterable per RFC-0001 §1.6.4 so include_siblings queries remain valid
+#   when (and if) a sibling figure_images projection is added in Phase 6's
+#   stretch goal.
+
+knowledgeBases:
+  - id: kb-doctrine-naive
+    name: Doctrine corpus (naive SkillSet)
+    description: >-
+      Same five doctrine PDFs as the moat KB, but processed by a naive SkillSet
+      (fixed-token split_pdf + embed_text only) into a generic text_chunks
+      projection. Used as the A/B baseline for the moat layer in Phase 5.
+    indexer_id: idxr-doctrine-naive
+    index_id: idx-doctrine-naive
+    enabled: true
+
+indexers:
+  - id: idxr-doctrine-naive
+    name: Doctrine naive indexer
+    target_index_id: idx-doctrine-naive
+    skill_set_id: ss-doctrine-naive
+    enabled: true
+    parameters:
+      batch_size: 64
+
+skillSets:
+  - id: ss-doctrine-naive
+    name: Naive doctrine SkillSet (fixed-window text only)
+    handling:
+      chunking:
+        strategy: fixed_window
+        max_tokens: 256
+        overlap_tokens: 32
+    skills:
+      - name: split_pdf
+        kind: split_pdf
+        parameters:
+          # Naive: no hierarchy detection, no modality classification, no
+          # glossary linkage. Just fixed-token windows over plain text.
+          mode: fixed_window
+          max_tokens: 256
+          overlap_tokens: 32
+          emit_section_id: true   # synthesize section_id from chunk index
+        outputs:
+          text_chunks: /document/chunks/*
+      - name: embed_text
+        kind: embed_text
+        parameters:
+          model: all-MiniLM-L6-v2
+          dimensions: 384
+        inputs:
+          text: /document/chunks/*/text
+        outputs:
+          vector: /document/chunks/*/text_vector
+    index_projections:
+      selectors:
+        - target_projection: text_chunks
+          source_context: /document/chunks/*
+          parent_key_source: /document/chunks/*/section_id
+          mappings:
+            - source: /document/chunks/*/text
+              target_field: content
+            - source: /document/chunks/*/text_vector
+              target_field: content_vector
+            - source: /document/chunks/*/section_id
+              target_field: section_id
+            - source: /document/chunks/*/source_uri
+              target_field: source_uri
+            - source: /document/chunks/*/chunk_index
+              target_field: chunk_index
+            - source: /document/chunks/*/source_document
+              target_field: source_document
+    enabled: true
+
+indices:
+  - id: idx-doctrine-naive
+    name: Doctrine naive Index
+    projections:
+      - name: text_chunks
+        kind: text
+        table_name: doctrine_naive_text_chunks
+        parent_key_field: section_id
+        fields:
+          - name: chunk_id
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: section_id
+            data_type: string
+            retrievable: true
+            filterable: true       # RFC-0001 §1.6.4: parent_key_field must be filterable
+          - name: source_uri
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: source_document
+            data_type: string
+            retrievable: true
+            filterable: true
+          - name: chunk_index
+            data_type: int
+            retrievable: true
+            filterable: true
+          - name: content
+            data_type: string
+            searchable: true
+            retrievable: true
+          - name: content_vector
+            data_type: vector
+            searchable: true
+            retrievable: false
+            vector_dimensions: 384
+        metadata_schema:
+          source_uri: string
+          source_document: string
+          chunk_index: int
+        hybrid_retrieval:
+          enabled: true
+          vector_weight: 0.6
+          keyword_weight: 0.4
