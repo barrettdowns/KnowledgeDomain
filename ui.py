@@ -1,18 +1,57 @@
-"""KD Platform Guided Tour -- 7-page Streamlit app.
+"""KD Platform Guided Tour -- 8-page Streamlit app.
 
-Each page maps to a chapter of the Knowledge Domains paper.
-Three audiences: developers see the implementation, leadership sees the vision
-realized, non-technical stakeholders see the value without reading code.
+Page 0 anchors the app inside RFC-0001's Knowledge Domain entity model
+(KD / KnowledgeBase / Indexer / Index / IndexProjection / SkillSet) so
+viewers can place the moat layer against the actual Nexus substrate.
+Pages 1-7 walk the chapters of the Knowledge Domains paper.
+
+Three audiences: developers see the implementation, leadership sees the
+vision realized, non-technical stakeholders see the value without reading code.
+
+The sidebar shows the current mode (LOCAL / LIVE). LOCAL is the default
+and runs entirely against local Postgres projection tables; LIVE routes
+through Nexus's /kd/... endpoints when NEXUS_API_URL is set and reachable.
+See docs/nexus-local-setup.md for the LIVE-mode stand-up procedure.
 """
 import json
+import os
 import streamlit as st
 from src.db import get_connection, get_all_chunks
 from src.embed import embed_query
 from src.retrieve import retrieve, retrieve_raw
+from src import nexus_client
 
 st.set_page_config(page_title="KD Platform", layout="wide")
 
+# ----------------------------------------------------------------------
+# Mode banner (sidebar) -- reflects whether Nexus is reachable per RFC-0001
+# ----------------------------------------------------------------------
+_live = nexus_client.is_live()
+_mode_color = "#22c55e" if _live else "#94a3b8"
+_mode_label = nexus_client.mode_label()
+st.sidebar.markdown(
+    f"""
+    <div style="padding: 8px 12px; border-radius: 6px;
+                background: {_mode_color}22; border-left: 3px solid {_mode_color};
+                margin-bottom: 12px; font-size: 0.85em;">
+      <strong>Mode:</strong> {_mode_label}<br/>
+      <span style="opacity: 0.75; font-size: 0.9em;">
+        KD: <code>{nexus_client.NEXUS_KD_ID}</code><br/>
+        Naive KB: <code>{nexus_client.NEXUS_KB_ID_DOCTRINE_NAIVE}</code><br/>
+        Moat KB: <code>{nexus_client.NEXUS_KB_ID_DOCTRINE_MOAT}</code>
+      </span>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+if not _live and os.getenv("NEXUS_API_URL"):
+    st.sidebar.caption(
+        "NEXUS_API_URL is set but /help/ is unreachable. "
+        "See docs/nexus-local-setup.md to stand up the LIVE stack."
+    )
+
 PAGES = [
+    "0. Where this fits",
     "1. The Problem",
     "2. Atomic Doctrine Chunking (ADC)",
     "3. Semantic Lifting",
@@ -22,7 +61,7 @@ PAGES = [
     "7. Package",
 ]
 
-page = st.sidebar.radio("Navigate", PAGES)
+page = st.sidebar.radio("Navigate", PAGES, index=0)
 
 
 def get_stats():
@@ -47,7 +86,17 @@ def get_stats():
 
 
 # --- PAGE 1: THE PROBLEM ---
-if page == PAGES[0]:
+if page == "0. Where this fits":
+    st.title("Where this fits in the platform")
+    st.info(
+        "Page 0 content lands in Phase 4 of the Nexus + Prefect integration plan. "
+        "It will anchor the app inside RFC-0001's KD / KnowledgeBase / Indexer / Index / "
+        "IndexProjection / SkillSet entity model, pin each moat artifact (ADC, lifting, "
+        "retrieval contract, CODEX) to its substrate slot, and cite the RFC directly."
+    )
+    st.caption("Tracking: nexus-integration branch, phase-4-acceptance tag.")
+
+elif page == "1. The Problem":
     st.title("The Problem")
     st.markdown("""
     **What we are building is a governed, evaluable, reusable semantic layer over
@@ -90,7 +139,7 @@ if page == PAGES[0]:
 
 
 # --- PAGE 2: ADC ---
-elif page == PAGES[1]:
+elif page == "2. Atomic Doctrine Chunking (ADC)":
     st.title("Atomic Doctrine Chunking (ADC) -- Structure from Text")
     st.markdown("""
     **ADC is a deterministic chunking algorithm that preserves what generic chunking destroys:**
@@ -152,7 +201,7 @@ elif page == PAGES[1]:
 
 
 # --- PAGE 3: SEMANTIC LIFTING ---
-elif page == PAGES[2]:
+elif page == "3. Semantic Lifting":
     st.title("Semantic Lifting -- Machine Understanding")
     st.markdown("""
     **ADC gives us structure. Semantic lifting gives us meaning.** An LLM reads each chunk
@@ -192,7 +241,7 @@ elif page == PAGES[2]:
 
 
 # --- PAGE 4: RETRIEVAL ---
-elif page == PAGES[3]:
+elif page == "4. Retrieval":
     st.title("Retrieval -- Ask a Question")
 
     PRESET_QUERIES = {
@@ -268,7 +317,7 @@ elif page == PAGES[3]:
 
 
 # --- PAGE 5: CODEX ---
-elif page == PAGES[4]:
+elif page == "5. CODEX":
     st.title("CODEX -- Structured Evaluation")
 
     st.markdown("""
@@ -416,7 +465,7 @@ elif page == PAGES[4]:
 
 
 # --- PAGE 6: BENCHMARKS ---
-elif page == PAGES[5]:
+elif page == "6. Benchmarks":
     st.title("Benchmarks -- Prove It Works")
 
     # Run live benchmark if possible, otherwise use cached results
@@ -458,7 +507,7 @@ elif page == PAGES[5]:
 
 
 # --- PAGE 7: PACKAGE ---
-elif page == PAGES[6]:
+elif page == "7. Package":
     st.title("Package")
 
     st.markdown("""
