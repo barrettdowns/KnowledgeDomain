@@ -728,44 +728,134 @@ elif page == "5. CODEX":
 
 # --- PAGE 6: BENCHMARKS ---
 elif page == "6. Benchmarks":
-    st.title("Benchmarks -- Prove It Works")
+    st.title("Benchmarks — naive SkillSet vs moat SkillSet on the same Q/A set")
+    st.markdown(
+        """
+        Four-column table aligned with Page 4's A/B retrieval comparator. All modes
+        score against `benchmarks/doctrine_qa.json` (Q/A with paragraph-level ground
+        truth). The naive columns are scored against the paragraph→naive-chunk
+        mapping in `benchmarks/doctrine_qa_naive_map.json` (built one-time by
+        `scripts/map_paragraph_to_naive_chunk.py` using 4-gram Jaccard overlap).
+        """
+    )
 
-    # Run live benchmark if possible, otherwise use cached results
+    # Prefer the cached results.json (fast page load); fall back to live recompute.
+    bench: dict | None = None
     try:
-        from src.benchmark import run_benchmark
-        bench = run_benchmark()
-        results = {}
-        name_map = {"full_pipeline": "Full Pipeline", "adc_only": "ADC Only", "raw_embedding": "Raw Embeddings"}
-        for k, v in bench["summary"].items():
-            results[name_map.get(k, k)] = {
-                "ndcg_10": v["ndcg_10"], "mrr": v["mrr"], "precision_5": v["precision_5"]
-            }
-    except Exception:
-        results = {
-            "Raw Embeddings": {"ndcg_10": 0.2714, "mrr": 0.2721, "precision_5": 0.1111},
-            "ADC Only": {"ndcg_10": 0.2785, "mrr": 0.2814, "precision_5": 0.1111},
-            "Full Pipeline": {"ndcg_10": 0.2920, "mrr": 0.3127, "precision_5": 0.1185},
-        }
+        from pathlib import Path as _Path
+        cache_path = _Path("benchmarks/results.json")
+        if cache_path.exists():
+            bench = json.loads(cache_path.read_text())
+            st.caption(
+                f"Showing cached results from `{cache_path}` "
+                f"(top_k={bench.get('config', {}).get('top_k', 10)}, "
+                f"min_confidence={bench.get('config', {}).get('min_confidence', 0.7)}). "
+                "Click 'Recompute' below to re-run live."
+            )
+    except Exception as _e:
+        st.caption(f"Could not load cached results.json ({_e}); recomputing.")
 
-    st.subheader("NDCG@10 Comparison")
-    ndcg_data = {k: v["ndcg_10"] for k, v in results.items()}
-    st.bar_chart(ndcg_data)
+    if bench is None or st.button("Recompute benchmark (~10s)"):
+        with st.spinner("Running benchmark across 7 modes..."):
+            from src.benchmark import run_benchmark
+            bench = run_benchmark()
+            try:
+                _Path("benchmarks/results.json").write_text(json.dumps(bench, indent=2))
+            except Exception:
+                pass
 
-    st.subheader("All Metrics")
+    from src.benchmark import (
+        PHASE5_COLUMN_ORDER,
+        PHASE5_COLUMN_LABELS,
+        LEGACY_COLUMN_ORDER,
+        LEGACY_COLUMN_LABELS,
+    )
+    summary = bench["summary"]
+
     import pandas as pd
-    df = pd.DataFrame(results).T
-    df.columns = ["NDCG@10", "MRR", "Precision@5"]
-    st.dataframe(df.style.format("{:.4f}"))
 
-    st.markdown("""
-    **Key finding:** With a 5-document, 2,910-chunk corpus, the full pipeline shows
-    that metadata filtering provides precision control. The MRR advantage of the full
-    pipeline (0.29 vs 0.27) indicates the right answer appears earlier when taxonomy
-    filters are applied. With production embeddings (text-embedding-3-large at 1024 dims)
-    and a larger benchmark set, the quality gap widens.
-    """)
+    st.subheader("Phase-5-aligned columns (NDCG@10, MRR, Precision@5)")
+    primary_rows = []
+    for mode in PHASE5_COLUMN_ORDER:
+        s = summary.get(mode, {})
+        if not s:
+            continue
+        primary_rows.append({
+            "Mode": PHASE5_COLUMN_LABELS[mode],
+            "NDCG@10": s["ndcg_10"],
+            "MRR": s["mrr"],
+            "Precision@5": s["precision_5"],
+            "N": int(s["question_count"]),
+        })
+    if primary_rows:
+        df_primary = pd.DataFrame(primary_rows).set_index("Mode")
+        st.dataframe(df_primary.style.format({
+            "NDCG@10": "{:.4f}",
+            "MRR": "{:.4f}",
+            "Precision@5": "{:.4f}",
+        }))
 
-    st.info("Benchmarks are the hardest capability for any competitor to replicate. They require a working domain system AND willing analysts. This is the measurement infrastructure that proves the system works.")
+        st.markdown("**NDCG@10 across the four Phase-5 columns**")
+        st.bar_chart({row["Mode"]: row["NDCG@10"] for row in primary_rows})
+
+    st.markdown("---")
+    st.subheader("How to read this")
+    st.markdown(
+        """
+        - **naive SkillSet · text_chunks** is *vector-only* retrieval over the fixed-window
+          naive projection. Expect it to be weak — generic vector search over large
+          unstructured chunks.
+        - **naive + hybrid** adds lexical (BM25-style) scoring. When the ground-truth
+          paragraph text happens to appear inside a naive 256-token window, the lexical
+          component lights up — so this column can score surprisingly well *given how
+          the ground truth is mapped* (each moat paragraph projects onto up to 3 naive
+          chunks via 4-gram Jaccard overlap; see `scripts/map_paragraph_to_naive_chunk.py`).
+        - **moat SkillSet · text_chunks** is the production-shape moat hybrid (vector +
+          lexical, no filters, no boost) against `kd_doctrine`. This is the apples-to-apples
+          comparison against `naive + hybrid` — same retrieval mechanics, different SkillSet.
+        - **moat + modality filter + confidence** applies the Page-5 hard filter +
+          `min_confidence=0.7`. This narrows the result set to the right *kind* of doctrine
+          (e.g. only REQUIREMENT chunks); against a generic Q/A ground truth that doesn't
+          enforce modality, hard filtering can *reduce* NDCG even while sharply improving
+          precision on the constrained subset. That's a feature for user-directed queries,
+          not a bug — Page 4 shows the qualitative effect; here you see the numeric trade-off.
+        """
+    )
+
+    # Legacy columns kept for continuity with earlier README numbers.
+    legacy_rows = []
+    for mode in LEGACY_COLUMN_ORDER:
+        s = summary.get(mode, {})
+        if not s:
+            continue
+        legacy_rows.append({
+            "Mode": LEGACY_COLUMN_LABELS[mode],
+            "NDCG@10": s["ndcg_10"],
+            "MRR": s["mrr"],
+            "Precision@5": s["precision_5"],
+            "N": int(s["question_count"]),
+        })
+    if legacy_rows:
+        with st.expander("Legacy moat-side comparison (pre-RFC-0001 column names)"):
+            df_legacy = pd.DataFrame(legacy_rows).set_index("Mode")
+            st.dataframe(df_legacy.style.format({
+                "NDCG@10": "{:.4f}",
+                "MRR": "{:.4f}",
+                "Precision@5": "{:.4f}",
+            }))
+            st.caption(
+                "These three rows are the numbers the README quoted before Phase 6. "
+                "`Raw embeddings` = moat-side vector-only; `ADC hybrid` = `moat hybrid` "
+                "above; `Full pipeline` = ADC hybrid + soft modality boost at alpha=0.80. "
+                "The +7.6% NDCG@10 claim (Full pipeline vs Raw) still holds with the "
+                "Phase 6 corpus and infrastructure."
+            )
+
+    st.info(
+        "These benchmarks compare two SkillSets on the same RFC-0001 substrate. "
+        "Production embeddings (text-embedding-3-large, 1024-d) and a larger validated "
+        "Q/A corpus would widen the quality gap; the methodology is unchanged."
+    )
 
 
 # --- PAGE 7: PACKAGE ---

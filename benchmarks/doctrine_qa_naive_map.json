@@ -1,0 +1,910 @@
+{
+  "metadata": {
+    "kd_name": "doctrine",
+    "version": "1.0",
+    "source_qa": "benchmarks/doctrine_qa.json",
+    "strategy": "ngram_jaccard",
+    "ngram_n": 4,
+    "top_k": 3,
+    "min_overlap_score": 0.05
+  },
+  "stats": {
+    "ground_truth_pairs": 55,
+    "mapped": 50,
+    "unmatched_no_naive_above_threshold": 1,
+    "missing_in_moat": 4,
+    "unmatched_pairs": [
+      "1-1|FM 5-0"
+    ],
+    "missing_in_moat_pairs": [
+      "1-2|",
+      "2-1|",
+      "7-127|",
+      "7-131|"
+    ]
+  },
+  "mapping": {
+    "1-1|FM 2-0": {
+      "moat_paragraph_id": "1-1",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "Intelligence is 1. The product resulting from the collection, processing, integration, evaluation, analysis, and interpretation of available information concern",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00016",
+          "score": 0.4163,
+          "preview": "how those fundamentals apply across the Army strategic contexts. Part I comprises three chapters that include the following points of emphasis: \u2022 The intelligen"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00621",
+          "score": 0.1497,
+          "preview": "processing, exploitation, and dissemination systems in direct support of current and future operations. (FM 3-55) information dimension The content and data tha"
+        }
+      ]
+    },
+    "1-1|FM 3-12": {
+      "moat_paragraph_id": "1-1",
+      "source_document_moat": "FM 3-12",
+      "source_document_naive": "FM_3-12",
+      "moat_text_preview": "The Army\u2019s primary responsibility is to organize, train, and equip its forces to conduct prompt and sustained land combat to defeat enemy ground forces and seiz",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-12#chunk-00014",
+          "score": 0.2682,
+          "preview": "operations as part of combined arms. It goes on to discuss operational environments, threats, and hazards. The chapter concludes with a discussion of systems an"
+        }
+      ]
+    },
+    "1-1|FM 3-61": {
+      "moat_paragraph_id": "1-1",
+      "source_document_moat": "FM 3-61",
+      "source_document_naive": "FM_3-61",
+      "moat_text_preview": "The commander\u2019s communication strategy, also known as commander\u2019s intent for public affairs, is the communication process and activities for public information,",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-61#chunk-00011",
+          "score": 0.6732,
+          "preview": "One provides commanders with the Army\u2019s public affairs and visual information structure and organization to give commanders a better understanding of their resp"
+        }
+      ]
+    },
+    "1-1|FM 5-0": {
+      "moat_paragraph_id": "1-1",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "Figure 1-1. The operations process",
+      "naive_matches": []
+    },
+    "1-10|ADP 3-0": {
+      "moat_paragraph_id": "1-10",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Defensive operations preserve control over land, resources, and populations, and they retain key terrain, protect lines of communications, and protect critical ",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00012",
+          "score": 0.4221,
+          "preview": "and populations, and they retain key terrain, protect lines of communications, and protect critical capabilities against attack. A defensive operation is an ope"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00011",
+          "score": 0.1287,
+          "preview": "three operations simultaneously in their operations. However, the lower the echelon, the more likely that formation will focus on conducting one type of operati"
+        }
+      ]
+    },
+    "1-11|ADP 3-0": {
+      "moat_paragraph_id": "1-11",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Stability operations contribute to regional security in support of U.S. security and humanitarian interests. They can help establish political, legal, social, a",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00012",
+          "score": 0.4897,
+          "preview": "and populations, and they retain key terrain, protect lines of communications, and protect critical capabilities against attack. A defensive operation is an ope"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00013",
+          "score": 0.1843,
+          "preview": "operations. Army forces establish civil security and civil control, and they provide for immediate needs, including food, water, shelter, and emergency medical "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00120",
+          "score": 0.0739,
+          "preview": "facilitate movement, extend operational reach, and maintain desired tempo. *relative advantage A location or condition, in any domain, relative to an adversary "
+        }
+      ]
+    },
+    "1-12|ADP 3-0": {
+      "moat_paragraph_id": "1-12",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "When directed, Army forces conduct operations in support of civil authorities and in support homeland defense operations. Defense support of civil authorities (",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00013",
+          "score": 0.5736,
+          "preview": "operations. Army forces establish civil security and civil control, and they provide for immediate needs, including food, water, shelter, and emergency medical "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00114",
+          "score": 0.0544,
+          "preview": "shape future close operations and protect rear operations. *defeat To render a force incapable of achieving its objectives. defeat in detail Concentrating overw"
+        }
+      ]
+    },
+    "1-13|ADP 3-0": {
+      "moat_paragraph_id": "1-13",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The Department of Defense (DOD) has lead responsibility for homeland defense. Homeland defense is the military protection of United States sovereignty and terri",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00014",
+          "score": 0.4942,
+          "preview": "has lead responsibility for homeland defense. Homeland defense is the military protection of United States sovereignty and territory against external threats an"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00013",
+          "score": 0.0983,
+          "preview": "operations. Army forces establish civil security and civil control, and they provide for immediate needs, including food, water, shelter, and emergency medical "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00115",
+          "score": 0.0523,
+          "preview": "the enemy\u2019s dispositions less valuable, perhaps even irrelevant. 21 March 2025 ADP 3-0 45 Glossary domain A physically defined portion of an operational environ"
+        }
+      ]
+    },
+    "1-14|ADP 3-0": {
+      "moat_paragraph_id": "1-14",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Army leaders understand their environment and organize their activities among four levels of warfare\u2014 national strategic, theater strategic, operational, and ta",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00014",
+          "score": 0.2008,
+          "preview": "has lead responsibility for homeland defense. Homeland defense is the military protection of United States sovereignty and territory against external threats an"
+        }
+      ]
+    },
+    "1-15|ADP 3-0": {
+      "moat_paragraph_id": "1-15",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The national strategic level of warfare is the level of warfare at which the United States government formulates policy goals and ways to achieve them by synchr",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00014",
+          "score": 0.2047,
+          "preview": "has lead responsibility for homeland defense. Homeland defense is the military protection of United States sovereignty and territory against external threats an"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00118",
+          "score": 0.1197,
+          "preview": "gains on behalf of joint force commanders. multinational operations A collective term to describe military actions conducted by forces of two or more nations, u"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00015",
+          "score": 0.0775,
+          "preview": "of warfare focuses on developing global strategy and providing global strategic direction. 1-16. The theater strategic level of warfare is the level of warfare "
+        }
+      ]
+    },
+    "1-16|ADP 3-0": {
+      "moat_paragraph_id": "1-16",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The theater strategic level of warfare is the level of warfare at which combatant commanders synchronize with unified action partners and employ all instruments",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00015",
+          "score": 0.2458,
+          "preview": "of warfare focuses on developing global strategy and providing global strategic direction. 1-16. The theater strategic level of warfare is the level of warfare "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00122",
+          "score": 0.1076,
+          "preview": "of warfare The level of warfare at which combatant commanders synchronize with unified action partners and employ all instruments of national power to fulfill p"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00121",
+          "score": 0.1021,
+          "preview": "control. *supporting distance The distance between two units that can be traveled in time for one to come to the aid of the other and prevent its defeat by an e"
+        }
+      ]
+    },
+    "1-2|FM 2-0": {
+      "moat_paragraph_id": "1-2",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "The purpose of intelligence (the function) is to provide commanders and staffs with timely, accurate, relevant, predictive, and tailored intelligence (the produ",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00017",
+          "score": 0.4109,
+          "preview": "other aspects of the OE. Intelligence (the process) supports the conduct of operations. Intelligence is most meaningful when it directly supports operations or "
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00509",
+          "score": 0.1826,
+          "preview": "FM 2-0 A-7 This page intentionally left blank. Appendix B Intelligence Warfighting Function Tasks THE ARMY INTELLIGENCE WARFIGHTING FUNCTION TASK LIST B-1. The "
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00617",
+          "score": 0.1681,
+          "preview": "(JP 2-0) execution The act of putting a plan into action by applying combat power to accomplish the mission and adjusting operations based on changes in the sit"
+        }
+      ]
+    },
+    "1-2|FM 3-61": {
+      "moat_paragraph_id": "1-2",
+      "source_document_moat": "FM 3-61",
+      "source_document_naive": "FM_3-61",
+      "moat_text_preview": "Modern technology provides commanders with a greater ability to shape and affect the information environment by implementing their PA and visual information cap",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-61#chunk-00012",
+          "score": 0.4792,
+          "preview": "information environment by implementing their PA and visual information capabilities. The commander\u2019s communication synchronization, formerly known as strategic"
+        },
+        {
+          "chunk_id": "FM_3-61#chunk-00011",
+          "score": 0.1215,
+          "preview": "One provides commanders with the Army\u2019s public affairs and visual information structure and organization to give commanders a better understanding of their resp"
+        },
+        {
+          "chunk_id": "FM_3-61#chunk-00296",
+          "score": 0.1181,
+          "preview": "II \u2013 TERMS audience In public affairs, a broadly-defined group that contains stakeholders and/or publics relevant to military operations. (JP 3-61) combat camer"
+        }
+      ]
+    },
+    "1-2|FM 5-0": {
+      "moat_paragraph_id": "1-2",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "Military operations are inherently dynamic and uncertain. The complexity of friendly and enemy organizations, unique combinations of terrain and weather, and th",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_5-0#chunk-00015",
+          "score": 0.2841,
+          "preview": "is essential to understanding the fundamental nature of operations. 1-2. Military operations are inherently dynamic and uncertain. The complexity of friendly an"
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00014",
+          "score": 0.0613,
+          "preview": "MDMP. Appendix G summarizes the integrating processes and identifies key inputs and outputs of each of these processes within the steps of the MDMP. x FM 5-0 (I"
+        }
+      ]
+    },
+    "1-20|FM 2-0": {
+      "moat_paragraph_id": "1-20",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "Intelligence drives the conduct of operations and operations enable intelligence, making intelligence and operations inseparable. Therefore, G-2/S-2s must ensur",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00028",
+          "score": 0.4942,
+          "preview": "intelligence process but modified to account for Army operations. 1-19. Commanders and staffs require accurate, relevant, and predictive intelligence to underst"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00610",
+          "score": 0.098,
+          "preview": "or maintenance of stability within a region or host nation. (JP 3-57) civil reconnaissance A targeted, planned, and coordinated observation and evaluation of sp"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00029",
+          "score": 0.0798,
+          "preview": "tactical intelligence before being used to support decision making. The commander and unit may create a level of risk by relying too much on combat information "
+        }
+      ]
+    },
+    "1-23|ADP 3-0": {
+      "moat_paragraph_id": "1-23",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Army forces enable the joint force to counter aggression on the ground when an adversary begins to escalate tensions in a theater of war. Typically, indications",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00017",
+          "score": 0.3976,
+          "preview": "for the joint force. \u2022 Providing peacetime and contingency access to allies and partners. \u2022 Demonstrating credible combat capabilities during training and exerc"
+        }
+      ]
+    },
+    "1-24|ADP 3-0": {
+      "moat_paragraph_id": "1-24",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "As part of a joint force, Army forces often have a significant role in the execution of directed flexible deterrent options and flexible response options. These",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00018",
+          "score": 0.3299,
+          "preview": "selected ground force capabilities and demonstrate national will. Army operations and activities designed to counter aggression may include mobilization, force "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00017",
+          "score": 0.2094,
+          "preview": "for the joint force. \u2022 Providing peacetime and contingency access to allies and partners. \u2022 Demonstrating credible combat capabilities during training and exerc"
+        }
+      ]
+    },
+    "1-30|ADP 3-0": {
+      "moat_paragraph_id": "1-30",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Army forces perform consolidation activities through and with unified action partners. In some instances, Army forces will oversee activities to consolidate gai",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00021",
+          "score": 0.2636,
+          "preview": "operation, they may accept the risk of slower tempo in the near term to prevent the enemy from protracting the conflict with bypassed or irregular forces that c"
+        }
+      ]
+    },
+    "1-31|ADP 3-0": {
+      "moat_paragraph_id": "1-31",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Army tactical forces integrate indigenous populations and institutions to consolidate gains. Indigenous populations and institutions are the societal framework ",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00021",
+          "score": 0.3178,
+          "preview": "operation, they may accept the risk of slower tempo in the near term to prevent the enemy from protracting the conflict with bypassed or irregular forces that c"
+        }
+      ]
+    },
+    "1-36|ADP 3-0": {
+      "moat_paragraph_id": "1-36",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "A crisis may occur when adversary behavior creates undesirable conditions to which the United States must respond. A crisis is an emerging incident or situation",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00023",
+          "score": 0.4225,
+          "preview": "or nonstate adversaries have incompatible interests, but neither seeks armed conflict. Nation-states compete using all instruments of national power to gain and"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00113",
+          "score": 0.1562,
+          "preview": "intends to accomplish and how it will be done using available resources. (JP 5-0) *consolidate gains Activities to make enduring any temporary operational succe"
+        }
+      ]
+    },
+    "1-37|ADP 3-0": {
+      "moat_paragraph_id": "1-37",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Armed conflict occurs when a state or nonstate actor uses lethal force as the primary means to satisfy its interests. Entering and terminating armed conflict is",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00024",
+          "score": 0.2045,
+          "preview": "the primary means to satisfy its interests. Entering and terminating armed conflict is a political decision. Army forces may enter armed conflicts either with s"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00023",
+          "score": 0.1479,
+          "preview": "or nonstate adversaries have incompatible interests, but neither seeks armed conflict. Nation-states compete using all instruments of national power to gain and"
+        }
+      ]
+    },
+    "1-38|ADP 3-0": {
+      "moat_paragraph_id": "1-38",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "No matter the context, the Regular Army, Army National Guard, and Army Reserve forces support the defense of the homeland. The interconnected global capabilitie",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00024",
+          "score": 0.3398,
+          "preview": "the primary means to satisfy its interests. Entering and terminating armed conflict is a political decision. Army forces may enter armed conflicts either with s"
+        }
+      ]
+    },
+    "1-4|FM 2-0": {
+      "moat_paragraph_id": "1-4",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "In order to know and adapt intelligence fundamentals, intelligence professionals must read more than FM 2-0; they must be doctrinally proficient in a number of ",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00018",
+          "score": 0.369,
+          "preview": "JP 2-0 is a great resource and the authoritative doctrinal source for the Joint Staff, combatant commands, joint task forces (JTFs), and subordinate components "
+        }
+      ]
+    },
+    "1-7|ADP 3-0": {
+      "moat_paragraph_id": "1-7",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Offensive, defensive, and stability operations occur during conventional and irregular warfare. Divisions and higher echelons typically perform some combination",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00010",
+          "score": 0.1744,
+          "preview": "history, is as important as understanding the enemy force\u2019s military capabilities. 1-5. While the nature of war does not change, the way in which armies conduct"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00011",
+          "score": 0.0857,
+          "preview": "three operations simultaneously in their operations. However, the lower the echelon, the more likely that formation will focus on conducting one type of operati"
+        }
+      ]
+    },
+    "1-9|ADP 3-0": {
+      "moat_paragraph_id": "1-9",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Offensive operations impose the commander\u2019s will on an enemy force. An offensive operation is an operation to defeat or destroy enemy forces and gain control of",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00011",
+          "score": 0.417,
+          "preview": "three operations simultaneously in their operations. However, the lower the echelon, the more likely that formation will focus on conducting one type of operati"
+        }
+      ]
+    },
+    "2-1|ADP 3-0": {
+      "moat_paragraph_id": "2-1",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The purpose of warfighting functions is to provide an intellectual organization for common critical capabilities available to commanders and staffs at all echel",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00051",
+          "score": 0.374,
+          "preview": "is foundational to victory. Commanders account for every part of an enemy\u2019s ability to resist and address it during planning. Consolidating gains builds irrever"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00122",
+          "score": 0.0503,
+          "preview": "of warfare The level of warfare at which combatant commanders synchronize with unified action partners and employ all instruments of national power to fulfill p"
+        }
+      ]
+    },
+    "2-1|FM 3-12": {
+      "moat_paragraph_id": "2-1",
+      "source_document_moat": "FM 3-12",
+      "source_document_naive": "FM_3-12",
+      "moat_text_preview": "Cyberspace is a manmade domain. Its components are built and operated for certain purposes. Cyberspace includes enterprise and tactical networks, civilian cell ",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-12#chunk-00080",
+          "score": 0.2727,
+          "preview": "analysis process (see figure 1-3 on page 28) may include\u2014 \u2022 Effects chains. \u2022 Short-, medium-, and long-term approaches. \u2022 Actions to target an element of the s"
+        },
+        {
+          "chunk_id": "FM_3-12#chunk-00081",
+          "score": 0.0973,
+          "preview": "information technology systems perform networking, information processing, and other tasks typically associated with home computers and the Internet. The DODIN "
+        }
+      ]
+    },
+    "2-1|FM 3-61": {
+      "moat_paragraph_id": "2-1",
+      "source_document_moat": "FM 3-61",
+      "source_document_naive": "FM_3-61",
+      "moat_text_preview": "The commander has a responsibility to ensure the American people and Army personnel remain informed and educated on the operations and activities of the Army. T",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-61#chunk-00043",
+          "score": 0.2415,
+          "preview": "this compatibility.) To ensure compatibility, PA personnel conduct a spectrum supportability risk assessment (SSRA) for all spectrum- dependent systems. (See DO"
+        }
+      ]
+    },
+    "2-1|FM 5-0": {
+      "moat_paragraph_id": "2-1",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "Operational art spans a continuum\u2014from strategic direction to concrete tactical actions. Bridging the continuum requires creative vision coupled with broad expe",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_5-0#chunk-00082",
+          "score": 0.2292,
+          "preview": "use of contributed forces. \u2022 Weapons capabilities of participating nations. \u2022 Tactics of participating nations. (For more information on multinational operation"
+        }
+      ]
+    },
+    "2-14|ADP 3-0": {
+      "moat_paragraph_id": "2-14",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The fires warfighting function is the related tasks and systems that create and converge effects in all domains against the threat to enable actions across the ",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00056",
+          "score": 0.2659,
+          "preview": "environment through collection resulting in data that they process and exploit into useable information for analysis and production. This results in intelligenc"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00115",
+          "score": 0.0748,
+          "preview": "the enemy\u2019s dispositions less valuable, perhaps even irrelevant. 21 March 2025 ADP 3-0 45 Glossary domain A physically defined portion of an operational environ"
+        }
+      ]
+    },
+    "2-15|ADP 3-0": {
+      "moat_paragraph_id": "2-15",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Commanders must execute and integrate fires with the other warfighting functions to create effects and achieve the desired end state. Commanders and staffs must",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00057",
+          "score": 0.5521,
+          "preview": "desired end state. Commanders and staffs must expect and account for collateral effects of fires within one domain impacting capabilities in other domains. Comm"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00056",
+          "score": 0.135,
+          "preview": "environment through collection resulting in data that they process and exploit into useable information for analysis and production. This results in intelligenc"
+        }
+      ]
+    },
+    "2-17|ADP 3-0": {
+      "moat_paragraph_id": "2-17",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Protection activities endure in ways that differentiate them from defensive and specific security operations. While a unit defends for a specific purpose over t",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00058",
+          "score": 0.3268,
+          "preview": "and redundant approach to minimize the vulnerabilities of the force. 2-17. Protection activities endure in ways that differentiate them from defensive and speci"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00057",
+          "score": 0.0586,
+          "preview": "desired end state. Commanders and staffs must expect and account for collateral effects of fires within one domain impacting capabilities in other domains. Comm"
+        }
+      ]
+    },
+    "2-18|ADP 3-0": {
+      "moat_paragraph_id": "2-18",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Prioritizing protection assets is situationally dependent and resource informed. Protection capabilities integration aims to balance protection with the freedom",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00058",
+          "score": 0.3937,
+          "preview": "and redundant approach to minimize the vulnerabilities of the force. 2-17. Protection activities endure in ways that differentiate them from defensive and speci"
+        }
+      ]
+    },
+    "2-2|ADP 3-0": {
+      "moat_paragraph_id": "2-2",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Warfighting functions are not branch specific. Many capabilities that contribute to one warfighting function also contribute to others, often simultaneously. Fo",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00052",
+          "score": 0.2606,
+          "preview": "to the command and control, intelligence, and fires warfighting functions. To ensure synchronization across warfighting functions, commanders at all echelons fo"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00051",
+          "score": 0.204,
+          "preview": "is foundational to victory. Commanders account for every part of an enemy\u2019s ability to resist and address it during planning. Consolidating gains builds irrever"
+        }
+      ]
+    },
+    "2-22|ADP 3-0": {
+      "moat_paragraph_id": "2-22",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Commanders and their staffs at all echelons employ the art and the science of tactics. The art generally is in the purview of commanders and select staff member",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00060",
+          "score": 0.5637,
+          "preview": "Economy. \u2022 Survivability. \u2022 Continuity. \u2022 Improvisation. 20 ADP 3-0 21 March 2025 Warfighting Functions and Combat Power (See ADP 4-0 and FM 4-0 for additional "
+        }
+      ]
+    },
+    "2-23|ADP 3-0": {
+      "moat_paragraph_id": "2-23",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Military operations executed in the land domain require the continuous generation and application of combat power. Combat power is the total means of destructiv",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00060",
+          "score": 0.2714,
+          "preview": "Economy. \u2022 Survivability. \u2022 Continuity. \u2022 Improvisation. 20 ADP 3-0 21 March 2025 Warfighting Functions and Combat Power (See ADP 4-0 and FM 4-0 for additional "
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00061",
+          "score": 0.1309,
+          "preview": "Army forces generate combat power by integrating the systems and tasks of the warfighting functions, and then they use command and control to synchronize its ap"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00112",
+          "score": 0.0683,
+          "preview": "(JP 5-0) campaigning The persistent conduct of related operations, activities, and investments that align military actions with the other instruments of nationa"
+        }
+      ]
+    },
+    "2-24|ADP 3-0": {
+      "moat_paragraph_id": "2-24",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Combat power represents the measurable military potential combined with the intangible advantages of an organization. It is viewed in relation to adversary or e",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00061",
+          "score": 0.5945,
+          "preview": "Army forces generate combat power by integrating the systems and tasks of the warfighting functions, and then they use command and control to synchronize its ap"
+        }
+      ]
+    },
+    "2-3|ADP 3-0": {
+      "moat_paragraph_id": "2-3",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The tasks associated with each warfighting function help establish responsibilities for doctrine, capability modernization, and leader development in the instit",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00052",
+          "score": 0.2183,
+          "preview": "to the command and control, intelligence, and fires warfighting functions. To ensure synchronization across warfighting functions, commanders at all echelons fo"
+        }
+      ]
+    },
+    "2-4|ADP 3-0": {
+      "moat_paragraph_id": "2-4",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The primary purpose of command and control is to assist commanders in integrating and synchronizing the other warfighting functions effectively at each echelon,",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00052",
+          "score": 0.2222,
+          "preview": "to the command and control, intelligence, and fires warfighting functions. To ensure synchronization across warfighting functions, commanders at all echelons fo"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00112",
+          "score": 0.0532,
+          "preview": "(JP 5-0) campaigning The persistent conduct of related operations, activities, and investments that align military actions with the other instruments of nationa"
+        }
+      ]
+    },
+    "2-5|ADP 3-0": {
+      "moat_paragraph_id": "2-5",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Command and control synchronize the systems and capabilities that comprise the other warfighting functions. Strategy, operational art, planning, operational app",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00053",
+          "score": 0.2407,
+          "preview": "making are all part of command and control. Command and control reflect leader action and how Army forces achieve unity of effort and unity of purpose during op"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00052",
+          "score": 0.2035,
+          "preview": "to the command and control, intelligence, and fires warfighting functions. To ensure synchronization across warfighting functions, commanders at all echelons fo"
+        }
+      ]
+    },
+    "3-1|ADP 3-0": {
+      "moat_paragraph_id": "3-1",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The Army contributes multidomain operations to the joint force. Multidomain operations are the combined arms employment of joint and Army capabilities to create",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00068",
+          "score": 0.4153,
+          "preview": "how multidomain operations create relative advantages for Army forces. Next, the chapter describes the tenants and imperatives, followed by a description of the"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00117",
+          "score": 0.0804,
+          "preview": "(JP 3-0) *landpower The ability\u2014by threat, force, or occupation\u2014to gain, sustain, and exploit control over land, resources, and people. *large-scale combat oper"
+        }
+      ]
+    },
+    "3-1|FM 3-12": {
+      "moat_paragraph_id": "3-1",
+      "source_document_moat": "FM 3-12",
+      "source_document_naive": "FM_3-12",
+      "moat_text_preview": "Since the beginning of the 20th century, EW has played an ever-increasing role in shaping the outcomes of various military conflicts around the globe. Electroma",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-12#chunk-00093",
+          "score": 0.2332,
+          "preview": "generated by lethal fires, maneuver, cyberspace attack, electromagnetic attack, or other nonlethal capability. Targeting enables the commander to leverage letha"
+        },
+        {
+          "chunk_id": "FM_3-12#chunk-00094",
+          "score": 0.0804,
+          "preview": "to control the electromagnetic spectrum or to attack the enemy (JP 3-85). The divisions of EW are\u2014 \u2022 Electromagnetic attack. \u2022 Electromagnetic protection. \u2022 Ele"
+        },
+        {
+          "chunk_id": "FM_3-12#chunk-00415",
+          "score": 0.0563,
+          "preview": "tasked by, or under direct control of, an operational commander to search for, intercept, identify, and locate or localize sources of intentional and unintentio"
+        }
+      ]
+    },
+    "3-1|FM 3-61": {
+      "moat_paragraph_id": "3-1",
+      "source_document_moat": "FM 3-61",
+      "source_document_naive": "FM_3-61",
+      "moat_text_preview": "PA personnel\u2014including commissioned officers, NCOs, and DA Civilians\u2014stand ready to support the commander with knowledge of communication strategy, the informat",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_3-61#chunk-00047",
+          "score": 0.2366,
+          "preview": "\u2022 Information released prevents perceptions of scandal or cover-up. 2-11. PAOs coordinate the release of information with the proper release authorities. PAOs r"
+        }
+      ]
+    },
+    "3-1|FM 5-0": {
+      "moat_paragraph_id": "3-1",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "The ability to recognize and effectively solve problems is an essential skill for leaders. A problem is an issue or obstacle that makes it difficult to achieve ",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_5-0#chunk-00119",
+          "score": 0.2671,
+          "preview": "strike in a manner, location, and time unexpected by enemy forces. This is the essence of surprise. 2-82. Part of developing an operational approach includes an"
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00120",
+          "score": 0.1612,
+          "preview": "a systematic approach to defining a problem, developing possible solutions to solve the problem, arriving at the best solution, and implementing it. The object "
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00037",
+          "score": 0.0861,
+          "preview": "employ several methodologies for planning, determining the appropriate mix based on the scope and understanding of the problem, time available, and availability"
+        }
+      ]
+    },
+    "3-2|ADP 3-0": {
+      "moat_paragraph_id": "3-2",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Almost all operations are inherently joint, and most operations occur in a coalition or alliance effort. Joint and multinational capabilities enable Army forces",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00068",
+          "score": 0.3333,
+          "preview": "how multidomain operations create relative advantages for Army forces. Next, the chapter describes the tenants and imperatives, followed by a description of the"
+        },
+        {
+          "chunk_id": "ADP_3-0#chunk-00069",
+          "score": 0.1875,
+          "preview": "others. Army forces employ joint and combined capabilities to the degree they are available. However, because peer threats can contest the joint force in all do"
+        }
+      ]
+    },
+    "4-1|ADP 3-0": {
+      "moat_paragraph_id": "4-1",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "Effective campaigning is not possible unless operational-level objectives nest with strategic objectives. Army forces plan, prepare, execute, and assess major o",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00090",
+          "score": 0.1897,
+          "preview": "defeating enemy forces and concludes with information on the defeat and stability mechanisms. ARMY SUPPORT TO JOINT CAMPAIGNING 4-1. Effective campaigning is no"
+        }
+      ]
+    },
+    "4-1|FM 5-0": {
+      "moat_paragraph_id": "4-1",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "Successful planning requires the integration of both conceptual thinking and detailed analysis as discussed in Chapter 1. Understanding an OE, determining the o",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_5-0#chunk-00138",
+          "score": 0.2835,
+          "preview": "stay involved and carefully avoid creating new problems because of uncoordinated implementation of the solution. Army problem solving does not end with identify"
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00035",
+          "score": 0.0882,
+          "preview": "aid success of the operation based on anticipated events, opportunities, or disruptions caused by enemy actions and reactions (JP 5-0). Branches anticipate situ"
+        }
+      ]
+    },
+    "4-2|ADP 3-0": {
+      "moat_paragraph_id": "4-2",
+      "source_document_moat": "ADP 3-0",
+      "source_document_naive": "ADP_3-0",
+      "moat_text_preview": "The President, the Secretary of Defense, and the Chairman of the Joint Chiefs of Staff provide strategic direction to the military to safeguard and advance nati",
+      "naive_matches": [
+        {
+          "chunk_id": "ADP_3-0#chunk-00090",
+          "score": 0.502,
+          "preview": "defeating enemy forces and concludes with information on the defeat and stability mechanisms. ARMY SUPPORT TO JOINT CAMPAIGNING 4-1. Effective campaigning is no"
+        }
+      ]
+    },
+    "5-1|FM 5-0": {
+      "moat_paragraph_id": "5-1",
+      "source_document_moat": "FM 5-0",
+      "source_document_naive": "FM_5-0",
+      "moat_text_preview": "The military decision-making process is an iterative planning methodology to understand the situation and mission, develop a course of action, and produce an op",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_5-0#chunk-00186",
+          "score": 0.3692,
+          "preview": "and understanding this logic during ADM helps the staff recommend the appropriate indicators for assessing the operation. It also helps the commander and staff "
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00187",
+          "score": 0.296,
+          "preview": "\u2022 Step 2 - Mission analysis. \u2022 Step 3 - COA development. \u2022 Step 4 - COA analysis. \u2022 Step 5 - COA comparison. \u2022 Step 6 - COA approval. \u2022 Step 7 - Orders producti"
+        },
+        {
+          "chunk_id": "FM_5-0#chunk-00039",
+          "score": 0.0773,
+          "preview": "develop COAs, decide on a COA, and produce an OPLAN or order. It is an orderly, analytical process that integrates the activities of the commander, staff, and s"
+        }
+      ]
+    },
+    "7-53|FM 2-0": {
+      "moat_paragraph_id": "7-53",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "As a component of the joint force, the theater army represents subordinate Army forces in joint boards and planning cells. The most important of these for the G",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00370",
+          "score": 0.3143,
+          "preview": "most important of these for the G-2 is the joint collection management board, which enables the JFC\u2019s decision making on the apportionment and allocation of ISR"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00369",
+          "score": 0.1693,
+          "preview": "PED as directed by the information collection plan. However, there is more emphasis on support to force protection and on indications of how the theater is reac"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00364",
+          "score": 0.0506,
+          "preview": "2023 Intelligence at and Across Echelons COMPETITION 7-41. The theater army is the primary Army organization that plans, prepares, and oversees the execution of"
+        }
+      ]
+    },
+    "7-57|FM 2-0": {
+      "moat_paragraph_id": "7-57",
+      "source_document_moat": "FM 2-0",
+      "source_document_naive": "FM_2-0",
+      "moat_text_preview": "The corps is best positioned and resourced to achieve convergence with Army and joint capabilities. Corps integrate joint capabilities at the right echelon, def",
+      "naive_matches": [
+        {
+          "chunk_id": "FM_2-0#chunk-00371",
+          "score": 0.458,
+          "preview": "\u2013 CORPS 7-56. The corps is the Army\u2019s most versatile formation that employs organic and assigned units for operations. A corps headquarters is organized, traine"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00609",
+          "score": 0.0904,
+          "preview": "specific area. (FM 3-90) ARFOR The Army component and senior Army headquarters of all Army forces assigned or attached to a combatant command, subordinate joint"
+        },
+        {
+          "chunk_id": "FM_2-0#chunk-00608",
+          "score": 0.0708,
+          "preview": "intelligence and information from all relevant sources in order to analyze situations or conditions that impact operations. (ADP 2-0) all-source intelligence (D"
+        }
+      ]
+    }
+  }
+}

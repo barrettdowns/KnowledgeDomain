@@ -1,0 +1,1212 @@
+{
+  "summary": {
+    "naive_vector": {
+      "ndcg_10": 0.010224076254976762,
+      "mrr": 0.038461538461538464,
+      "precision_5": 0.007692307692307693,
+      "question_count": 26
+    },
+    "naive_hybrid": {
+      "ndcg_10": 0.3318386451286666,
+      "mrr": 0.47863247863247865,
+      "precision_5": 0.16923076923076924,
+      "question_count": 26
+    },
+    "moat_hybrid": {
+      "ndcg_10": 0.27850079104710823,
+      "mrr": 0.2813639035861258,
+      "precision_5": 0.1111111111111111,
+      "question_count": 27
+    },
+    "moat_filtered": {
+      "ndcg_10": 0.25449102095136245,
+      "mrr": 0.2951058201058201,
+      "precision_5": 0.0888888888888889,
+      "question_count": 27
+    },
+    "raw_embedding": {
+      "ndcg_10": 0.27144562587200494,
+      "mrr": 0.27210464432686654,
+      "precision_5": 0.1111111111111111,
+      "question_count": 27
+    },
+    "adc_only": {
+      "ndcg_10": 0.27850079104710823,
+      "mrr": 0.2813639035861258,
+      "precision_5": 0.1111111111111111,
+      "question_count": 27
+    },
+    "full_pipeline": {
+      "ndcg_10": 0.2920452722068608,
+      "mrr": 0.3126984126984127,
+      "precision_5": 0.11851851851851852,
+      "question_count": 27
+    }
+  },
+  "per_question": {
+    "naive_vector": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.26582598262939583,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      }
+    ],
+    "naive_hybrid": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.6787956981029196,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 0.870236011805614,
+        "mrr": 1.0,
+        "precision_5": 0.6
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.5316519652587917,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.3044665083043711,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.5910888218908608,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.2960819109658652,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.6910578052615549,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.8772153153380493,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.34461577660059567,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.26890779092706835,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.5316519652587917,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.6978817289434457,
+        "mrr": 0.5,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.3937481555797838,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.18457569677956817,
+        "mrr": 0.1111111111111111,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.6056420888961831,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      }
+    ],
+    "moat_hybrid": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.9100086482671776,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 1.0,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.8800937667159342,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.2546094382661627,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.2940806813328203,
+        "mrr": 0.2,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.6309297535714575,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.526588727357031,
+        "mrr": 0.5,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for intelligence collection at battalion level?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.03679372067049625,
+        "mrr": 0.1111111111111111,
+        "precision_5": 0.0
+      }
+    ],
+    "moat_filtered": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.9100086482671776,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.8800937667159342,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.2546094382661627,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.2940806813328203,
+        "mrr": 0.2,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.11990623328406573,
+        "mrr": 0.125,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.6387878864795979,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for intelligence collection at battalion level?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      }
+    ],
+    "raw_embedding": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.8418573048398117,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 1.0,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.3273949503887395,
+        "mrr": 0.25,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.8800937667159342,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.2546094382661627,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.2940806813328203,
+        "mrr": 0.2,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.6309297535714575,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.4569494273838043,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for intelligence collection at battalion level?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.03679372067049625,
+        "mrr": 0.1111111111111111,
+        "precision_5": 0.0
+      }
+    ],
+    "adc_only": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.9100086482671776,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 1.0,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.8800937667159342,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.2546094382661627,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.2940806813328203,
+        "mrr": 0.2,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.6309297535714575,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.526588727357031,
+        "mrr": 0.5,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for intelligence collection at battalion level?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.03679372067049625,
+        "mrr": 0.1111111111111111,
+        "precision_5": 0.0
+      }
+    ],
+    "full_pipeline": [
+      {
+        "query": "What is an operational environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the warfighting functions?",
+        "ndcg_10": 0.9212478445981336,
+        "mrr": 1.0,
+        "precision_5": 0.6
+      },
+      {
+        "query": "What are the requirements for unified action?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the command and control warfighting function?",
+        "ndcg_10": 1.0,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are offensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is multidomain operations?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What may commanders do during defensive operations?",
+        "ndcg_10": 0.7601875334318685,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the role of fires in combined arms?",
+        "ndcg_10": 0.8800937667159342,
+        "mrr": 1.0,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is operational art?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the elements of combat power?",
+        "ndcg_10": 0.2546094382661627,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What are stability operations?",
+        "ndcg_10": 0.4796249331362629,
+        "mrr": 0.5,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the strategic environment?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is DSCA?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the levels of warfare?",
+        "ndcg_10": 0.2940806813328203,
+        "mrr": 0.2,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the protection warfighting function?",
+        "ndcg_10": 0.10987173866025332,
+        "mrr": 0.1,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the intelligence warfighting function?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does intelligence drive operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the intelligence requirements for corps operations?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is cyberspace and how does the Army operate in it?",
+        "ndcg_10": 0.38009376671593426,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is electromagnetic warfare?",
+        "ndcg_10": 0.5,
+        "mrr": 0.3333333333333333,
+        "precision_5": 0.2
+      },
+      {
+        "query": "What is the military decision-making process?",
+        "ndcg_10": 0.25339584447728947,
+        "mrr": 0.14285714285714285,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the fundamentals of planning?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "How does a commander develop an operational approach?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What is the commander's communication strategy?",
+        "ndcg_10": 0.7763433706236033,
+        "mrr": 1.0,
+        "precision_5": 0.4
+      },
+      {
+        "query": "What are public affairs requirements for commanders?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for intelligence collection at battalion level?",
+        "ndcg_10": 0.13539213147917573,
+        "mrr": 0.16666666666666666,
+        "precision_5": 0.0
+      },
+      {
+        "query": "What are the requirements for cyberspace operations integration?",
+        "ndcg_10": 0.0,
+        "mrr": 0.0,
+        "precision_5": 0.0
+      }
+    ]
+  },
+  "config": {
+    "qa_path": "benchmarks/doctrine_qa.json",
+    "naive_map_path": "benchmarks/doctrine_qa_naive_map.json",
+    "min_confidence": 0.7,
+    "top_k": 10,
+    "phase5_column_order": [
+      "naive_vector",
+      "naive_hybrid",
+      "moat_hybrid",
+      "moat_filtered"
+    ],
+    "phase5_column_labels": {
+      "naive_vector": "naive SkillSet \u00b7 text_chunks",
+      "naive_hybrid": "naive + hybrid",
+      "moat_hybrid": "moat SkillSet \u00b7 text_chunks",
+      "moat_filtered": "moat + modality filter + confidence"
+    },
+    "legacy_column_order": [
+      "raw_embedding",
+      "adc_only",
+      "full_pipeline"
+    ],
+    "legacy_column_labels": {
+      "raw_embedding": "Raw embeddings (moat side, vector-only)",
+      "adc_only": "ADC hybrid (moat side)",
+      "full_pipeline": "Full pipeline (moat + modality boost)"
+    }
+  }
+}
