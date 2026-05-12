@@ -88,13 +88,152 @@ def get_stats():
 # --- PAGE 1: THE PROBLEM ---
 if page == "0. Where this fits":
     st.title("Where this fits in the platform")
-    st.info(
-        "Page 0 content lands in Phase 4 of the Nexus + Prefect integration plan. "
-        "It will anchor the app inside RFC-0001's KD / KnowledgeBase / Indexer / Index / "
-        "IndexProjection / SkillSet entity model, pin each moat artifact (ADC, lifting, "
-        "retrieval contract, CODEX) to its substrate slot, and cite the RFC directly."
+    st.markdown(
+        """
+        Per **RFC-0001: Knowledge Domains** (Adam Wilson, 2026-05-04), a Knowledge Domain is a
+        `KnowledgeDomain → N KnowledgeBases`, each KB binding exactly one Indexer and one Index,
+        each Index containing one or more `IndexProjections`, with SkillSets reused across indexers
+        via `skill_set_id`. Routes are KD/KB-scoped under `/kd/...` and KD chat retrieval is
+        **per-base retrieve → merge → global rerank** (RFC-0001 §1.6.3).
+
+        The substrate (catalog CRUD + `/kd/...` runtime + per-base retrieve + merge + rerank) is
+        **Adam's team's responsibility**. What this app demonstrates is the **moat layer**:
+        the SkillSet contents, the typed `IndexField` schema on the projection, the filter +
+        confidence + rerank logic, and CODEX evaluation on top of retrieved context.
+        """
     )
-    st.caption("Tracking: nexus-integration branch, phase-4-acceptance tag.")
+
+    st.subheader("The entity graph (this demo, mapped to RFC-0001)")
+    try:
+        import streamlit.components.v1 as components  # noqa: F401  (we use st.graphviz_chart below)
+        import graphviz
+
+        g = graphviz.Digraph()
+        g.attr("graph", rankdir="LR", bgcolor="transparent", pad="0.2")
+        g.attr("node", shape="box", style="rounded,filled", fontname="Helvetica", fontsize="11")
+        g.attr("edge", fontname="Helvetica", fontsize="9")
+
+        with g.subgraph(name="cluster_kd") as c:
+            c.attr(label="KnowledgeDomain  kd-doctrine", style="rounded,dashed", color="#94a3b8")
+            c.node("KD", "kd-doctrine\\n(model + system_prompt + backend)", fillcolor="#fef3c7")
+
+        with g.subgraph(name="cluster_naive") as c:
+            c.attr(label="KnowledgeBase  kb-doctrine-naive  (Phase 3)", style="rounded,dashed", color="#94a3b8")
+            c.node("KBnaive", "kb-doctrine-naive", fillcolor="#dbeafe")
+            c.node("IXRnaive", "idxr-doctrine-naive", fillcolor="#dbeafe")
+            c.node("SSnaive", "ss-doctrine-naive\\nsplit_pdf(fixed_window)\\n+ embed_text", fillcolor="#e0e7ff")
+            c.node("IDXnaive", "idx-doctrine-naive\\nprojection: text_chunks\\ntable: doctrine_naive_text_chunks", fillcolor="#dbeafe")
+
+        with g.subgraph(name="cluster_moat") as c:
+            c.attr(label="KnowledgeBase  kb-doctrine-moat  (existing)", style="rounded,dashed", color="#94a3b8")
+            c.node("KBmoat", "kb-doctrine-moat", fillcolor="#dcfce7")
+            c.node("IXRmoat", "idxr-doctrine-enriched", fillcolor="#dcfce7")
+            c.node("SSmoat", "ss-doctrine-moat\\nsplit_pdf(ADC) + embed_text\\n+ lift_doctrine_taxonomy", fillcolor="#bbf7d0")
+            c.node("IDXmoat", "idx-doctrine-moat\\nprojection: text_chunks\\ntable: kd_doctrine", fillcolor="#dcfce7")
+
+        # KD -> KBs
+        g.edge("KD", "KBnaive", label="knowledge_base_ids")
+        g.edge("KD", "KBmoat", label="knowledge_base_ids")
+        # KB -> Indexer / Index
+        g.edge("KBnaive", "IXRnaive", label="indexer_id")
+        g.edge("KBnaive", "IDXnaive", label="index_id")
+        g.edge("KBmoat", "IXRmoat", label="indexer_id")
+        g.edge("KBmoat", "IDXmoat", label="index_id")
+        # Indexer -> SkillSet
+        g.edge("IXRnaive", "SSnaive", label="skill_set_id")
+        g.edge("IXRmoat", "SSmoat", label="skill_set_id")
+        # Indexer -> Index target
+        g.edge("IXRnaive", "IDXnaive", label="target_index_id", style="dashed")
+        g.edge("IXRmoat", "IDXmoat", label="target_index_id", style="dashed")
+        # KD per-base retrieve → merge → rerank
+        g.edge("KD", "IDXnaive", label="per-base retrieve → merge\\n→ global rerank (§1.6.3)", style="dotted", color="#dc2626", fontcolor="#dc2626")
+        g.edge("KD", "IDXmoat", label="per-base retrieve → merge\\n→ global rerank (§1.6.3)", style="dotted", color="#dc2626", fontcolor="#dc2626")
+
+        st.graphviz_chart(g)
+    except Exception as e:
+        st.warning(f"Graphviz rendering unavailable ({e}). Showing text fallback.")
+        st.code(
+            """kd-doctrine
+├── kb-doctrine-naive
+│   ├── indexer: idxr-doctrine-naive
+│   │     └── skill_set_id: ss-doctrine-naive (split_pdf fixed_window + embed_text)
+│   └── index: idx-doctrine-naive
+│         └── projection: text_chunks → doctrine_naive_text_chunks
+└── kb-doctrine-moat
+    ├── indexer: idxr-doctrine-enriched
+    │     └── skill_set_id: ss-doctrine-moat (split_pdf ADC + embed_text + lift)
+    └── index: idx-doctrine-moat
+          └── projection: text_chunks → kd_doctrine
+
+KD chat: per-base retrieve → merge → global rerank (RFC-0001 §1.6.3)
+""",
+            language="text",
+        )
+
+    st.subheader("Where each moat artifact lives in RFC-0001's entity model")
+    st.markdown(
+        """
+        | Moat artifact | RFC-0001 slot | This repo |
+        |---|---|---|
+        | **ADC chunking** | `SkillSet.skills` on `ss-doctrine-moat` — a `split_pdf` skill kind that emits hierarchy + modality metadata alongside text | [`src/ingest.py`](kd-platform/src/ingest.py), [`catalog/doctrine-moat.yaml`](kd-platform/catalog/doctrine-moat.yaml) |
+        | **Semantic lifting** | `SkillSet.skills` on `ss-doctrine-moat` — a `lift_doctrine_taxonomy` LLM skill that adds typed `IndexField`s (`modality`, `warfighting_function`, `*_confidence`, …) on the `text_chunks` projection | [`src/lift.py`](kd-platform/src/lift.py), `catalog/doctrine-moat.yaml` |
+        | **Retrieval contract** (filters + confidence threshold) | Per-base retrieve stage: request body of `POST /kd/knowledge-bases/{kb_id}/query` (`filters`, `projection_kinds`, `include_siblings`, plus our `min_confidence`). Also at the global rerank stage of KD chat. | [`src/retrieve.py`](kd-platform/src/retrieve.py), [`src/retrieve_naive.py`](kd-platform/src/retrieve_naive.py), [`src/nexus_client.py`](kd-platform/src/nexus_client.py) |
+        | **CODEX** | Downstream of retrieved context. Consumes hits from `KnowledgeBaseQueryResponse` (per-base) or the assembled context from `KnowledgeDomainMessageResponse` (KD chat). | [`src/compile_codex.py`](kd-platform/src/compile_codex.py), [`src/codex_retriever.py`](kd-platform/src/codex_retriever.py) |
+        | **Glue (KD bundle YAML)** | RFC-0001 §1.6.6 `KnowledgeDomainBundle` — round-trips the whole graph; what a customer environment POSTs to `/kd/knowledge-domains/from-yaml` | `doctrine-kd-package/doctrine-kd.yaml` (built in Phase 9; catalog fragments live in [`catalog/`](kd-platform/catalog/)) |
+        """
+    )
+
+    st.subheader("Three layers — who owns what")
+    st.markdown(
+        """
+        | Layer | Owns | Where it lives |
+        |---|---|---|
+        | **Substrate** (Nexus team) | Catalog CRUD on KD / KB / Indexer / Index / Projection / SkillSet; per-base retrieve + merge + global rerank runtime; YAML bundle import/export; license/auth gating | RFC-0001 §1.6.1, §1.6.3, §1.6.5, §1.6.6 — implemented on `/kd/...` routes in the Nexus service |
+        | **Moat layer** (this app demonstrates) | The skills that fill the SkillSet (ADC, classification, lifting taxonomy with confidence); the field schema on the `text_chunks` projection; the filter / confidence / rerank logic; the CODEX evaluation pipeline on retrieved context | `src/ingest.py`, `src/lift.py`, `src/retrieve.py`, `src/compile_codex.py`, `migrations/V001__create_kd_doctrine.sql` |
+        | **Glue** | The single `KnowledgeDomainBundle` YAML that round-trips both layers — schema, skills, indexer wiring, KB membership, KD runtime fields, benchmarks | `catalog/doctrine-naive.yaml` + `catalog/doctrine-moat.yaml` (fragments) → `doctrine-kd-package/doctrine-kd.yaml` (assembled in Phase 9) |
+        """
+    )
+
+    st.subheader("Catalog records this demo provisions")
+    col_l, col_r = st.columns(2)
+    with col_l:
+        st.markdown("**naive side**")
+        try:
+            with open("catalog/doctrine-naive.yaml") as f:
+                st.code(f.read(), language="yaml")
+        except FileNotFoundError:
+            st.caption("catalog/doctrine-naive.yaml not yet present.")
+    with col_r:
+        st.markdown("**moat side**")
+        try:
+            with open("catalog/doctrine-moat.yaml") as f:
+                st.code(f.read(), language="yaml")
+        except FileNotFoundError:
+            st.caption("catalog/doctrine-moat.yaml not yet present.")
+
+    st.subheader("Substrate status")
+    if _live:
+        st.success(
+            f"LIVE — `{os.getenv('NEXUS_API_URL', '')}` reachable. "
+            "Calls route through `POST /kd/knowledge-bases/{kb_id}/query`, "
+            "`POST /kd/knowledge-bases/{kb_id}/runs`, etc. "
+            "See `docs/nexus-local-setup.md` for the per-route availability matrix."
+        )
+    else:
+        st.info(
+            "LOCAL — substrate calls run in-process against Postgres projection tables. "
+            "In a LIVE deployment, the same calls would route to "
+            "`POST /kd/knowledge-bases/{kb_id}/query`, "
+            "`POST /kd/knowledge-bases/{kb_id}/runs`, "
+            "`POST /kd/knowledge-domains/{kd_id}/agent/messages`, "
+            "and `POST /kd/knowledge-domains/from-yaml`. "
+            "See `docs/nexus-local-setup.md` to stand up the LIVE stack."
+        )
+
+    st.caption(
+        "Source: RFC-0001 (Adam Wilson, 2026-05-04) — `/Users/barrettdowns/Downloads/KD.DESIGN.pdf`. "
+        "This page is the answer to 'what is Adam's team building vs what is this demo for'."
+    )
 
 elif page == "1. The Problem":
     st.title("The Problem")
