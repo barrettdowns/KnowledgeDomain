@@ -379,9 +379,18 @@ elif page == "3. Semantic Lifting":
     st.info("Every extracted field carries a confidence score. The system knows how certain it is -- and that certainty is measurable, auditable, and improvable.")
 
 
-# --- PAGE 4: RETRIEVAL ---
+# --- PAGE 4: RETRIEVAL (live A/B, four columns) ---
 elif page == "4. Retrieval":
-    st.title("Retrieval -- Ask a Question")
+    st.title("Retrieval — naive SkillSet vs moat SkillSet, same RFC-0001 substrate")
+    st.markdown(
+        """
+        Same query, four columns, one substrate. Columns 1–2 hit `kb-doctrine-naive`
+        (`POST /kd/knowledge-bases/kb-doctrine-naive/query`); columns 3–4 hit
+        `kb-doctrine-moat`. Both KBs share the same KD shape, the same projection contract,
+        and the same embedding model — the delta you see isolates the SkillSet contents
+        and the field schema on the `text_chunks` projection.
+        """
+    )
 
     PRESET_QUERIES = {
         "-- Modality filtering advantage --": None,
@@ -409,50 +418,164 @@ elif page == "4. Retrieval":
         query = preset
         meta = PRESET_QUERIES[preset]
         if meta and meta.get("suggested_filter"):
-            st.caption(f"Suggested filter: {meta['suggested_filter']}")
+            st.caption(f"Suggested filter for column 4: `modality = {meta['suggested_filter']}`")
 
-    mode = st.radio("Compare:", ["Raw embeddings only", "ADC (hybrid, no filters)", "Full KD pipeline"],
-                    horizontal=True, index=2)
-
-    modality_filter = None
-    if mode == "Full KD pipeline":
-        modality_filter = st.selectbox("Modality filter (optional):",
-                                        ["None", "REQUIREMENT", "DEFINITION", "PERMISSION", "PROHIBITION", "DESCRIPTIVE"])
+    col_a, col_b, col_c = st.columns([1, 1, 1])
+    with col_a:
+        top_k = st.number_input("top_k per column", min_value=3, max_value=25, value=10, step=1)
+    with col_b:
+        modality_filter = st.selectbox(
+            "Column 4 modality filter",
+            ["REQUIREMENT", "DEFINITION", "PERMISSION", "PROHIBITION", "DESCRIPTIVE", "None"],
+            index=0,
+        )
         if modality_filter == "None":
             modality_filter = None
+    with col_c:
+        min_conf = st.slider(
+            "Column 4 min confidence", min_value=0.0, max_value=1.0, value=0.7, step=0.05
+        )
 
-    if st.button("Search"):
-        if mode == "Raw embeddings only":
-            results = retrieve_raw(query, top_k=10)
-        elif mode == "ADC (hybrid, no filters)":
-            results = retrieve(query, top_k=10)
+    run = st.button("Search", type="primary")
+
+    def _short_text(s: str, n: int = 320) -> str:
+        s = (s or "").replace("\n", " ").strip()
+        return s if len(s) <= n else s[: n - 1] + "…"
+
+    def _render_column(label: str, sublabel: str, hits: list, *, show_moat_metadata: bool = False):
+        st.markdown(f"**{label}**")
+        st.caption(sublabel)
+        total_tokens = sum(len((h.get("content") or h.get("chunk_content") or "").split()) for h in hits)
+        m1, m2, m3 = st.columns(3)
+        m1.metric("hits", len(hits))
+        m2.metric("tokens", total_tokens)
+        if show_moat_metadata:
+            confs = [
+                h.get("modality_confidence")
+                or h.get("metadata", {}).get("modality_confidence")
+                for h in hits
+            ]
+            confs = [c for c in confs if isinstance(c, (int, float))]
+            if confs:
+                m3.metric("mean conf", f"{sum(confs)/len(confs):.2f}")
+            else:
+                m3.metric("mean conf", "—")
         else:
-            filters = {"modality": modality_filter} if modality_filter else None
-            results = retrieve(query, top_k=10, filters=filters)
+            m3.metric("mean conf", "n/a")
 
-        total_tokens = sum(len(r.get("chunk_content", "").split()) for r in results)
-        st.metric("Results", len(results))
-        st.metric("Total tokens retrieved", total_tokens)
-
-        for r in results:
-            score = f"{r.get('score', 0):.4f}" if r.get('score') else ""
-            hier = r.get("hierarchy_path", [])
+        for h in hits:
+            score = h.get("score", 0.0)
+            cid = h.get("chunk_id", "")
+            meta = h.get("metadata", {}) or {}
+            modality = h.get("modality") or meta.get("modality") or ""
+            wf = h.get("warfighting_function") or meta.get("warfighting_function") or ""
+            section = h.get("section_id") or meta.get("section_id") or ""
+            hier = h.get("hierarchy_path") or meta.get("hierarchy_path") or []
             if isinstance(hier, str):
-                hier = json.loads(hier)
+                try:
+                    hier = json.loads(hier)
+                except Exception:
+                    hier = []
             path = " > ".join(hier) if hier else ""
-            modality = r.get("modality", "")
-            para = r.get("paragraph_id", "")
+            header_bits = [f"[{score:.4f}]", cid]
+            if modality:
+                header_bits.append(modality)
+            if path:
+                header_bits.append(path)
+            elif section:
+                header_bits.append(section)
+            with st.expander(" | ".join(b for b in header_bits if b)):
+                if show_moat_metadata:
+                    bits = []
+                    if modality:
+                        mc = h.get("modality_confidence") or meta.get("modality_confidence")
+                        bits.append(f"**Modality:** {modality}" + (f" ({mc:.2f})" if mc else ""))
+                    if wf:
+                        wfc = h.get("warfighting_function_confidence") or meta.get("warfighting_function_confidence")
+                        bits.append(f"**Warfighting fn:** {wf}" + (f" ({wfc:.2f})" if wfc else ""))
+                    ech = h.get("echelon") or meta.get("echelon")
+                    if ech:
+                        bits.append(f"**Echelon:** {ech}")
+                    if bits:
+                        st.markdown("  •  ".join(bits))
+                else:
+                    if section:
+                        st.markdown(f"**section_id:** `{section}`")
+                content = h.get("content") or h.get("chunk_content") or ""
+                st.text(_short_text(content, 400))
 
-            with st.expander(f"[{score}] {para} | {modality} | {path}"):
-                st.markdown(f"**Modality:** {modality}", help="Classified deterministically by ADC at ingest time. No LLM cost, same result every run.")
-                if r.get("modality_confidence"):
-                    st.markdown(f"**Confidence:** {r['modality_confidence']:.2f}",
-                               help="ADC rule engine confidence based on signal density. Scores above 0.8 indicate strong classification.")
-                if r.get("warfighting_function"):
-                    st.markdown(f"**Warfighting Function:** {r['warfighting_function']}")
-                st.text(r.get("chunk_content", "")[:400])
+    if run and query:
+        # All four columns go through nexus_client.kb_query() so the LIVE-vs-LOCAL
+        # transport is invisible to this page and the hit shape is normalized to
+        # RFC-0001 §1.6.3 standard hits.
+        with st.spinner("Running per-column queries..."):
+            naive_vec = nexus_client.kb_query(
+                nexus_client.NEXUS_KB_ID_DOCTRINE_NAIVE,
+                query,
+                top_k=top_k,
+                projection_kinds=["text"],
+            )
+            naive_hybrid = naive_vec  # query_naive_hybrid is already the default LOCAL path
+            moat_hybrid = nexus_client.kb_query(
+                nexus_client.NEXUS_KB_ID_DOCTRINE_MOAT,
+                query,
+                top_k=top_k,
+                projection_kinds=["text"],
+            )
+            moat_filtered = nexus_client.kb_query(
+                nexus_client.NEXUS_KB_ID_DOCTRINE_MOAT,
+                query,
+                top_k=top_k,
+                projection_kinds=["text"],
+                filters={"modality": modality_filter} if modality_filter else None,
+                min_confidence=min_conf,
+            )
 
-    st.info("The KD pipeline finds the right type of doctrine at the right echelon with measured confidence. Try switching between the three modes to see the difference.")
+        c1, c2, c3, c4 = st.columns(4)
+        with c1:
+            _render_column(
+                "naive SkillSet · text_chunks",
+                "vector-only (`hybrid_retrieval.enabled=false`)",
+                naive_vec,
+            )
+        with c2:
+            _render_column(
+                "naive + hybrid",
+                "vector 0.6 + lexical 0.4 (catalog/doctrine-naive.yaml hybrid_retrieval)",
+                naive_hybrid,
+            )
+        with c3:
+            _render_column(
+                "moat SkillSet · text_chunks",
+                "vector 0.7 + lexical 0.3 (catalog/doctrine-moat.yaml hybrid_retrieval)",
+                moat_hybrid,
+                show_moat_metadata=True,
+            )
+        with c4:
+            filt_caption = f"+ modality={modality_filter}, min_confidence={min_conf:.2f}" if modality_filter else f"+ min_confidence={min_conf:.2f}"
+            _render_column(
+                "moat + modality filter + confidence",
+                f"per-base retrieve {filt_caption}",
+                moat_filtered,
+                show_moat_metadata=True,
+            )
+
+    st.markdown("---")
+    st.caption(
+        "**Why this differs** — All four columns hit the same KD substrate "
+        "(`kd-doctrine`) via the same `POST /kd/knowledge-bases/{kb_id}/query` "
+        "request contract. Columns 1–2 and 3–4 use the same projection contract "
+        "but different SkillSets (`ss-doctrine-naive` vs `ss-doctrine-moat`) and "
+        "different field schemas on the `text_chunks` projection. The delta "
+        "isolates the moat layer's contribution — the typed IndexFields, the "
+        "filter / confidence-threshold logic, and the hybrid weights tuned per "
+        "SkillSet. Additionally, RFC-0001 §1.6.3 step 2 leaves an optional "
+        "**per-KB query planning** stage (rewrites, specialization, multi-query "
+        "expansion) explicitly TBD — a sanctioned extension point where further "
+        "moat logic (e.g. routing modality-aware rewrites at the moat KB only) "
+        "could slot in later without modifying the substrate. This page does not "
+        "implement it; the slot is flagged here so the moat roadmap is visible."
+    )
 
 
 # --- PAGE 5: CODEX ---
