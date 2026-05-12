@@ -10,3 +10,18 @@ venv/
 dist/
 build/
 .cursor/
+
+# Kill-switch snapshot tarballs (local-only, would bloat the repo)
+snapshots/
+
+# Nexus license files (never commit binary license artifacts)
+*.bin
+perpetual.license
+
+# Postgres data dir from docker-compose
+pgdata/
+
+# Editor / OS noise
+.DS_Store
+.vscode/
+.idea/

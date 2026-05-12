@@ -4,6 +4,46 @@ End-to-end Knowledge Domain platform demonstrating the Knowledge Domains vision:
 
 This is not production software. It is a reference implementation that shows how every component connects -- using real data, real embeddings, real LLM extraction, and real doctrinal evaluation.
 
+> **Note:** This source tree is being aligned to [RFC-0001: Knowledge Domains](file:///Users/barrettdowns/Downloads/KD.DESIGN.pdf) (Adam Wilson, 2026-05-04) as the authoritative substrate design. Work is on the `nexus-integration` branch; the `main` deploy snapshot is unchanged. See "Branches and version control" below.
+
+## Kill switch and version control
+
+This directory uses a three-layer revert strategy. If anything breaks during the Nexus + Prefect integration work, any single layer can take you back to a known-good state.
+
+| Layer | Mechanism | When to use |
+|---|---|---|
+| **1. Filesystem snapshot** | `snapshots/pre-nexus-integration-<timestamp>.tar.gz` | Nuclear revert. Overwrites the working tree from a tarball. |
+| **2. Local git tags** | `pre-nexus-integration-baseline`, `phase-N-acceptance` (per-phase checkpoints) | Phase-level rollback. `git reset --hard <tag>`. |
+| **3. Remote GitHub branch** | `origin/nexus-integration` on [barrettdowns/KnowledgeDomain](https://github.com/barrettdowns/KnowledgeDomain) | Off-machine durability. `git clone -b nexus-integration` restores everything (excluding snapshot tarballs, which are `.gitignore`d to keep the repo small). |
+
+### Revert procedures
+
+**Nuclear (filesystem snapshot):**
+```bash
+bash scripts/restore.sh snapshots/pre-nexus-integration-<timestamp>.tar.gz
+```
+
+**Phase-level (git tag):**
+```bash
+git reset --hard phase-N-acceptance      # or pre-nexus-integration-baseline for full revert
+```
+
+**Off-machine recovery (if local kd-platform/ is lost):**
+```bash
+git clone -b nexus-integration https://github.com/barrettdowns/KnowledgeDomain.git kd-platform
+cd kd-platform && bash scripts/snapshot.sh post-recovery
+```
+
+### Branches and version control
+
+| Branch | Where | Purpose |
+|---|---|---|
+| `main` (KnowledgeDomain) | [barrettdowns/KnowledgeDomain](https://github.com/barrettdowns/KnowledgeDomain) | Deploy snapshot for Streamlit Community Cloud (`app.py` + precomputed `data/`). **Untouched by this work.** Baseline SHA at start: `8389928274ff7cf894a8ca8c6d02335a42e7a1e5`. |
+| `nexus-integration` (KnowledgeDomain) | [barrettdowns/KnowledgeDomain](https://github.com/barrettdowns/KnowledgeDomain) (new) | Full local development tree + Nexus/Prefect integration work. Per-phase commits tagged `phase-N-acceptance`. |
+| `main` (Moat) | [barrettdowns/Moat](https://github.com/barrettdowns/Moat) (renamed locally as `moat-legacy`) | Historical dev repo that previously tracked this tree. Preserved as a second remote; no new work is pushed there. |
+
+**No pushes to platform repos:** This work is scoped to `kd-platform/` and `barrettdowns/KnowledgeDomain` only. Sibling repos (`nexus`, `service-backend`, `halo`, `orcus-ui`, `victor`) are read for understanding but never modified or pushed to.
+
 ## How This Maps to the Knowledge Domains Vision
 
 | Concept | Where It Lives | File(s) |
